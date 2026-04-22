@@ -1015,83 +1015,188 @@ export default function App() {
                 La Distinción Crítica
               </h2>
 
-              <div className="grid-2">
+              <div className="grid-2" style={{ gap: "6rem", alignItems: "stretch" }}>
                 <motion.div
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.05, y: -15, zIndex: 50 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   className="glass-card"
-                  style={{ borderTop: "8px solid var(--accent-buf)" }}
+                  style={{
+                    borderTop: "8px solid var(--accent-buf)",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    position: "relative",
+                    overflow: "hidden",
+                    margin: "1rem",
+                  }}
                 >
-                  <h3
-                    style={{ color: "var(--accent-buf)", marginBottom: "2rem" }}
-                  >
-                    Buffering
-                  </h3>
-                  <p
-                    style={{
-                      fontSize: "2.2rem !important",
-                      color: "var(--fg)",
-                    }}
-                  >
-                    La <strong>Autoridad Exclusiva</strong> del dato. Es el
-                    único lugar donde reside el dato válido durante el
-                    transporte.
-                  </p>
                   <div
                     style={{
-                      marginTop: "3rem",
-                      padding: "1rem",
-                      background: "rgba(203, 124, 148, 0.1)",
-                      borderRadius: "12px",
-                      border: "1px solid rgba(203, 124, 148, 0.2)",
+                      position: "absolute",
+                      top: "-20px",
+                      right: "-20px",
+                      opacity: 0.05,
+                      pointerEvents: "none",
                     }}
                   >
-                    <span
-                      style={{ color: "var(--accent-red)", fontWeight: 800 }}
+                    <Layers size={200} color="var(--accent-buf)" />
+                  </div>
+                  <div>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "1.5rem",
+                        marginBottom: "2rem",
+                      }}
                     >
-                      PELIGRO:
-                    </span>{" "}
-                    Borrado = Pérdida de Datos.
+                      <div
+                        style={{
+                          background: "rgba(127, 180, 202, 0.1)",
+                          padding: "1.2rem",
+                          borderRadius: "16px",
+                        }}
+                      >
+                        <Layers size={40} color="var(--accent-buf)" />
+                      </div>
+                      <h3
+                        style={{
+                          color: "var(--accent-buf)",
+                          margin: 0,
+                          fontSize: "3.5rem",
+                        }}
+                      >
+                        Buffering
+                      </h3>
+                    </div>
+                    <p
+                      style={{
+                        fontSize: "2.4rem !important",
+                        color: "var(--fg)",
+                        lineHeight: "1.5",
+                      }}
+                    >
+                      La <strong>Autoridad Exclusiva</strong> del dato. Es el
+                      único lugar donde reside el dato válido durante el
+                      transporte.
+                    </p>
+                  </div>
+                  <div
+                    style={{
+                      marginTop: "4rem",
+                      padding: "2rem",
+                      background: "rgba(203, 124, 148, 0.15)",
+                      borderRadius: "20px",
+                      border: "1px solid rgba(203, 124, 148, 0.3)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "1.5rem",
+                    }}
+                  >
+                    <ShieldAlert size={32} color="var(--accent-red)" />
+                    <span
+                      style={{
+                        fontSize: "2rem",
+                        color: "var(--fg)",
+                      }}
+                    >
+                      <strong style={{ color: "var(--accent-red)" }}>
+                        PELIGRO:
+                      </strong>{" "}
+                      Borrado = Pérdida de Datos.
+                    </span>
                   </div>
                 </motion.div>
 
                 <motion.div
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.05, y: -15, zIndex: 50 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   className="glass-card"
-                  style={{ borderTop: "8px solid var(--accent-cache)" }}
+                  style={{
+                    borderTop: "8px solid var(--accent-cache)",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    position: "relative",
+                    overflow: "hidden",
+                    margin: "1rem",
+                  }}
                 >
-                  <h3
-                    style={{
-                      color: "var(--accent-cache)",
-                      marginBottom: "2rem",
-                    }}
-                  >
-                    Caching
-                  </h3>
-                  <p
-                    style={{
-                      fontSize: "2.2rem !important",
-                      color: "var(--fg)",
-                    }}
-                  >
-                    Un <strong>Proxy Redundante</strong>. Una copia secundaria
-                    diseñada para la velocidad. El original persiste en el medio
-                    lento.
-                  </p>
                   <div
                     style={{
-                      marginTop: "3rem",
-                      padding: "1rem",
-                      background: "rgba(224, 193, 90, 0.1)",
-                      borderRadius: "12px",
-                      border: "1px solid rgba(224, 193, 90, 0.2)",
+                      position: "absolute",
+                      top: "-20px",
+                      right: "-20px",
+                      opacity: 0.05,
+                      pointerEvents: "none",
                     }}
                   >
-                    <span
-                      style={{ color: "var(--accent-gold)", fontWeight: 800 }}
+                    <Activity size={200} color="var(--accent-cache)" />
+                  </div>
+                  <div>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "1.5rem",
+                        marginBottom: "2rem",
+                      }}
                     >
-                      RESULTADO:
-                    </span>{" "}
-                    Borrado = Caída de Rendimiento.
+                      <div
+                        style={{
+                          background: "rgba(183, 204, 133, 0.1)",
+                          padding: "1.2rem",
+                          borderRadius: "16px",
+                        }}
+                      >
+                        <Activity size={40} color="var(--accent-cache)" />
+                      </div>
+                      <h3
+                        style={{
+                          color: "var(--accent-cache)",
+                          margin: 0,
+                          fontSize: "3.5rem",
+                        }}
+                      >
+                        Caching
+                      </h3>
+                    </div>
+                    <p
+                      style={{
+                        fontSize: "2.4rem !important",
+                        color: "var(--fg)",
+                        lineHeight: "1.5",
+                      }}
+                    >
+                      Un <strong>Proxy Redundante</strong>. Una copia secundaria
+                      diseñada para la velocidad. El original persiste en el
+                      medio lento.
+                    </p>
+                  </div>
+                  <div
+                    style={{
+                      marginTop: "4rem",
+                      padding: "2rem",
+                      background: "rgba(224, 193, 90, 0.15)",
+                      borderRadius: "20px",
+                      border: "1px solid rgba(224, 193, 90, 0.3)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "1.5rem",
+                    }}
+                  >
+                    <Activity size={32} color="var(--accent-gold)" />
+                    <span
+                      style={{
+                        fontSize: "2rem",
+                        color: "var(--fg)",
+                      }}
+                    >
+                      <strong style={{ color: "var(--accent-gold)" }}>
+                        RESULTADO:
+                      </strong>{" "}
+                      Borrado = Caída de Rendimiento.
+                    </span>
                   </div>
                 </motion.div>
               </div>
