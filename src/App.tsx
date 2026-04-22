@@ -874,405 +874,115 @@ export default function App() {
               </div>
             </div>
           </Slide>
-
-          <Slide 
-            data-background-iframe="./comparativa.html" 
-            data-background-interactive
-            data-transition="fade"
-          >
-          </Slide>
         </Stack>
 
-        {/* ── CACHING ── */}
-        <Stack>
-          <Slide data-transition="zoom-in fade-out">
-            <div className="grid-2" style={{ height: "100%", padding: "0 8%" }}>
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                style={{ textAlign: "left" }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "1rem",
-                    color: "var(--accent-cache)",
-                    marginBottom: "1.5rem",
-                  }}
-                >
-                  <Activity size={32} />
-                  <span
-                    style={{
-                      fontFamily: "var(--mono)",
-                      fontSize: "1.1rem",
-                      letterSpacing: "0.2em",
-                    }}
-                  >
-                    MECANISMO 03
-                  </span>
-                </div>
-                <h2
-                  style={{
-                    fontSize: "5.5rem",
-                    marginBottom: "3rem",
-                    lineHeight: 1,
-                  }}
-                >
-                  Localidad
-                  <br />
-                  <span style={{ color: "var(--accent-cache)" }}>
-                    Heurística de Datos
-                  </span>
-                </h2>
+        {/* ── MATRIZ COMPARATIVA ── */}
+        <Slide 
+          data-background-iframe="./comparativa.html" 
+          data-background-interactive
+          data-transition="fade"
+        >
+        </Slide>
 
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "2rem",
-                  }}
-                >
-                  <div
-                    className="metric-card"
-                    style={{ borderLeft: "6px solid var(--accent-cache)" }}
-                  >
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "1rem",
-                        marginBottom: "0.5rem",
-                      }}
-                    >
-                      <Clock size={20} color="var(--accent-cache)" />
-                      <h4 style={{ fontSize: "2rem !important", margin: 0 }}>
-                        Localidad Temporal
-                      </h4>
-                    </div>
-                    <p style={{ fontSize: "1.8rem !important", margin: 0 }}>
-                      <strong>Regla de Recencia:</strong> Los datos accedidos
-                      recientemente tienen alta probabilidad de reuso inmediato.
-                    </p>
-                  </div>
-                  <div
-                    className="metric-card"
-                    style={{ borderLeft: "6px solid var(--accent-cache)" }}
-                  >
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "1rem",
-                        marginBottom: "0.5rem",
-                      }}
-                    >
-                      <Layers size={20} color="var(--accent-cache)" />
-                      <h4 style={{ fontSize: "2rem !important", margin: 0 }}>
-                        Localidad Espacial
-                      </h4>
-                    </div>
-                    <p style={{ fontSize: "1.8rem !important", margin: 0 }}>
-                      <strong>Regla de Proximidad:</strong> Acceder a X implica
-                      que X+1 será necesario pronto (Read-Ahead).
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              <div className="glass-card" style={{ padding: "4rem" }}>
-                <h4
-                  style={{
-                    fontSize: "3rem",
-                    marginBottom: "4rem",
-                    textAlign: "center",
-                  }}
-                >
-                  Matemática de la Eficiencia
-                </h4>
-
-                <div style={{ marginBottom: "4rem" }}>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      marginBottom: "1.5rem",
-                    }}
-                  >
-                    <span style={{ fontSize: "1.8rem", fontWeight: 600 }}>
-                      Hit Rate (Optimización VFS)
-                    </span>
-                    <span
-                      style={{
-                        color: "var(--accent-cache)",
-                        fontWeight: "800",
-                        fontSize: "2.5rem",
-                      }}
-                    >
-                      98.2%
-                    </span>
-                  </div>
-                  <div
-                    style={{
-                      height: "16px",
-                      background: "var(--line)",
-                      borderRadius: "8px",
-                      overflow: "hidden",
-                      padding: "3px",
-                    }}
-                  >
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: "98.2%" }}
-                      transition={{ duration: 1.5, ease: "easeOut" }}
-                      style={{
-                        height: "100%",
-                        background:
-                          "linear-gradient(90deg, var(--accent-buf), var(--accent-cache))",
-                        borderRadius: "5px",
-                      }}
-                    />
-                  </div>
-                </div>
-
-                <div
-                  className="technical-note"
-                  style={{
-                    background: "rgba(255,255,255,0.03)",
-                    borderLeftColor: "var(--accent-cache)",
-                  }}
-                >
-                  <p
-                    style={{
-                      fontSize: "1.8rem !important",
-                      color: "var(--fg)",
-                      fontStyle: "italic",
-                    }}
-                  >
-                    "Un incremento del 1% en el Hit Rate para cachés de disco
-                    puede generar una <strong>reducción del 50%</strong> en el
-                    tiempo de acceso efectivo (EAT)."
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Slide>
-
-          <Slide>
-            <div style={{ padding: "0 8%" }}>
-              <h2
+        {/* ── ESCENARIOS DE APLICACIÓN ── */}
+        <Slide data-transition="convex">
+          <div style={{ padding: "0 8%" }}>
+            <div style={{ textAlign: "left", marginBottom: "4rem" }}>
+              <span
                 style={{
-                  fontSize: "4.5rem",
-                  marginBottom: "4rem",
-                  textAlign: "left",
+                  color: "var(--accent-gold)",
+                  fontFamily: "var(--mono)",
+                  fontSize: "1.1rem",
+                  letterSpacing: "0.2em",
                 }}
               >
-                La Distinción Crítica
+                EL MUNDO REAL
+              </span>
+              <h2 style={{ fontSize: "5rem", margin: 0 }}>
+                Escenarios de Aplicación
               </h2>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "3rem" }}>
+              <div className="glass-card" style={{ padding: "2.5rem", borderTop: "6px solid var(--accent-buf)", display: "flex", flexDirection: "column" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem" }}>
+                  <Zap size={30} color="var(--accent-buf)" />
+                  <h3 style={{ fontSize: "2rem", margin: 0, color: "var(--accent-buf)" }}>Buffering</h3>
+                </div>
+                <ul style={{ display: "flex", flexDirection: "column", gap: "1rem", fontSize: "1.6rem !important", textAlign: "left", margin: 0, paddingLeft: "1.5rem" }}>
+                  <li><strong>Streaming Multimedia:</strong> Precarga en RAM para compensar jitter (QoS).</li>
+                  <li><strong>Redes (DCTCP):</strong> Gestión de colas activas y notificación de congestión (ECN) en switches de Datacenters.</li>
+                </ul>
+              </div>
 
-              <div
-                className="grid-2"
-                style={{ gap: "6rem", alignItems: "stretch" }}
-              >
-                <motion.div
-                  whileHover={{ scale: 1.05, y: -15, zIndex: 50 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="glass-card"
-                  style={{
-                    borderTop: "8px solid var(--accent-buf)",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    position: "relative",
-                    overflow: "hidden",
-                    margin: "1rem",
-                  }}
-                >
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: "-20px",
-                      right: "-20px",
-                      opacity: 0.05,
-                      pointerEvents: "none",
-                    }}
-                  >
-                    <Layers size={200} color="var(--accent-buf)" />
-                  </div>
-                  <div>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "1.5rem",
-                        marginBottom: "2rem",
-                      }}
-                    >
-                      <div
-                        style={{
-                          background: "rgba(127, 180, 202, 0.1)",
-                          padding: "1.2rem",
-                          borderRadius: "16px",
-                        }}
-                      >
-                        <Layers size={40} color="var(--accent-buf)" />
-                      </div>
-                      <h3
-                        style={{
-                          color: "var(--accent-buf)",
-                          margin: 0,
-                          fontSize: "3.5rem",
-                        }}
-                      >
-                        Buffering
-                      </h3>
-                    </div>
-                    <p
-                      style={{
-                        fontSize: "2.4rem !important",
-                        color: "var(--fg)",
-                        lineHeight: "1.5",
-                      }}
-                    >
-                      La <strong>Autoridad Exclusiva</strong> del dato. Es el
-                      único lugar donde reside el dato válido durante el
-                      transporte.
-                    </p>
-                  </div>
-                  <div
-                    style={{
-                      marginTop: "4rem",
-                      padding: "2rem",
-                      background: "rgba(203, 124, 148, 0.15)",
-                      borderRadius: "20px",
-                      border: "1px solid rgba(203, 124, 148, 0.3)",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "1.5rem",
-                    }}
-                  >
-                    <ShieldAlert size={32} color="var(--accent-red)" />
-                    <span
-                      style={{
-                        fontSize: "2rem",
-                        color: "var(--fg)",
-                      }}
-                    >
-                      <strong style={{ color: "var(--accent-red)" }}>
-                        PELIGRO:
-                      </strong>{" "}
-                      Borrado = Pérdida de Datos.
-                    </span>
-                  </div>
-                </motion.div>
+              <div className="glass-card" style={{ padding: "2.5rem", borderTop: "6px solid var(--accent-spool)", display: "flex", flexDirection: "column" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem" }}>
+                  <RotateCcw size={30} color="var(--accent-spool)" />
+                  <h3 style={{ fontSize: "2rem", margin: 0, color: "var(--accent-spool)" }}>Spooling</h3>
+                </div>
+                <ul style={{ display: "flex", flexDirection: "column", gap: "1rem", fontSize: "1.6rem !important", textAlign: "left", margin: 0, paddingLeft: "1.5rem" }}>
+                  <li><strong>Impresión:</strong> Interceptación de salida a disco para serializar trabajos en dispositivos exclusivos.</li>
+                  <li><strong>Procesamiento por Lotes:</strong> Gestión de colas masivas asíncronas sin bloquear procesos generadores.</li>
+                </ul>
+              </div>
 
-                <motion.div
-                  whileHover={{ scale: 1.05, y: -15, zIndex: 50 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="glass-card"
-                  style={{
-                    borderTop: "8px solid var(--accent-cache)",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    position: "relative",
-                    overflow: "hidden",
-                    margin: "1rem",
-                  }}
-                >
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: "-20px",
-                      right: "-20px",
-                      opacity: 0.05,
-                      pointerEvents: "none",
-                    }}
-                  >
-                    <Activity size={200} color="var(--accent-cache)" />
+              <div className="glass-card" style={{ padding: "2.5rem", borderTop: "6px solid var(--accent-cache)", display: "flex", flexDirection: "column" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem" }}>
+                  <Activity size={30} color="var(--accent-cache)" />
+                  <h3 style={{ fontSize: "2rem", margin: 0, color: "var(--accent-cache)" }}>Caching</h3>
+                </div>
+                <ul style={{ display: "flex", flexDirection: "column", gap: "1rem", fontSize: "1.6rem !important", textAlign: "left", margin: 0, paddingLeft: "1.5rem" }}>
+                  <li><strong>Sistemas de Archivos:</strong> Buffer caché en ext4/Btrfs (LRU adaptativo).</li>
+                  <li><strong>Almacenamiento NVMe:</strong> Reingeniería del I/O bufferizado al migrar cuellos de botella de hardware al Kernel.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </Slide>
+
+        {/* ── CASO CRÍTICO: SPOOLING ── */}
+        <Stack>
+          <Slide data-transition="zoom">
+            <div style={{ padding: "0 8%", textAlign: "left" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "2rem", marginBottom: "3rem" }}>
+                <RotateCcw size={50} color="var(--accent-spool)" />
+                <h2 style={{ fontSize: "4.5rem", margin: 0 }}>Análisis Crítico: Spooling</h2>
+              </div>
+              <div className="grid-2">
+                <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+                  <div className="metric-card" style={{ borderLeft: "4px solid var(--accent-spool)" }}>
+                    <h4 style={{ fontSize: "1.8rem", color: "var(--fg)", marginBottom: "0.5rem" }}>1. Exclusividad y Serialización</h4>
+                    <p style={{ fontSize: "1.5rem !important", margin: 0, opacity: 0.8 }}>Almacena trabajos completos en disco y los entrega secuencialmente (FIFO), garantizando procesamiento atómico sin intercalar páginas.</p>
                   </div>
-                  <div>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "1.5rem",
-                        marginBottom: "2rem",
-                      }}
-                    >
-                      <div
-                        style={{
-                          background: "rgba(183, 204, 133, 0.1)",
-                          padding: "1.2rem",
-                          borderRadius: "16px",
-                        }}
-                      >
-                        <Activity size={40} color="var(--accent-cache)" />
-                      </div>
-                      <h3
-                        style={{
-                          color: "var(--accent-cache)",
-                          margin: 0,
-                          fontSize: "3.5rem",
-                        }}
-                      >
-                        Caching
-                      </h3>
-                    </div>
-                    <p
-                      style={{
-                        fontSize: "2.4rem !important",
-                        color: "var(--fg)",
-                        lineHeight: "1.5",
-                      }}
-                    >
-                      Un <strong>Proxy Redundante</strong>. Una copia secundaria
-                      diseñada para la velocidad. El original persiste en el
-                      medio lento.
-                    </p>
+                  <div className="metric-card" style={{ borderLeft: "4px solid var(--accent-buf)" }}>
+                    <h4 style={{ fontSize: "1.8rem", color: "var(--fg)", marginBottom: "0.5rem" }}>2. Multiprogramación Real</h4>
+                    <p style={{ fontSize: "1.5rem !important", margin: 0, opacity: 0.8 }}>Libera el proceso usuario inmediatamente. El spooler opera como un servicio de sistema independiente (segundo plano).</p>
                   </div>
-                  <div
-                    style={{
-                      marginTop: "4rem",
-                      padding: "2rem",
-                      background: "rgba(224, 193, 90, 0.15)",
-                      borderRadius: "20px",
-                      border: "1px solid rgba(224, 193, 90, 0.3)",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "1.5rem",
-                    }}
-                  >
-                    <Activity size={32} color="var(--accent-gold)" />
-                    <span
-                      style={{
-                        fontSize: "2rem",
-                        color: "var(--fg)",
-                      }}
-                    >
-                      <strong style={{ color: "var(--accent-gold)" }}>
-                        RESULTADO:
-                      </strong>{" "}
-                      Borrado = Caída de Rendimiento.
-                    </span>
+                  <div className="metric-card" style={{ borderLeft: "4px solid var(--accent-cache)" }}>
+                    <h4 style={{ fontSize: "1.8rem", color: "var(--fg)", marginBottom: "0.5rem" }}>3. Tolerancia a Fallos</h4>
+                    <p style={{ fontSize: "1.5rem !important", margin: 0, opacity: 0.8 }}>Los datos residen en disco no volátil. Permite reanudar impresiones tras un corte de energía (a diferencia del buffering).</p>
                   </div>
-                </motion.div>
+                </div>
+                <div className="glass-card" style={{ padding: "3rem" }}>
+                  <h4 style={{ fontSize: "2.2rem", color: "var(--accent-gold)", marginBottom: "1.5rem" }}>Abstracción de Formatos</h4>
+                  <p style={{ fontSize: "1.8rem !important", lineHeight: 1.5 }}>El motor GDI realiza spooling de instrucciones como archivos EMF, procesados por drivers específicos (PCL, PostScript).</p>
+                  <div className="technical-note" style={{ marginTop: "2rem" }}>
+                    <strong style={{ color: "var(--accent-buf)" }}>Ruta XPS Moderna:</strong> Pasa archivos directamente al dispositivo, eliminando conversiones intermedias y reduciendo latencia.
+                  </div>
+                </div>
               </div>
             </div>
           </Slide>
-        </Stack>
 
-        {/* ── CASO DE SEGURIDAD ── */}
-        <Slide data-transition="zoom">
-          <div
-            style={{
-              padding: "0 5%",
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-            }}
-          >
+          <Slide data-transition="slide-in fade-out">
+            <div
+              style={{
+                padding: "0 5%",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+              }}
+            >
             <div
               className="grid-2"
               style={{
@@ -1582,6 +1292,7 @@ installDriver(evilDLL);
             </motion.div>
           </div>
         </Slide>
+        </Stack>
       </Deck>
     </>
   );
