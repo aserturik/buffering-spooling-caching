@@ -336,7 +336,7 @@ export default function App() {
         </Slide>
 
         {/* ── FUNDAMENTACIÓN CONCEPTUAL ── */}
-        <Slide>
+        <Slide data-transition="zoom">
           <div
             style={{
               height: "100%",
@@ -407,9 +407,9 @@ export default function App() {
                     La gestión de entrada/salida (E/S) constituye uno de los
                     subsistemas críticos en la arquitectura de sistemas
                     operativos contemporáneos. Según{" "}
-                    <strong>Holcombe (2023)</strong>, el subsistema de E/S
-                    representa la interfaz entre el núcleo y los dispositivos
-                    periféricos.
+                    <strong>Holcombe (2023)</strong>, el
+                    subsistema de E/S representa la interfaz definitiva
+                    entre el núcleo y los dispositivos periféricos.
                   </p>
 
                   <div
@@ -422,7 +422,7 @@ export default function App() {
                     <p style={{ fontSize: "2rem !important", margin: 0 }}>
                       La <strong>"brecha de velocidad"</strong> (speed gap) es
                       el motor arquitectónico que justifica la existencia de
-                      estos mecanismos (University of Cambridge, 2022-2023).
+                      estos mecanismos (Univ. de Cambridge, 2022-2023).
                     </p>
                   </div>
                 </div>
@@ -469,7 +469,7 @@ export default function App() {
         </Slide>
 
         {/* ── TAXONOMÍA DEL GAP DE VELOCIDAD ── */}
-        <Slide>
+        <Slide data-transition="zoom">
           <div style={{ padding: "0 8%" }}>
             <div style={{ textAlign: "left", marginBottom: "4rem" }}>
               <span
@@ -654,7 +654,7 @@ export default function App() {
 
         {/* ── BUFFERING ── */}
         <Stack>
-          <Slide>
+          <Slide data-transition="zoom">
             <div style={{ padding: "0 8%" }}>
               <div
                 className="glass-card"
@@ -670,17 +670,16 @@ export default function App() {
                 >
                   <div>
                     <span
+                      className="presenter-tag"
                       style={{
+                        background: "rgba(127, 180, 202, 0.1)",
                         color: "var(--accent-buf)",
-                        fontFamily: "var(--mono)",
-                        fontSize: "1.1rem",
-                        letterSpacing: "0.2em",
                       }}
                     >
-                      MECANISMO 01
+                      MECANISMO 01 // BUFFERING
                     </span>
                     <h2 style={{ fontSize: "5rem", marginTop: "0.5rem" }}>
-                      Buffering: Sincronía Asíncrona
+                      Acoplamiento de Velocidades
                     </h2>
                   </div>
                   <Layers
@@ -690,23 +689,16 @@ export default function App() {
                   />
                 </div>
 
-                <div className="grid-2">
-                  <div
-                    style={{
-                      borderRight: "1px solid var(--line)",
-                      paddingRight: "3rem",
-                    }}
-                  >
+                <div className="grid-2" style={{ gap: "4rem" }}>
+                  <div style={{ textAlign: "left" }}>
                     <h4
                       style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "1rem",
+                        color: "var(--accent-buf)",
+                        fontSize: "2.5rem",
                         marginBottom: "2rem",
                       }}
                     >
-                      <Zap size={24} color="var(--accent-buf)" /> Objetivos
-                      Primordiales
+                      Tres Razones Fundamentales (Cambridge, 2023):
                     </h4>
                     <ul
                       style={{
@@ -716,76 +708,48 @@ export default function App() {
                       }}
                     >
                       <li>
-                        <strong>Speed Matching:</strong> Normalización del
-                        throughput entre hardware dispar.
+                        <strong>Discrepancia de Velocidad:</strong> Sincroniza
+                        productor y consumidor.
                       </li>
                       <li>
-                        <strong>Data Size Matching:</strong> Fragmentación de
-                        flujos en bloques óptimos de hardware.
+                        <strong>Adaptación de Tamaño:</strong> Gestiona distintos
+                        bloques de transferencia.
                       </li>
                       <li>
-                        <strong>Copy Semantics:</strong> Integridad de datos
-                        mediante snapshots en <code>copy_to_user</code>.
+                        <strong>Semántica de Copia:</strong> Protege la
+                        integridad de E/S de aplicaciones.
                       </li>
                     </ul>
                   </div>
-                  <div>
-                    <h4
+                  <div
+                    className="metric-card"
+                    style={{ background: "rgba(255,255,255,0.02)" }}
+                  >
+                    <p
                       style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "1rem",
-                        marginBottom: "2rem",
+                        fontSize: "2rem !important",
+                        fontStyle: "italic",
+                        borderLeft: "4px solid var(--accent-gold)",
+                        paddingLeft: "1.5rem",
                       }}
                     >
-                      <Activity size={24} color="var(--accent-buf)" /> Modelos
-                      de Implementación
-                    </h4>
+                      "Región de almacenamiento temporal en RAM para absorber
+                      diferencias de velocidad sin bloqueos mutuos."
+                    </p>
                     <div
                       style={{
+                        marginTop: "2rem",
                         display: "flex",
-                        flexDirection: "column",
-                        gap: "1.5rem",
+                        gap: "1rem",
+                        opacity: 0.6,
                       }}
                     >
-                      <div className="metric-card">
-                        <code
-                          style={{
-                            color: "var(--accent-gold)",
-                            fontWeight: 700,
-                          }}
-                        >
-                          Double Buffering:
-                        </code>
-                        <p
-                          style={{
-                            fontSize: "1.8rem !important",
-                            marginTop: "0.5rem",
-                          }}
-                        >
-                          Llenado/vaciado paralelo mediante DMA para eliminar el
-                          overhead del procesador.
-                        </p>
-                      </div>
-                      <div className="metric-card">
-                        <code
-                          style={{
-                            color: "var(--accent-gold)",
-                            fontWeight: 700,
-                          }}
-                        >
-                          Circular Queue:
-                        </code>
-                        <p
-                          style={{
-                            fontSize: "1.8rem !important",
-                            marginTop: "0.5rem",
-                          }}
-                        >
-                          Estructura de anillo O(1) utilizada en stacks de red
-                          de baja latencia.
-                        </p>
-                      </div>
+                      <span className="presenter-tag" style={{ fontSize: "0.8rem" }}>
+                        VOLÁTIL
+                      </span>
+                      <span className="presenter-tag" style={{ fontSize: "0.8rem" }}>
+                        NANOSEGUNDOS
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -793,7 +757,7 @@ export default function App() {
             </div>
           </Slide>
 
-          <Slide>
+          <Slide data-transition="convex-in concave-out">
             <div style={{ padding: "0 10%" }}>
               <div style={{ textAlign: "left", marginBottom: "4rem" }}>
                 <span
@@ -839,130 +803,89 @@ export default function App() {
 
         {/* ── SPOOLING ── */}
         <Stack>
-          <Slide>
+          <Slide data-transition="zoom">
             <div style={{ padding: "0 8%" }}>
               <div
                 style={{
                   display: "flex",
                   alignItems: "center",
                   gap: "2rem",
-                  marginBottom: "4rem",
+                  marginBottom: "3rem",
                 }}
               >
                 <RotateCcw size={60} color="var(--accent-spool)" />
                 <h2 style={{ fontSize: "5rem", margin: 0 }}>
-                  Arquitectura de Spooling
+                  Desacoplamiento Arquitectónico
                 </h2>
               </div>
 
-              <div className="glass-card">
-                <table
-                  style={{
-                    width: "100%",
-                    borderCollapse: "separate",
-                    borderSpacing: "0 1rem",
-                  }}
+              <div className="grid-2" style={{ gap: "4rem" }}>
+                <div className="glass-card" style={{ textAlign: "left" }}>
+                  <h3 style={{ color: "var(--accent-spool)", fontSize: "2.5rem" }}>
+                    Spooling vs Buffering
+                  </h3>
+                  <p
+                    style={{ fontSize: "2.2rem !important", marginTop: "1.5rem" }}
+                  >
+                    A diferencia del buffer, el <strong>Spooling</strong> utiliza
+                    el disco como un buffer masivo para gestionar{" "}
+                    <strong>trabajos completos</strong> destinados a dispositivos
+                    exclusivos.
+                  </p>
+                  <div
+                    className="technical-note"
+                    style={{
+                      borderColor: "var(--accent-spool)",
+                      background: "rgba(222, 186, 135, 0.05)",
+                    }}
+                  >
+                    <strong>Persistencia:</strong> Sobrevive a fallos de energía
+                    (Acceso en ms).
+                  </div>
+                </div>
+
+                <div
+                  style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
                 >
-                  <thead>
-                    <tr
+                  <div className="metric-card">
+                    <span className="metric-label">
+                      Componentes (Microsoft Learn)
+                    </span>
+                    <div
                       style={{
-                        color: "var(--accent-spool)",
-                        fontSize: "1.2rem",
-                        fontFamily: "var(--mono)",
+                        marginTop: "1rem",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "0.5rem",
                       }}
                     >
-                      <th style={{ padding: "1rem 2rem", textAlign: "left" }}>
-                        CARACTERÍSTICA
-                      </th>
-                      <th style={{ padding: "1rem 2rem", textAlign: "left" }}>
-                        BUFFERING
-                      </th>
-                      <th style={{ padding: "1rem 2rem", textAlign: "left" }}>
-                        SPOOLING
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {[
-                      {
-                        attr: "Medio Principal",
-                        buf: "DRAM (Volátil)",
-                        spool: "Disco (Persistente)",
-                        icon: <Database size={18} />,
-                      },
-                      {
-                        attr: "Unidad de Datos",
-                        buf: "Bloques / Bytes",
-                        spool: "Trabajos / Documentos",
-                        icon: <Layers size={18} />,
-                      },
-                      {
-                        attr: "Propósito Core",
-                        buf: "Normalización de Velocidad",
-                        spool: "Multi-tenencia de Dispositivo",
-                        icon: <RotateCcw size={18} />,
-                      },
-                      {
-                        attr: "Visibilidad Usuario",
-                        buf: "Transparente (Implícito)",
-                        spool: "Explícito (Colas de Impresión)",
-                        icon: <Printer size={18} />,
-                      },
-                    ].map((row, i) => (
-                      <tr
-                        key={i}
-                        style={{
-                          background: "rgba(255,255,255,0.02)",
-                          borderRadius: "12px",
-                        }}
-                      >
-                        <td
-                          style={{
-                            padding: "2rem",
-                            borderTopLeftRadius: "12px",
-                            borderBottomLeftRadius: "12px",
-                            color: "var(--fg)",
-                            fontWeight: 600,
-                          }}
-                        >
-                          <div
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              gap: "1rem",
-                            }}
-                          >
-                            {row.icon} {row.attr}
-                          </div>
-                        </td>
-                        <td
-                          style={{ padding: "2rem", color: "var(--subtext)" }}
-                        >
-                          {row.buf}
-                        </td>
-                        <td
-                          style={{
-                            padding: "2rem",
-                            color: "var(--accent-spool)",
-                            borderTopRightRadius: "12px",
-                            borderBottomRightRadius: "12px",
-                            fontWeight: 600,
-                          }}
-                        >
-                          {row.spool}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                      <li style={{ fontSize: "1.8rem !important" }}>
+                        <code>spoolsv.exe</code> (Gestión de Colas)
+                      </li>
+                      <li style={{ fontSize: "1.8rem !important" }}>
+                        Procesador de Impresión (Conversión)
+                      </li>
+                      <li style={{ fontSize: "1.8rem !important" }}>
+                        Interfaz de Control (Administración)
+                      </li>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+          </Slide>
+
+          <Slide 
+            data-background-iframe="./comparativa.html" 
+            data-background-interactive
+            data-transition="fade"
+          >
           </Slide>
         </Stack>
 
         {/* ── CACHING ── */}
         <Stack>
-          <Slide>
+          <Slide data-transition="zoom-in fade-out">
             <div className="grid-2" style={{ height: "100%", padding: "0 8%" }}>
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
@@ -1340,10 +1263,10 @@ export default function App() {
         </Stack>
 
         {/* ── CASO DE SEGURIDAD ── */}
-        <Slide>
+        <Slide data-transition="zoom">
           <div
             style={{
-              padding: "0 5%", // Reducido el padding lateral para ganar espacio horizontal
+              padding: "0 5%",
               height: "100%",
               display: "flex",
               flexDirection: "column",
@@ -1425,9 +1348,18 @@ export default function App() {
                   >
                     Los servicios de Spooler legados permitieron la{" "}
                     <strong>Ejecución Remota de Código</strong> mediante la
-                    inyección de DLLs arbitrarias con privilegios{" "}
-                    <code>SYSTEM</code>.
+                    inyección de DLLs arbitrarias. Según Walters (2025), la postura de seguridad ha mejorado eliminando ejecuciones remotas de código.
                   </p>
+                  <div style={{ marginTop: "2rem", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+                    <div className="metric-card" style={{ textAlign: "center" }}>
+                      <div className="metric-val" style={{ color: "var(--accent-red)" }}>35</div>
+                      <div className="metric-label">Vulnerabilidades en 2022</div>
+                    </div>
+                    <div className="metric-card" style={{ textAlign: "center" }}>
+                      <div className="metric-val" style={{ color: "var(--accent-cache)" }}>0</div>
+                      <div className="metric-label">RCEs desde 2021</div>
+                    </div>
+                  </div>
                 </div>
 
                 <div
