@@ -53,7 +53,7 @@ export default function App() {
           text-align: left;
         }
         .reveal p, .reveal li, .reveal td {
-          font-size: 1.6rem !important;
+          font-size: 2.2rem !important; /* Equivalente a h4 de presentación */
           line-height: 1.5 !important;
         }
         .reveal .metric-val {
@@ -143,9 +143,9 @@ export default function App() {
                   <div style={{ opacity: 0.3, fontSize: '0.8rem', textAlign: 'right' }}>ORDEN DE<br />MAGNITUD: 10<sup>7</sup></div>
                 </div>
               </div>
-              <div className="technical-note" style={{ margin: 0, fontSize: '1.2rem' }}>
+                <div className="technical-note" style={{ margin: 0, fontSize: '2.2rem' }}>
                 <p><strong>Impacto Arquitectónico:</strong> Esta disparidad de 7 órdenes de magnitud hace que la CPU pase el 99.9% de su tiempo en estado <code>WAIT</code> si no se implementan capas de abstracción.</p>
-                <ul style={{ marginTop: '1.5rem', fontSize: '1.1rem' }}>
+                <ul style={{ marginTop: '1.5rem', fontSize: '2.2rem' }}>
                   <li><strong>Product-Consumer Problem:</strong> Buffer como solución al desacoplamiento.</li>
                   <li><strong>Device Independence:</strong> Capa de abstracción del VFS.</li>
                 </ul>
@@ -165,7 +165,7 @@ export default function App() {
               <div className="grid-2">
                 <div style={{ borderRight: '1px solid #333', paddingRight: '2rem' }}>
                   <h4 style={{ color: '#fff' }}>Objetivos Primordiales</h4>
-                  <ul style={{ fontSize: '1.1rem', marginTop: '1rem' }}>
+                  <ul style={{ fontSize: '2.2rem', marginTop: '1rem' }}>
                     <li><strong>Speed Matching:</strong> Compensar diferencias de throughput entre CPU (ns) e I/O (ms).</li>
                     <li><strong>Data Size Matching:</strong> Fragmentación de streams en bloques físicos de hardware.</li>
                     <li><strong>Copy Semantics:</strong> Garantía de integridad; el Kernel congela el estado del dato durante el <code>copy_to_user</code>.</li>
@@ -208,7 +208,7 @@ export default function App() {
               <h3 className="buf">Algoritmo de Buffer Cache (VFS)</h3>
               <div className="technical-note" style={{ textAlign: 'left', borderColor: 'var(--accent-buf)' }}>
                 <p>Cuando un proceso solicita un bloque:</p>
-                <ol style={{ fontSize: '1.1rem', marginTop: '1rem' }}>
+                <ol style={{ fontSize: '2.2rem', marginTop: '1rem' }}>
                   <li>El Kernel verifica el <strong>Hash Map</strong> de bloques en memoria.</li>
                   <li>Si no está (<em>Miss</em>), bloquea el proceso, inicia I/O asíncrono y pone el bloque en la <strong>LRU List</strong>.</li>
                   <li>Si está (<em>Hit</em>), se marca como <strong>Dirty</strong> si se modifica y se copia al espacio de usuario.</li>
@@ -221,27 +221,90 @@ export default function App() {
         {/* ── SPOOLING: VIRTUALIZACIÓN ── */}
         <Stack>
           <Slide>
-            <div className="glass-card" style={{ borderLeft: '8px solid var(--accent-spool)', background: 'transparent !important' }}>
-              <h2 className="spool" style={{ fontSize: '4rem' }}>Spooling: Simultaneous Peripheral Operation On-Line</h2>
-              <p style={{ fontSize: '1.5rem', opacity: 0.7 }}>Virtualización de dispositivos exclusivos (Impresoras, Plotters).</p>
-              <div className="grid-2" style={{ marginTop: '2rem' }}>
-                <div>
-                  <p style={{ fontSize: '1.2rem' }}>
-                    A diferencia del buffering, el spooling usa el <strong>almacenamiento masivo</strong> para interceptar trabajos completos.
-                  </p>
-                  <div className="technical-note" style={{ borderColor: 'var(--accent-spool)', color: 'var(--accent-spool)' }}>
-                    <strong>VIRTUALIZACIÓN:</strong> Cada proceso cree que tiene el control total del dispositivo, pero solo escribe en un archivo temporal gestionado por un <code>Daemon</code>.
+            <div style={{ padding: '0 5%' }}>
+              <h3 style={{ fontSize: '4rem', marginBottom: '3rem' }}>Spooling vs Buffering</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2rem' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '1.8rem' }}>
+                  <thead>
+                    <tr style={{ borderBottom: '2px solid var(--accent-spool)', color: 'var(--accent-spool)' }}>
+                      <th style={{ padding: '1.5rem', textAlign: 'left' }}>Característica</th>
+                      <th style={{ padding: '1.5rem', textAlign: 'left' }}>Buffering</th>
+                      <th style={{ padding: '1.5rem', textAlign: 'left' }}>Spooling</th>
+                    </tr>
+                  </thead>
+                  <tbody style={{ color: 'var(--fg)' }}>
+                    <tr style={{ borderBottom: '1px solid var(--line)' }}>
+                      <td style={{ padding: '1.5rem' }}><strong>Medio Principal</strong></td>
+                      <td style={{ padding: '1.5rem' }}>RAM (Memoria Volátil)</td>
+                      <td style={{ padding: '1.5rem' }}>Disco (Almacenamiento)</td>
+                    </tr>
+                    <tr style={{ borderBottom: '1px solid var(--line)' }}>
+                      <td style={{ padding: '1.5rem' }}><strong>Unidad de Datos</strong></td>
+                      <td style={{ padding: '1.5rem' }}>Bloques / Bytes</td>
+                      <td style={{ padding: '1.5rem' }}>Trabajos (Jobs) Completos</td>
+                    </tr>
+                    <tr style={{ borderBottom: '1px solid var(--line)' }}>
+                      <td style={{ padding: '1.5rem' }}><strong>Propósito</strong></td>
+                      <td style={{ padding: '1.5rem' }}>Velocidad y Sincronía</td>
+                      <td style={{ padding: '1.5rem' }}>Concurrencia y Virtualización</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </Slide>
+        </Stack>
+
+        {/* ── CACHING ── */}
+        <Stack>
+          <Slide>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem', padding: '0 5%' }}>
+              <div style={{ textAlign: 'left' }}>
+                <p className="slide-kicker" style={{ color: 'var(--accent-cache)' }}>MECANISMO 03 · CACHING</p>
+                <h2 style={{ fontSize: '5rem', marginBottom: '3rem' }}>Localidad Heurística</h2>
+                <div className="metric-card" style={{ marginBottom: '2.5rem', padding: '2rem' }}>
+                  <h4 style={{ color: 'var(--accent-cache)', fontSize: '2.2rem', marginBottom: '1rem' }}>Temporal</h4>
+                  <p style={{ fontSize: '1.6rem', color: 'var(--fg)' }}>Reuse: Los datos accedidos recientemente tienen alta probabilidad de re-uso.</p>
+                </div>
+                <div className="metric-card" style={{ padding: '2rem' }}>
+                  <h4 style={{ color: 'var(--accent-cache)', fontSize: '2.2rem', marginBottom: '1rem' }}>Espacial</h4>
+                  <p style={{ fontSize: '1.6rem', color: 'var(--fg)' }}>Read-Ahead: Acceder a un dato implica que sus vecinos serán necesarios pronto.</p>
+                </div>
+              </div>
+              <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '3.5rem !important' }}>
+                <h4 style={{ fontSize: '2.8rem', marginBottom: '3rem' }}>Eficiencia del Cache</h4>
+                <div style={{ borderBottom: '1px solid var(--line)', paddingBottom: '2rem', marginBottom: '2rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem', fontSize: '2rem' }}>
+                    <span>Hit Rate</span>
+                    <span style={{ color: 'var(--accent-cache)', fontWeight: '700' }}>98%</span>
+                  </div>
+                  <div style={{ height: '12px', background: 'var(--line)', borderRadius: '6px', overflow: 'hidden' }}>
+                    <div style={{ height: '100%', background: 'var(--accent-cache)', width: '98%' }}></div>
                   </div>
                 </div>
-                <div style={{ background: 'var(--surface2)', padding: '1.5rem', borderRadius: '12px' }}>
-                  <h4 className="spool">Workflow Académico</h4>
-                  <ol style={{ fontSize: '0.9rem', marginTop: '1rem', color: '#ccc' }}>
-                    <li>Proceso escribe en <code>/var/spool/...</code></li>
-                    <li>Kernel registra entrada en la <strong>Queue</strong>.</li>
-                    <li>El Spooling Daemon (lpd/cups) lee la cola por prioridad.</li>
-                    <li>Transferencia secuencial al hardware físico.</li>
-                  </ol>
+                <p style={{ fontSize: '1.5rem', color: 'var(--subtext)', lineHeight: '1.6' }}>
+                  Un incremento del 1% en el Hit Rate puede reducir el tiempo medio de acceso en un 50% en arquitecturas de disco.
+                </p>
+              </div>
+            </div>
+          </Slide>
+          <Slide>
+            <div style={{ padding: '0 5%', textAlign: 'left' }}>
+              <h2 style={{ fontSize: '4rem', marginBottom: '3rem' }}>La Diferencia Crucial</h2>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem' }}>
+                <div className="technical-note" style={{ borderColor: 'var(--accent-buf)', background: 'rgba(127, 180, 202, 0.05)' }}>
+                  <h4 style={{ color: 'var(--accent-buf)' }}>Buffering</h4>
+                  <p style={{ fontSize: '1.6rem' }}>Es el <strong>único</strong> lugar donde reside el dato original durante la transferencia.</p>
                 </div>
+                <div className="technical-note" style={{ borderColor: 'var(--accent-cache)', background: 'rgba(183, 204, 133, 0.05)' }}>
+                  <h4 style={{ color: 'var(--accent-cache)' }}>Caching</h4>
+                  <p style={{ fontSize: '1.6rem' }}>Es solo una <strong>copia redundante</strong>. Si se borra, el dato original sobrevive en el medio lento.</p>
+                </div>
+              </div>
+              <div className="metric-card" style={{ marginTop: '3rem', borderColor: 'var(--accent-red)', borderLeft: '6px solid var(--accent-red)' }}>
+                <p style={{ fontSize: '1.4rem', color: 'var(--accent-red)', fontWeight: '700' }}>
+                  IMPORTANTE: Si borras el buffer pierdes datos; si borras el caché pierdes tiempo (performance).
+                </p>
               </div>
             </div>
           </Slide>
@@ -249,14 +312,14 @@ export default function App() {
             <div className="grid-2">
               <div className="glass-card">
                 <h3 className="spool">Caso de Estudio: PrintNightmare</h3>
-                <p style={{ fontSize: '1rem' }}><strong>CVE-2021-34527:</strong> El Spooler de Windows corría con privilegios de <code>SYSTEM</code> y permitía la carga de DLLs remotas.</p>
-                <div style={{ marginTop: '1rem', borderLeft: '2px solid var(--accent-red)', paddingLeft: '1rem', fontSize: '0.9rem', fontStyle: 'italic' }}>
+                <p style={{ fontSize: '2.2rem' }}><strong>CVE-2021-34527:</strong> El Spooler de Windows corría con privilegios de <code>SYSTEM</code> y permitía la carga de DLLs remotas.</p>
+                <div style={{ marginTop: '1rem', borderLeft: '2px solid var(--accent-red)', paddingLeft: '1rem', fontSize: '1.8rem', fontStyle: 'italic' }}>
                   Lección: Los subsistemas de E/S deben seguir el <strong>Principio de Menor Privilegio</strong>.
                 </div>
               </div>
               <div className="metric-card">
                 <span className="tag" style={{ color: 'var(--accent-red)', border: '1px solid var(--accent-red)' }}>Warning</span>
-                <p style={{ fontSize: '1rem', marginTop: '1rem' }}>Un error en la lógica del Spooler puede comprometer todo el Kernel debido a su interacción directa con drivers de bajo nivel.</p>
+                <p style={{ fontSize: '2.2rem', marginTop: '1rem' }}>Un error en la lógica del Spooler puede comprometer todo el Kernel debido a su interacción directa con drivers de bajo nivel.</p>
               </div>
             </div>
           </Slide>
@@ -271,11 +334,11 @@ export default function App() {
               <div className="grid-2">
                 <div className="metric-card">
                   <h4 className="cache">Localidad Temporal</h4>
-                  <p style={{ fontSize: '1.1rem' }}>Si un dato se usa ahora, es muy probable que se use de nuevo pronto (Variables en loops).</p>
+                  <p style={{ fontSize: '2.2rem' }}>Si un dato se usa ahora, es muy probable que se use de nuevo pronto (Variables en loops).</p>
                 </div>
                 <div className="metric-card">
                   <h4 className="cache">Localidad Espacial</h4>
-                  <p style={{ fontSize: '1.1rem' }}>Si un dato se usa, es probable que se usen sus vecinos (Vectores, instrucciones secuenciales).</p>
+                  <p style={{ fontSize: '2.2rem' }}>Si un dato se usa, es probable que se usen sus vecinos (Vectores, instrucciones secuenciales).</p>
                 </div>
               </div>
               <div className="technical-note" style={{ marginTop: '2rem', borderColor: 'var(--accent-cache)', color: 'var(--accent-cache)' }}>
