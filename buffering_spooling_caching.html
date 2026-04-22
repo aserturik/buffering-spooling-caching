@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Buffering, Spooling & Caching — Dossier Técnico</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reset.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css" />
+    <!-- Tema Dracula para ese look dark que tenías -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/dracula.min.css" />
+
+    <!-- Google Fonts que ya usabas -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@400;600&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --accent-buf: #f5a623;
+        --accent-spool: #4fc3f7;
+        --accent-cache: #a8e063;
+        --accent-red: #ff6b6b;
+        --mono: "IBM Plex Mono", monospace;
+      }
+
+      .reveal {
+        font-family: "Crimson Pro", serif;
+        background-color: #0b0e14;
+      }
+
+      .reveal h1, .reveal h2, .reveal h3 {
+        font-family: "Playfair Display", serif;
+        text-transform: none;
+      }
+
+      .reveal .slides section {
+        text-align: left;
+      }
+
+      .center { text-align: center !important; }
+
+      .buf { color: var(--accent-buf); }
+      .spool { color: var(--accent-spool); }
+      .cache { color: var(--accent-cache); }
+
+      .def-box {
+        background: #1a2030;
+        border-left: 6px solid var(--accent-buf);
+        padding: 1.5rem 2rem;
+        margin: 1rem 0;
+        border-radius: 0 12px 12px 0;
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .metric {
+        background: #12161f;
+        padding: 1rem;
+        border: 1px solid #252d3d;
+        text-align: center;
+        border-radius: 8px;
+      }
+
+      .metric-value {
+        display: block;
+        font-size: 1.8rem;
+        font-weight: 900;
+        font-family: var(--mono);
+      }
+
+      .metric-label {
+        font-size: 0.8rem;
+        color: #8a96a8;
+      }
+
+      pre {
+        background: #1a2030 !important;
+        box-shadow: none !important;
+        border: 1px solid #252d3d;
+      }
+
+      code {
+        font-family: var(--mono) !important;
+        padding: 0.5rem !important;
+      }
+
+      .fragment.blur {
+        filter: blur(5px);
+        transition: all 0.5s ease;
+      }
+
+      .fragment.blur.visible {
+        filter: blur(0);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!-- PORTADA -->
+        <section class="center">
+          <p style="font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.3em; color: var(--accent-buf);">SISTEMAS OPERATIVOS</p>
+          <h1 style="font-size: 3.5rem;">
+            <span class="buf">Buffering</span>,<br />
+            <span class="spool">Spooling</span> &<br />
+            <span class="cache">Caching</span>
+          </h1>
+          <p style="opacity: 0.6;">Mecanismos de Optimización E/S</p>
+        </section>
+
+        <!-- INTRODUCCIÓN -->
+        <section>
+          <h3>La Paradoja de la Velocidad</h3>
+          <p>Los procesadores son órdenes de magnitud más rápidos que los dispositivos de almacenamiento.</p>
+          
+          <div class="metrics">
+            <div class="metric fragment fade-up">
+              <span class="metric-value" style="color: var(--accent-buf)">~1 ns</span>
+              <span class="metric-label">Registros CPU</span>
+            </div>
+            <div class="metric fragment fade-up">
+              <span class="metric-value" style="color: var(--accent-cache)">~100 ns</span>
+              <span class="metric-label">RAM Principal</span>
+            </div>
+            <div class="metric fragment fade-up">
+              <span class="metric-value" style="color: var(--accent-red)">~30 s</span>
+              <span class="metric-label">Impresora (pág)</span>
+            </div>
+          </div>
+          <p class="fragment fade-in" style="margin-top: 1rem; font-size: 0.9em; font-style: italic;">
+            Brecha de hasta 10 millones de veces.
+          </p>
+        </section>
+
+        <!-- BUFFERING -->
+        <section>
+          <section>
+            <h2 class="buf">§1 Buffering</h2>
+            <div class="def-box">
+              Reserva de memoria RAM para almacenar datos temporalmente durante transferencias.
+            </div>
+            <ul>
+              <li class="fragment">Normaliza velocidades entre productor/consumidor.</li>
+              <li class="fragment">Ajusta tamaños de bloque.</li>
+              <li class="fragment">Permite E/S no bloqueante.</li>
+            </ul>
+          </section>
+          <section class="center">
+            <h3>Double Buffering</h3>
+            <p>El "estándar de oro" del paralelismo.</p>
+            <div style="font-family: var(--mono); background: #12161f; padding: 2rem; border: 1px dashed var(--accent-buf);">
+              CPU ⮕ [ Buffer A ] ⮕ Hardware<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ Buffer B ] (Llenando...)
+            </div>
+            <p style="font-size: 0.8rem; margin-top: 1rem; opacity: 0.6;">Mientras se vacía uno, se llena el otro.</p>
+          </section>
+        </section>
+
+        <!-- SPOOLING -->
+        <section>
+          <section>
+            <h2 class="spool">§2 Spooling</h2>
+            <p><small>(Simultaneous Peripheral Operations On-Line)</small></p>
+            <div class="def-box" style="border-color: var(--accent-spool);">
+              Usa el <strong>disco</strong> como un buffer masivo para interceptar trabajos periféricos.
+            </div>
+            <p class="fragment">Convierte un dispositivo de acceso exclusivo en uno virtualmente compartido.</p>
+          </section>
+          <section>
+            <h3>Spooling vs Buffering</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Buffering</th>
+                  <th>Spooling</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Medio</td>
+                  <td>RAM</td>
+                  <td>Disco</td>
+                </tr>
+                <tr>
+                  <td>Unidad</td>
+                  <td>Bloques</td>
+                  <td>Jobs</td>
+                </tr>
+                <tr>
+                  <td>Foco</td>
+                  <td>Velocidad</td>
+                  <td>Concurrencia</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </section>
+
+        <!-- CACHING -->
+        <section>
+          <section>
+            <h2 class="cache">§3 Caching</h2>
+            <div class="def-box" style="border-color: var(--accent-cache);">
+              Mantiene copias de datos lentos en memoria rápida basándose en la <strong>Localidad</strong>.
+            </div>
+            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+              <div style="flex: 1; padding: 1rem; background: #12161f; border-radius: 8px;">
+                <strong>Temporal</strong><br><small>Se usará de nuevo pronto.</small>
+              </div>
+              <div style="flex: 1; padding: 1rem; background: #12161f; border-radius: 8px;">
+                <strong>Espacial</strong><br><small>Se usará lo que está cerca.</small>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>La diferencia crucial</h3>
+            <p>Un <strong>Buffer</strong> es el único lugar donde reside el dato.</p>
+            <p class="fragment">Una <strong>Caché</strong> es solo una copia redundante.</p>
+            <p class="fragment" style="color: var(--accent-red);">Si borrás la caché, el sistema es lento pero los datos sobreviven.</p>
+          </section>
+        </section>
+
+        <!-- PRÁCTICA -->
+        <section>
+          <h2>Práctica: PrintNightmare</h2>
+          <p style="font-size: 0.8rem;">CVE-2021-34527</p>
+          <div style="font-size: 0.9rem; background: #1a2030; padding: 1.5rem; border-radius: 8px;">
+            <p><strong>El problema:</strong> <code>RpcAddPrinterDriverEx()</code> permitía a cualquier usuario instalar drivers (DLLs) maliciosos.</p>
+            <p class="fragment"><strong>¿Por qué SYSTEM?</strong> El spooler necesita privilegios para cargar drivers y escribir en <code>System32\spool</code>.</p>
+          </div>
+          <p class="fragment center" style="margin-top: 1rem; font-weight: bold; color: var(--accent-cache);">Solución: Privilege Separation.</p>
+        </section>
+
+        <!-- CIERRE -->
+        <section class="center">
+          <h2>¿Preguntas?</h2>
+          <p>Dossier Técnico Profundo</p>
+          <div style="margin-top: 2rem;">
+            <button onclick="Reveal.slide(0)" style="background: var(--accent-buf); border: none; padding: 0.5rem 1rem; font-family: var(--mono); cursor: pointer; border-radius: 4px;">Reiniciar</button>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        center: true,
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        backgroundTransition: 'fade',
+        controls: true,
+        progress: true,
+        // plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+      });
+    </script>
+  </body>
+</html>
