@@ -246,7 +246,7 @@ export default function App() {
                     letterSpacing: "0.4em",
                   }}
                 >
-                  CS-402 // SISTEMAS OPERATIVOS
+                  SISTEMAS OPERATIVOS
                 </span>
               </div>
 
@@ -259,10 +259,10 @@ export default function App() {
                   lineHeight: "0.95",
                 }}
               >
-                Gestión del
+                Métodos de Optimización
                 <br />
                 <span style={{ color: "var(--accent-gold)" }}>
-                  Subsistema de E/S
+                  De Entrada - Salida
                 </span>
               </h1>
 
@@ -289,9 +289,8 @@ export default function App() {
                   fontWeight: 300,
                 }}
               >
-                Arquitecturas de desacoplamiento: Optimización de throughput
-                mediante <strong>Buffering, Spooling</strong> y{" "}
-                <strong>Caching</strong>.
+                Optimización de throughput mediante{" "}
+                <strong>Buffering, Spooling</strong> y <strong>Caching</strong>.
               </p>
 
               <div
@@ -336,6 +335,139 @@ export default function App() {
           </div>
         </Slide>
 
+        {/* ── FUNDAMENTACIÓN CONCEPTUAL ── */}
+        <Slide>
+          <div
+            style={{
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              padding: "0 10%",
+            }}
+          >
+            <div
+              style={{
+                maxWidth: "1600px",
+                margin: "0 auto",
+                textAlign: "left",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "1.5rem",
+                  marginBottom: "2rem",
+                }}
+              >
+                <Database size={40} color="var(--accent-gold)" />
+                <span
+                  style={{
+                    color: "var(--accent-gold)",
+                    fontFamily: "var(--mono)",
+                    fontSize: "1.2rem",
+                    letterSpacing: "0.2em",
+                  }}
+                >
+                  INTRODUCCIÓN TEÓRICA
+                </span>
+              </div>
+
+              <h2
+                style={{
+                  fontSize: "5.5rem",
+                  marginBottom: "4rem",
+                  lineHeight: "1.1",
+                }}
+              >
+                1. Fundamentación Conceptual
+              </h2>
+
+              <div
+                className="grid-2"
+                style={{ gap: "6rem", alignItems: "start" }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "3rem",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: "2.4rem !important",
+                      lineHeight: "1.6",
+                      color: "var(--fg)",
+                      fontFamily: "var(--serif)",
+                      fontWeight: 300,
+                    }}
+                  >
+                    La gestión de entrada/salida (E/S) constituye uno de los
+                    subsistemas críticos en la arquitectura de sistemas
+                    operativos contemporáneos. Según{" "}
+                    <strong>Holcombe (2023)</strong>, el subsistema de E/S
+                    representa la interfaz entre el núcleo y los dispositivos
+                    periféricos.
+                  </p>
+
+                  <div
+                    className="technical-note"
+                    style={{
+                      borderColor: "var(--accent-red)",
+                      background: "rgba(203, 124, 148, 0.05)",
+                    }}
+                  >
+                    <p style={{ fontSize: "2rem !important", margin: 0 }}>
+                      La <strong>"brecha de velocidad"</strong> (speed gap) es
+                      el motor arquitectónico que justifica la existencia de
+                      estos mecanismos (University of Cambridge, 2022-2023).
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  className="glass-card"
+                  style={{
+                    padding: "4rem",
+                    borderLeft: "8px solid var(--accent-gold)",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: "2.2rem !important",
+                      lineHeight: "1.5",
+                      marginBottom: "3rem",
+                      fontStyle: "italic",
+                    }}
+                  >
+                    "La optimización de E/S no es meramente una mejora de
+                    rendimiento, sino un requisito arquitectónico para la
+                    correctitud y eficiencia del sistema operativo."
+                  </p>
+                  <div
+                    style={{
+                      borderTop: "1px solid var(--line)",
+                      paddingTop: "2rem",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontFamily: "var(--mono)",
+                        color: "var(--accent-gold)",
+                        fontSize: "1.2rem",
+                      }}
+                    >
+                      — Teoría de Jerarquías de Memoria
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Slide>
+
         {/* ── TAXONOMÍA DEL GAP DE VELOCIDAD ── */}
         <Slide>
           <div style={{ padding: "0 8%" }}>
@@ -351,7 +483,7 @@ export default function App() {
                 01 · RENDIMIENTO DEL SISTEMA
               </span>
               <h2 style={{ fontSize: "4.5rem", marginTop: "0.5rem" }}>
-                Taxonomía del Gap de Latencia
+                El problema de la Latencia
               </h2>
             </div>
 
@@ -433,7 +565,7 @@ export default function App() {
                       >
                         MAGNITUD
                       </div>
-                      <div style={{ fontSize: "1.5rem", fontWeight: 800 }}>
+                      <div style={{ fontSize: "2rem", fontWeight: 800 }}>
                         {item.power}
                       </div>
                     </div>
@@ -1015,7 +1147,10 @@ export default function App() {
                 La Distinción Crítica
               </h2>
 
-              <div className="grid-2" style={{ gap: "6rem", alignItems: "stretch" }}>
+              <div
+                className="grid-2"
+                style={{ gap: "6rem", alignItems: "stretch" }}
+              >
                 <motion.div
                   whileHover={{ scale: 1.05, y: -15, zIndex: 50 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
