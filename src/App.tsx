@@ -14,6 +14,9 @@ import {
   ArrowRight,
   Activity,
   Printer,
+  Network,
+  Globe,
+  Server,
 } from "lucide-react";
 
 import "reveal.js/reveal.css";
@@ -73,24 +76,6 @@ const MechanismCard: React.FC<MechanismProps> = ({
       {description}
     </p>
   </motion.div>
-);
-
-const AnimatedSVG: React.FC<{
-  children: React.ReactNode;
-  width?: string | number;
-  height?: string | number;
-}> = ({ children, width = "100%", height = "auto" }) => (
-  <div
-    style={{
-      width,
-      height,
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-    }}
-  >
-    {children}
-  </div>
 );
 
 export default function App() {
@@ -181,6 +166,11 @@ export default function App() {
           gap: 3rem;
           align-items: center;
         }
+        .grid-3 {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 2rem;
+        }
         .metric-card {
           background: var(--gray2);
           padding: 1.5rem;
@@ -188,13 +178,39 @@ export default function App() {
           border: 1px solid var(--line);
         }
         
-        /* Barra de desplazamiento personalizada */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--bg); }
         ::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
         
         .reveal .slides section {
           padding: 0 !important;
+        }
+
+        .timeline-item {
+          display: flex;
+          gap: 2rem;
+          align-items: flex-start;
+          padding: 1.5rem;
+          border-radius: 16px;
+          border: 1px solid var(--line);
+          background: rgba(255,255,255,0.02);
+        }
+        .timeline-dot {
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          flex-shrink: 0;
+          margin-top: 0.6rem;
+        }
+        .era-badge {
+          font-family: var(--mono);
+          font-size: 0.75rem;
+          padding: 0.25rem 0.75rem;
+          border-radius: 99px;
+          display: inline-block;
+          margin-bottom: 0.5rem;
+          font-weight: 700;
+          letter-spacing: 0.15em;
         }
       `}</style>
       <Deck
@@ -939,6 +955,109 @@ export default function App() {
           </div>
         </Slide>
 
+        {/* ── [NUEVO] IMPRESIÓN: ANTES vs AHORA ── */}
+        <Stack>
+          {/* Historia de la impresión */}
+          <Slide data-transition="zoom">
+            <div style={{ padding: "0 8%", textAlign: "left" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "2rem", marginBottom: "3rem" }}>
+                <Printer size={55} color="var(--accent-spool)" />
+                <div>
+                  <span style={{ fontFamily: "var(--mono)", fontSize: "1.1rem", color: "var(--accent-spool)", letterSpacing: "0.2em" }}>
+                    EVOLUCIÓN HISTÓRICA
+                  </span>
+                  <h2 style={{ fontSize: "4.5rem", margin: 0 }}>
+                    Impresión: Antes del Spooling
+                  </h2>
+                </div>
+              </div>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+                <div className="timeline-item">
+                  <div className="timeline-dot" style={{ background: "var(--accent-red)" }}></div>
+                  <div>
+                    <span className="era-badge" style={{ background: "rgba(203,124,148,0.15)", color: "var(--accent-red)" }}>1950s — MAINFRAMES</span>
+                    <p style={{ fontSize: "1.8rem !important", margin: "0.5rem 0 0 0" }}>
+                      <strong>Acceso exclusivo y directo.</strong> Un proceso monopolizaba la impresora de línea durante toda la ejecución. Si el trabajo tardaba horas, la máquina completa esperaba. No existía multiprogramación real.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="timeline-item">
+                  <div className="timeline-dot" style={{ background: "var(--accent-gold)" }}></div>
+                  <div>
+                    <span className="era-badge" style={{ background: "rgba(224,193,90,0.15)", color: "var(--accent-gold)" }}>1960s — BATCH PRIMITIVO</span>
+                    <p style={{ fontSize: "1.8rem !important", margin: "0.5rem 0 0 0" }}>
+                      Se introdujeron <strong>operadores humanos</strong> como intermediarios: recibían tarjetas perforadas, las agrupaban, y las entregaban físicamente a la impresora. El "spool" era una <em>cinta magnética</em> física.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="timeline-item">
+                  <div className="timeline-dot" style={{ background: "var(--accent-buf)" }}></div>
+                  <div>
+                    <span className="era-badge" style={{ background: "rgba(127,180,202,0.15)", color: "var(--accent-buf)" }}>1965 — OS/360 IBM</span>
+                    <p style={{ fontSize: "1.8rem !important", margin: "0.5rem 0 0 0" }}>
+                      IBM introduce el <strong>primer spooling de software</strong>: los trabajos se escriben a disco mientras otro imprime. Se eliminan los cuellos de botella manuales. Nace la multiprogramación moderna.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Slide>
+
+          {/* Impresión moderna */}
+          <Slide data-transition="slide-in fade-out">
+            <div style={{ padding: "0 8%", textAlign: "left" }}>
+              <div style={{ marginBottom: "3rem" }}>
+                <span style={{ fontFamily: "var(--mono)", fontSize: "1.1rem", color: "var(--accent-cache)", letterSpacing: "0.2em" }}>
+                  ESTADO DEL ARTE
+                </span>
+                <h2 style={{ fontSize: "4.5rem", margin: "0.5rem 0 0 0" }}>
+                  Impresión: Arquitectura Moderna
+                </h2>
+              </div>
+
+              <div className="grid-2" style={{ gap: "4rem" }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+                  <div className="metric-card" style={{ borderLeft: "4px solid var(--accent-cache)" }}>
+                    <h4 style={{ color: "var(--accent-cache)", fontSize: "2rem", marginBottom: "1rem" }}>CUPS (Linux/macOS)</h4>
+                    <p style={{ fontSize: "1.7rem !important", margin: 0 }}>
+                      <strong>Common Unix Printing System</strong>: servidor de impresión basado en IPP (Internet Printing Protocol). Cada trabajo genera un archivo en <code>/var/spool/cups/</code>. El scheduler IPP gestiona prioridades, reintentos y colas por red.
+                    </p>
+                  </div>
+                  <div className="metric-card" style={{ borderLeft: "4px solid var(--accent-spool)" }}>
+                    <h4 style={{ color: "var(--accent-spool)", fontSize: "2rem", marginBottom: "1rem" }}>Windows Print System Remoting</h4>
+                    <p style={{ fontSize: "1.7rem !important", margin: 0 }}>
+                      <strong>spoolsv.exe</strong> orquesta drivers en espacio de usuario (post-PrintNightmare). Soporte nativo para <strong>XPS/OpenXPS</strong> que reemplaza el pipeline GDI clásico, eliminando conversiones EMF→PCL intermedias.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="glass-card" style={{ padding: "3rem" }}>
+                  <h4 style={{ fontSize: "2.2rem", color: "var(--accent-gold)", marginBottom: "2rem" }}>Pipeline de Impresión Actual</h4>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                    {[
+                      { step: "01", label: "App genera documento", detail: "PDF / XPS / PostScript", color: "var(--accent-buf)" },
+                      { step: "02", label: "Spooler intercepta", detail: "Escribe en /spool, libera la app", color: "var(--accent-spool)" },
+                      { step: "03", label: "Procesador de impresión", detail: "Convierte al lenguaje del driver (PCL6, IPP Everywhere)", color: "var(--accent-gold)" },
+                      { step: "04", label: "Monitor de puerto", detail: "Envía por USB / TCP/IP / SMB", color: "var(--accent-cache)" },
+                    ].map((item) => (
+                      <div key={item.step} style={{ display: "flex", gap: "1.5rem", alignItems: "center", padding: "0.8rem", borderRadius: "12px", background: "rgba(255,255,255,0.03)" }}>
+                        <span style={{ fontFamily: "var(--mono)", color: item.color, fontWeight: 800, fontSize: "1.3rem", minWidth: "2.5rem" }}>{item.step}</span>
+                        <div>
+                          <div style={{ fontSize: "1.6rem", fontWeight: 700, color: "var(--fg)" }}>{item.label}</div>
+                          <div style={{ fontSize: "1.2rem", color: "var(--subtext)", fontFamily: "var(--mono)" }}>{item.detail}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Slide>
+        </Stack>
+
         {/* ── CASO CRÍTICO: SPOOLING ── */}
         <Stack>
           <Slide data-transition="zoom">
@@ -986,20 +1105,19 @@ export default function App() {
             <div
               className="grid-2"
               style={{
-                gap: "6rem", // Reducido de 10rem a 6rem para evitar el desplazamiento excesivo a la derecha
+                gap: "6rem",
                 alignItems: "center",
-                maxWidth: "1800px", // Ancho máximo para mantenerlo centrado
-                margin: "0 auto", // Centra el contenedor de la grilla en la diapositiva
+                maxWidth: "1800px",
+                margin: "0 auto",
               }}
             >
-              {/* Columna Izquierda: Teoría */}
               <div
                 style={{
                   textAlign: "left",
                   display: "flex",
                   flexDirection: "column",
                   gap: "2.5rem",
-                  width: "100%", // Asegura que ocupe su espacio en la grilla
+                  width: "100%",
                 }}
               >
                 <div>
@@ -1097,7 +1215,6 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Columna Derecha: Código y Mitigación */}
               <div
                 style={{
                   display: "flex",
@@ -1173,6 +1290,182 @@ installDriver(evilDLL);
             </div>
           </div>
         </Slide>
+        </Stack>
+
+        {/* ── [NUEVO] SISTEMAS DISTRIBUIDOS: BUFFERING ── */}
+        <Slide data-transition="zoom">
+          <div style={{ padding: "0 8%", textAlign: "left" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "2rem", marginBottom: "3rem" }}>
+              <Network size={55} color="var(--accent-buf)" />
+              <div>
+                <span style={{ fontFamily: "var(--mono)", fontSize: "1.1rem", color: "var(--accent-buf)", letterSpacing: "0.2em" }}>
+                  SISTEMAS DISTRIBUIDOS
+                </span>
+                <h2 style={{ fontSize: "4.5rem", margin: 0 }}>
+                  Buffering en Entornos Distribuidos
+                </h2>
+              </div>
+            </div>
+
+            <div className="grid-2" style={{ gap: "4rem" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+                <div className="metric-card" style={{ borderLeft: "4px solid var(--accent-buf)" }}>
+                  <h4 style={{ color: "var(--accent-buf)", fontSize: "2rem", marginBottom: "0.8rem" }}>
+                    Apache Kafka — Log de Eventos
+                  </h4>
+                  <p style={{ fontSize: "1.6rem !important", margin: 0 }}>
+                    Kafka actúa como un <strong>buffer distribuido persistente</strong>. Los productores escriben a particiones (disco) sin esperar a los consumidores. Desacopla microservicios que operan a velocidades distintas — el mismo principio del spooling, pero a escala de clúster.
+                  </p>
+                </div>
+                <div className="metric-card" style={{ borderLeft: "4px solid var(--accent-gold)" }}>
+                  <h4 style={{ color: "var(--accent-gold)", fontSize: "2rem", marginBottom: "0.8rem" }}>
+                    TCP Receive/Send Buffers
+                  </h4>
+                  <p style={{ fontSize: "1.6rem !important", margin: 0 }}>
+                    El kernel mantiene buffers de envío y recepción por socket. El <strong>control de flujo</strong> (ventana deslizante) es buffer management distribuido: el receptor anuncia cuánto espacio tiene, previniendo overflow entre nodos remotos.
+                  </p>
+                </div>
+              </div>
+
+              <div className="glass-card" style={{ padding: "3rem" }}>
+                <h4 style={{ fontSize: "2.2rem", color: "var(--accent-spool)", marginBottom: "2rem" }}>
+                  RabbitMQ — Message Queuing
+                </h4>
+                <p style={{ fontSize: "1.8rem !important", lineHeight: 1.5, marginBottom: "2rem" }}>
+                  Patrón <strong>productor-consumidor distribuido</strong>: los mensajes se bufferean en colas persistentes. Si el consumidor cae, los mensajes sobreviven — análogo al spooling en disco local.
+                </p>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+                  <div className="metric-card" style={{ textAlign: "center" }}>
+                    <div className="metric-val" style={{ color: "var(--accent-buf)" }}>ACK</div>
+                    <div className="metric-label">Confirmación explícita</div>
+                  </div>
+                  <div className="metric-card" style={{ textAlign: "center" }}>
+                    <div className="metric-val" style={{ color: "var(--accent-cache)" }}>DLQ</div>
+                    <div className="metric-label">Dead Letter Queue</div>
+                  </div>
+                </div>
+                <div className="technical-note" style={{ marginTop: "1.5rem" }}>
+                  <strong>Analogía clave:</strong> Kafka/RabbitMQ = Spooling distribuido. Buffer local en RAM = Buffering clásico. La arquitectura es la misma; el medio es la red.
+                </div>
+              </div>
+            </div>
+          </div>
+        </Slide>
+
+        {/* ── [NUEVO] SISTEMAS DISTRIBUIDOS: CACHING ── */}
+        <Stack>
+          <Slide data-transition="zoom">
+            <div style={{ padding: "0 8%", textAlign: "left" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "2rem", marginBottom: "3rem" }}>
+                <Globe size={55} color="var(--accent-cache)" />
+                <div>
+                  <span style={{ fontFamily: "var(--mono)", fontSize: "1.1rem", color: "var(--accent-cache)", letterSpacing: "0.2em" }}>
+                    SISTEMAS DISTRIBUIDOS
+                  </span>
+                  <h2 style={{ fontSize: "4.5rem", margin: 0 }}>
+                    Caching Distribuido
+                  </h2>
+                </div>
+              </div>
+
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2.5rem" }}>
+                <div className="glass-card" style={{ padding: "2.5rem", borderTop: "6px solid var(--accent-buf)" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem" }}>
+                    <Server size={28} color="var(--accent-buf)" />
+                    <h3 style={{ fontSize: "2rem", margin: 0, color: "var(--accent-buf)" }}>Redis</h3>
+                  </div>
+                  <p style={{ fontSize: "1.5rem !important", margin: 0 }}>
+                    <strong>Caché en memoria distribuida</strong> con estructuras de datos ricas (Hash, Set, Sorted Set). Soporta replicación y persistencia. Hit rate &gt;99% en sesiones web. Política de expiración configurable por clave (TTL).
+                  </p>
+                  <div style={{ marginTop: "1.5rem", fontFamily: "var(--mono)", fontSize: "1.1rem", color: "var(--accent-buf)", opacity: 0.7 }}>
+                    Latencia: ~0.1 ms
+                  </div>
+                </div>
+
+                <div className="glass-card" style={{ padding: "2.5rem", borderTop: "6px solid var(--accent-gold)" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem" }}>
+                    <Globe size={28} color="var(--accent-gold)" />
+                    <h3 style={{ fontSize: "2rem", margin: 0, color: "var(--accent-gold)" }}>CDN</h3>
+                  </div>
+                  <p style={{ fontSize: "1.5rem !important", margin: 0 }}>
+                    <strong>Content Delivery Network</strong>: cachés geográficamente distribuidos. Cloudflare, Akamai y AWS CloudFront replican contenido estático en PoPs globales. Reducen latencia del usuario de ~200 ms a ~5 ms.
+                  </p>
+                  <div style={{ marginTop: "1.5rem", fontFamily: "var(--mono)", fontSize: "1.1rem", color: "var(--accent-gold)", opacity: 0.7 }}>
+                    Cache-Control / ETag
+                  </div>
+                </div>
+
+                <div className="glass-card" style={{ padding: "2.5rem", borderTop: "6px solid var(--accent-cache)" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem" }}>
+                    <Database size={28} color="var(--accent-cache)" />
+                    <h3 style={{ fontSize: "2rem", margin: 0, color: "var(--accent-cache)" }}>Memcached</h3>
+                  </div>
+                  <p style={{ fontSize: "1.5rem !important", margin: 0 }}>
+                    <strong>Caché clave-valor de alta velocidad</strong>. Sin persistencia — pura velocidad. Usado por Facebook e Instagram para reducir carga en bases de datos relacionales. El dato canónico sigue en DB; Memcached es la copia temporal.
+                  </p>
+                  <div style={{ marginTop: "1.5rem", fontFamily: "var(--mono)", fontSize: "1.1rem", color: "var(--accent-cache)", opacity: 0.7 }}>
+                    Consistent Hashing
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Slide>
+
+          {/* Algoritmos de reemplazo */}
+          <Slide data-transition="convex-in concave-out">
+            <div style={{ padding: "0 8%", textAlign: "left" }}>
+              <div style={{ marginBottom: "3rem" }}>
+                <span style={{ fontFamily: "var(--mono)", fontSize: "1.1rem", color: "var(--accent-cache)", letterSpacing: "0.2em" }}>
+                  POLÍTICAS DE CACHÉ
+                </span>
+                <h2 style={{ fontSize: "4.5rem", margin: "0.5rem 0 0 0" }}>
+                  Algoritmos de Reemplazo
+                </h2>
+              </div>
+
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2.5rem", marginBottom: "3rem" }}>
+                {[
+                  {
+                    name: "LRU",
+                    full: "Least Recently Used",
+                    color: "var(--accent-buf)",
+                    desc: "Desaloja el bloque que lleva más tiempo sin accederse. Excelente en localidad temporal. Implementación: lista doblemente enlazada + hash map. Usado en ext4, TLBs de CPU.",
+                    complexity: "O(1) con HashMap",
+                  },
+                  {
+                    name: "LFU",
+                    full: "Least Frequently Used",
+                    color: "var(--accent-gold)",
+                    desc: "Desaloja el bloque con menor contador de accesos. Resiste mejor a bursts de datos no recurrentes. Problema: acumulación histórica de contadores (envejecimiento).",
+                    complexity: "O(log n) con Heap",
+                  },
+                  {
+                    name: "CLOCK",
+                    full: "Second Chance",
+                    color: "var(--accent-cache)",
+                    desc: "Approximación eficiente de LRU. Un puntero recorre circularmente; si el bit de referencia es 1, lo resetea y avanza. Si es 0, desaloja. Usado en Linux Page Cache.",
+                    complexity: "O(1) — Muy eficiente",
+                  },
+                ].map((algo) => (
+                  <div key={algo.name} className="glass-card" style={{ padding: "2.5rem", borderTop: `6px solid ${algo.color}` }}>
+                    <div style={{ marginBottom: "1.5rem" }}>
+                      <div style={{ fontFamily: "var(--mono)", fontSize: "2.5rem", fontWeight: 900, color: algo.color }}>{algo.name}</div>
+                      <div style={{ fontSize: "1.2rem", color: "var(--subtext)", fontFamily: "var(--mono)" }}>{algo.full}</div>
+                    </div>
+                    <p style={{ fontSize: "1.5rem !important", margin: "0 0 1.5rem 0" }}>{algo.desc}</p>
+                    <div style={{ fontFamily: "var(--mono)", fontSize: "1.1rem", color: algo.color, opacity: 0.8, padding: "0.5rem 1rem", background: "rgba(255,255,255,0.04)", borderRadius: "8px" }}>
+                      {algo.complexity}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="technical-note" style={{ borderColor: "var(--accent-gold)" }}>
+                <strong style={{ color: "var(--accent-gold)" }}>ARC (Adaptive Replacement Cache):</strong> Combina LRU y LFU dinámicamente. Implementado en ZFS y macOS. Ajusta automáticamente el balance entre recencia y frecuencia según el patrón de carga actual.
+              </div>
+            </div>
+          </Slide>
+        </Stack>
 
         {/* ── CONCLUSIÓN ── */}
         <Slide>
@@ -1275,6 +1568,25 @@ installDriver(evilDLL);
                     OPTIMIZACIÓN
                   </div>
                 </div>
+                <div style={{ textAlign: "center" }}>
+                  <div
+                    style={{
+                      color: "var(--accent-spool)",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    <Network size={40} />
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "1rem",
+                      opacity: 0.5,
+                      fontFamily: "var(--mono)",
+                    }}
+                  >
+                    DISTRIBUCIÓN
+                  </div>
+                </div>
               </div>
 
               <div
@@ -1292,7 +1604,6 @@ installDriver(evilDLL);
             </motion.div>
           </div>
         </Slide>
-        </Stack>
       </Deck>
     </>
   );
