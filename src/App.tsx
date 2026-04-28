@@ -31,7 +31,6 @@ import "reveal.js/plugin/highlight/monokai.css";
 
 import { GameIntro } from "./components/game/GameIntro";
 import { QuestionSlides } from "./components/game/QuestionSlides";
-import { DebateSlide } from "./components/game/DebateSlide";
 
 interface MechanismProps {
   label: string;
@@ -310,7 +309,9 @@ export default function App() {
                 }}
               ></div>
 
-              <div className="presenter-tag">ALEX • LAURA • DIEGO</div>
+              <div className="presenter-tag">
+                ALEX HERNÁNDEZ • LAURA FIGUEREDO • DIEGO GIL
+              </div>
 
               <p
                 style={{
@@ -2684,57 +2685,30 @@ installDriver(evilDLL);
           id={6}
           question="Se quiere evitar leer repetidamente del SSD."
           answer="Caching"
-          explanation="Mantiene los datos calientes en la RAM para evitar la latencia del bus de E/S."
+          explanation="Mantiene los datos calientes en RAM. El buffer ayuda a transferir; la caché ayuda a reutilizar."
           color="var(--accent-cache)"
         />
 
         <QuestionSlides
           id={7}
           question="Kafka se parece más a..."
-          answer="Principalmente Spooling"
-          explanation="Usa cola persistente en disco y desacopla productores de consumidores."
+          answer="Spooling Distribuido"
+          explanation="Predomina el spooling: usa disco persistente, desacopla componentes y mantiene colas duraderas."
           color="var(--accent-spool)"
           isTrap={true}
         />
 
         <QuestionSlides
           id={8}
-          question="Si se corta la energía, ¿cuál resiste mejor?"
-          answer="Spooling"
-          explanation="Porque vive en almacenamiento no volátil (disco)."
-          color="var(--accent-spool)"
+          question="Con discos NVMe ultra rápidos, ¿sigue siendo vital el Caching?"
+          answer="Sí, incluso más"
+          explanation="Al reducirse el cuello de botella del disco, la ineficiencia del software se vuelve más visible."
+          color="var(--accent-cache)"
           isTrap={true}
         />
-        {/* FASE 3 — DEBATE */}
-        <Slide>
-          <DebateSlide
-            id={1}
-            topic="Si desaparece uno para siempre... ¿cuál dañaría más al mundo moderno?"
-            options={["Buffering", "Spooling", "Caching"]}
-            duration={45}
-          />
-        </Slide>
-
-        <Slide>
-          <DebateSlide
-            id={2}
-            topic="¿Kafka es realmente spooling moderno?"
-            options={["Grupo A: Sí", "Grupo B: No, es buffering evolucionado"]}
-            duration={45}
-          />
-        </Slide>
-
-        <Slide>
-          <DebateSlide
-            id={3}
-            topic="¿LRU sigue siendo suficiente en 2026?"
-            options={["Grupo A: Sí", "Grupo B: ARC/LFU son superiores"]}
-            duration={45}
-          />
-        </Slide>
 
         {/* CIERRE FINAL */}
-        <Slide data-transition="zoom">
+        <Slide data-transition="zoom" data-background="var(--bg-dark)">
           <div
             style={{
               height: "100%",
@@ -2742,54 +2716,73 @@ installDriver(evilDLL);
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              padding: "0 10%",
+              textAlign: "center",
             }}
           >
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              className="glass-card"
-              style={{ padding: "5rem", textAlign: "center", width: "1200px" }}
+              initial={{ scale: 0.9, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <h2 style={{ fontSize: "5rem", marginBottom: "4rem" }}>
-                ¿Qué hace inteligente a un sistema operativo?
-              </h2>
+              <h1
+                style={{
+                  fontSize: "10rem",
+                  color: "var(--accent-gold)",
+                  marginBottom: "2rem",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                ¡Gracias!
+              </h1>
+              <div
+                style={{
+                  width: "200px",
+                  height: "4px",
+                  background: "var(--accent-gold)",
+                  margin: "0 auto 4rem",
+                  borderRadius: "2px",
+                }}
+              />
 
-              <div className="fragment">
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "1rem",
+                }}
+              >
                 <p
                   style={{
                     fontSize: "3rem !important",
-                    color: "var(--fg)",
-                    marginBottom: "4rem",
-                    fontStyle: "italic",
+                    margin: 0,
+                    fontWeight: "bold",
                   }}
                 >
-                  "No es solo velocidad de hardware..."
+                  Sistemas Operativos - 2026
                 </p>
-
-                <h1
-                  className="fragment"
+                <p
                   style={{
-                    fontSize: "8rem",
-                    color: "var(--accent-gold)",
-                    lineHeight: "1",
-                    letterSpacing: "-0.05em",
+                    fontSize: "1.8rem !important",
+                    color: "var(--muted)",
+                    fontFamily: "var(--mono)",
                   }}
                 >
-                  Es cómo administra
-                  <br />
-                  la espera.
-                </h1>
+                  Alex Hernández - Diego Gil - Laura Figueredo
+                </p>
               </div>
 
               <div
                 style={{
-                  marginTop: "5rem",
-                  opacity: 0.3,
-                  fontFamily: "var(--mono)",
+                  marginTop: "6rem",
+                  display: "flex",
+                  gap: "3rem",
+                  justifyContent: "center",
+                  opacity: 0.4,
                 }}
               >
-                FIN DE LA SESIÓN // GRACIAS
+                <Layers size={40} />
+                <RotateCcw size={40} />
+                <Activity size={40} />
               </div>
             </motion.div>
           </div>
