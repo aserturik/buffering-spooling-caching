@@ -31,7 +31,6 @@ import "reveal.js/plugin/highlight/monokai.css";
 
 import { GameIntro } from "./components/game/GameIntro";
 import { QuestionSlides } from "./components/game/QuestionSlides";
-import { Scoreboard } from "./components/game/Scoreboard";
 import { DebateSlide } from "./components/game/DebateSlide";
 
 interface MechanismProps {
@@ -860,8 +859,18 @@ export default function App() {
                 </h2>
               </div>
 
-              <div className="grid-2" style={{ gap: "4rem", alignItems: "stretch" }}>
-                <div className="glass-card" style={{ textAlign: "left", display: "flex", flexDirection: "column" }}>
+              <div
+                className="grid-2"
+                style={{ gap: "4rem", alignItems: "stretch" }}
+              >
+                <div
+                  className="glass-card"
+                  style={{
+                    textAlign: "left",
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
                   <h3
                     style={{ color: "var(--accent-spool)", fontSize: "2.5rem" }}
                   >
@@ -871,7 +880,7 @@ export default function App() {
                     style={{
                       fontSize: "2.2rem !important",
                       marginTop: "1.5rem",
-                      flexGrow: 1
+                      flexGrow: 1,
                     }}
                   >
                     A diferencia del buffer, el <strong>Spooling</strong>{" "}
@@ -885,7 +894,7 @@ export default function App() {
                       borderColor: "var(--accent-spool)",
                       background: "rgba(222, 186, 135, 0.05)",
                       fontSize: "1.8rem",
-                      marginTop: "auto"
+                      marginTop: "auto",
                     }}
                   >
                     <strong>Persistencia:</strong> Sobrevive a fallos de energía
@@ -899,8 +908,23 @@ export default function App() {
                     flexDirection: "column",
                   }}
                 >
-                  <div className="glass-card" style={{ height: "100%", display: "flex", flexDirection: "column" }}>
-                    <h4 style={{ fontSize: "2.2rem", color: "var(--fg)", marginBottom: "1.5rem" }}>Componentes (Microsoft Learn)</h4>
+                  <div
+                    className="glass-card"
+                    style={{
+                      height: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <h4
+                      style={{
+                        fontSize: "2.2rem",
+                        color: "var(--fg)",
+                        marginBottom: "1.5rem",
+                      }}
+                    >
+                      Componentes (Microsoft Learn)
+                    </h4>
                     <div
                       style={{
                         marginTop: "1rem",
@@ -908,17 +932,44 @@ export default function App() {
                         flexDirection: "column",
                         justifyContent: "center",
                         gap: "1.5rem",
-                        flexGrow: 1
+                        flexGrow: 1,
                       }}
                     >
-                      <li style={{ fontSize: "2rem !important", listStyle: "none", display: "flex", alignItems: "center", gap: "1rem" }}>
-                        <span style={{ color: "var(--accent-spool)" }}>•</span> <code>spoolsv.exe</code>
+                      <li
+                        style={{
+                          fontSize: "2rem !important",
+                          listStyle: "none",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "1rem",
+                        }}
+                      >
+                        <span style={{ color: "var(--accent-spool)" }}>•</span>{" "}
+                        <code>spoolsv.exe</code>
                       </li>
-                      <li style={{ fontSize: "2rem !important", listStyle: "none", display: "flex", alignItems: "center", gap: "1rem" }}>
-                        <span style={{ color: "var(--accent-spool)" }}>•</span> Procesador de Impresión
+                      <li
+                        style={{
+                          fontSize: "2rem !important",
+                          listStyle: "none",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "1rem",
+                        }}
+                      >
+                        <span style={{ color: "var(--accent-spool)" }}>•</span>{" "}
+                        Procesador de Impresión
                       </li>
-                      <li style={{ fontSize: "2rem !important", listStyle: "none", display: "flex", alignItems: "center", gap: "1rem" }}>
-                        <span style={{ color: "var(--accent-spool)" }}>•</span> Interfaz de Control
+                      <li
+                        style={{
+                          fontSize: "2rem !important",
+                          listStyle: "none",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "1rem",
+                        }}
+                      >
+                        <span style={{ color: "var(--accent-spool)" }}>•</span>{" "}
+                        Interfaz de Control
                       </li>
                     </div>
                   </div>
@@ -947,31 +998,115 @@ export default function App() {
 
               <div className="grid-3" style={{ gap: "1.5rem" }}>
                 <div className="glass-card" style={{ padding: "2rem" }}>
-                  <h2 style={{ fontSize: "2.2rem", color: "var(--accent-spool)", marginBottom: "1rem" }}>1. spoolsv.exe</h2>
-                  <p style={{ textAlign: "left", fontSize: "1.4rem !important", margin: "0 0 1rem 0", color: "var(--fg)" }}><strong>Proceso anfitrión</strong> que intercepta cada solicitud de impresión.</p>
-                  <ul style={{ fontSize: "1.1rem !important", paddingLeft: "1.2rem", color: "var(--subtext)" }}>
-                    <li style={{ marginBottom: "0.5rem" }}>Crea archivos <code>.SHD</code> y <code>.SPL</code>.</li>
-                    <li style={{ marginBottom: "0.5rem" }}>Mantiene la cola tras fallos.</li>
+                  <h2
+                    style={{
+                      fontSize: "2.2rem",
+                      color: "var(--accent-spool)",
+                      marginBottom: "1rem",
+                    }}
+                  >
+                    1. spoolsv.exe
+                  </h2>
+                  <p
+                    style={{
+                      textAlign: "left",
+                      fontSize: "1.4rem !important",
+                      margin: "0 0 1rem 0",
+                      color: "var(--fg)",
+                    }}
+                  >
+                    <strong>Proceso anfitrión</strong> que intercepta cada
+                    solicitud de impresión.
+                  </p>
+                  <ul
+                    style={{
+                      fontSize: "1.1rem !important",
+                      paddingLeft: "1.2rem",
+                      color: "var(--subtext)",
+                    }}
+                  >
+                    <li style={{ marginBottom: "0.5rem" }}>
+                      Crea archivos <code>.SHD</code> y <code>.SPL</code>.
+                    </li>
+                    <li style={{ marginBottom: "0.5rem" }}>
+                      Mantiene la cola tras fallos.
+                    </li>
                     <li>Rutea al procesador adecuado.</li>
                   </ul>
                 </div>
 
                 <div className="glass-card" style={{ padding: "2rem" }}>
-                  <h2 style={{ fontSize: "2.2rem", color: "var(--accent-spool)", marginBottom: "1rem" }}>2. Procesador</h2>
-                  <p style={{ textAlign: "left", fontSize: "1.4rem !important", margin: "0 0 1rem 0", color: "var(--fg)" }}>Motor de renderizado y <strong>traductor de formatos</strong> software/hardware.</p>
-                  <ul style={{ fontSize: "1.1rem !important", paddingLeft: "1.2rem", color: "var(--subtext)" }}>
-                    <li style={{ marginBottom: "0.5rem" }}>Transforma <strong>EMF</strong> a <strong>RAW</strong>.</li>
-                    <li style={{ marginBottom: "0.5rem" }}>Gestiona N-up y orden inverso.</li>
+                  <h2
+                    style={{
+                      fontSize: "2.2rem",
+                      color: "var(--accent-spool)",
+                      marginBottom: "1rem",
+                    }}
+                  >
+                    2. Procesador
+                  </h2>
+                  <p
+                    style={{
+                      textAlign: "left",
+                      fontSize: "1.4rem !important",
+                      margin: "0 0 1rem 0",
+                      color: "var(--fg)",
+                    }}
+                  >
+                    Motor de renderizado y{" "}
+                    <strong>traductor de formatos</strong> software/hardware.
+                  </p>
+                  <ul
+                    style={{
+                      fontSize: "1.1rem !important",
+                      paddingLeft: "1.2rem",
+                      color: "var(--subtext)",
+                    }}
+                  >
+                    <li style={{ marginBottom: "0.5rem" }}>
+                      Transforma <strong>EMF</strong> a <strong>RAW</strong>.
+                    </li>
+                    <li style={{ marginBottom: "0.5rem" }}>
+                      Gestiona N-up y orden inverso.
+                    </li>
                     <li>Permite el "término" virtual.</li>
                   </ul>
                 </div>
 
                 <div className="glass-card" style={{ padding: "2rem" }}>
-                  <h2 style={{ fontSize: "2.2rem", color: "var(--accent-spool)", marginBottom: "1rem" }}>3. Interfaz</h2>
-                  <p style={{ textAlign: "left", fontSize: "1.4rem !important", margin: "0 0 1rem 0", color: "var(--fg)" }}>Capa de software (<code>Winspool.drv</code>) de administración y control.</p>
-                  <ul style={{ fontSize: "1.1rem !important", paddingLeft: "1.2rem", color: "var(--subtext)" }}>
-                    <li style={{ marginBottom: "0.5rem" }}>Supervisa ciclo de vida (Pausa/Canc).</li>
-                    <li style={{ marginBottom: "0.5rem" }}>Valida permisos ACL de cola.</li>
+                  <h2
+                    style={{
+                      fontSize: "2.2rem",
+                      color: "var(--accent-spool)",
+                      marginBottom: "1rem",
+                    }}
+                  >
+                    3. Interfaz
+                  </h2>
+                  <p
+                    style={{
+                      textAlign: "left",
+                      fontSize: "1.4rem !important",
+                      margin: "0 0 1rem 0",
+                      color: "var(--fg)",
+                    }}
+                  >
+                    Capa de software (<code>Winspool.drv</code>) de
+                    administración y control.
+                  </p>
+                  <ul
+                    style={{
+                      fontSize: "1.1rem !important",
+                      paddingLeft: "1.2rem",
+                      color: "var(--subtext)",
+                    }}
+                  >
+                    <li style={{ marginBottom: "0.5rem" }}>
+                      Supervisa ciclo de vida (Pausa/Canc).
+                    </li>
+                    <li style={{ marginBottom: "0.5rem" }}>
+                      Valida permisos ACL de cola.
+                    </li>
                     <li>Canaliza feedback del hardware.</li>
                   </ul>
                 </div>
@@ -2358,11 +2493,23 @@ installDriver(evilDLL);
                 padding: "4rem",
               }}
             >
-              <h2 style={{ fontSize: "4.5rem", marginBottom: "2.5rem", color: "var(--accent-gold) !important" }}>
+              <h2
+                style={{
+                  fontSize: "4.5rem",
+                  marginBottom: "2.5rem",
+                  color: "var(--accent-gold) !important",
+                }}
+              >
                 Conclusión Arquitectónica
               </h2>
-              
-              <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "2rem",
+                }}
+              >
                 <p
                   style={{
                     fontSize: "2.2rem !important",
@@ -2371,21 +2518,49 @@ installDriver(evilDLL);
                     margin: 0,
                   }}
                 >
-                  Una CPU rápida no necesita esperar a dispositivos lentos gracias a tres mecanismos clave del sistema operativo: 
-                  <span style={{ color: "var(--accent-buf)" }}> buffering</span>, 
-                  <span style={{ color: "var(--accent-spool)" }}> spooling</span> y 
-                  <span style={{ color: "var(--accent-cache)" }}> caching</span>.
+                  Una CPU rápida no necesita esperar a dispositivos lentos
+                  gracias a tres mecanismos clave del sistema operativo:
+                  <span style={{ color: "var(--accent-buf)" }}> buffering</span>
+                  ,
+                  <span style={{ color: "var(--accent-spool)" }}>
+                    {" "}
+                    spooling
+                  </span>{" "}
+                  y
+                  <span style={{ color: "var(--accent-cache)" }}> caching</span>
+                  .
                 </p>
 
-                <div className="grid-3" style={{ gap: "1.5rem", marginTop: "1rem" }}>
-                  <div className="technical-note" style={{ borderColor: "var(--accent-buf)", margin: 0 }}>
-                    <p style={{ fontSize: "1.6rem !important", margin: 0 }}><strong>Buffering:</strong> RAM para equilibrar diferencias de velocidad.</p>
+                <div
+                  className="grid-3"
+                  style={{ gap: "1.5rem", marginTop: "1rem" }}
+                >
+                  <div
+                    className="technical-note"
+                    style={{ borderColor: "var(--accent-buf)", margin: 0 }}
+                  >
+                    <p style={{ fontSize: "1.6rem !important", margin: 0 }}>
+                      <strong>Buffering:</strong> RAM para equilibrar
+                      diferencias de velocidad.
+                    </p>
                   </div>
-                  <div className="technical-note" style={{ borderColor: "var(--accent-spool)", margin: 0 }}>
-                    <p style={{ fontSize: "1.6rem !important", margin: 0 }}><strong>Spooling:</strong> Colas para compartir dispositivos exclusivos.</p>
+                  <div
+                    className="technical-note"
+                    style={{ borderColor: "var(--accent-spool)", margin: 0 }}
+                  >
+                    <p style={{ fontSize: "1.6rem !important", margin: 0 }}>
+                      <strong>Spooling:</strong> Colas para compartir
+                      dispositivos exclusivos.
+                    </p>
                   </div>
-                  <div className="technical-note" style={{ borderColor: "var(--accent-cache)", margin: 0 }}>
-                    <p style={{ fontSize: "1.6rem !important", margin: 0 }}><strong>Caching:</strong> Datos frecuentes en memoria rápida.</p>
+                  <div
+                    className="technical-note"
+                    style={{ borderColor: "var(--accent-cache)", margin: 0 }}
+                  >
+                    <p style={{ fontSize: "1.6rem !important", margin: 0 }}>
+                      <strong>Caching:</strong> Datos frecuentes en memoria
+                      rápida.
+                    </p>
                   </div>
                 </div>
 
@@ -2397,7 +2572,10 @@ installDriver(evilDLL);
                     margin: 0,
                   }}
                 >
-                  Estos principios siguen vigentes en la computación moderna. Tecnologías como <strong>Kafka, Redis, RabbitMQ y los CDN</strong> aplican las mismas ideas a gran escala.
+                  Estos principios siguen vigentes en la computación moderna.
+                  Tecnologías como{" "}
+                  <strong>Kafka, Redis, RabbitMQ y los CDN</strong> aplican las
+                  mismas ideas a gran escala.
                 </p>
 
                 <div
@@ -2406,11 +2584,20 @@ installDriver(evilDLL);
                     padding: "2rem",
                     borderRadius: "16px",
                     borderLeft: "8px solid var(--accent-gold)",
-                    marginTop: "1rem"
+                    marginTop: "1rem",
                   }}
                 >
-                  <p style={{ fontSize: "2.4rem !important", fontWeight: 700, color: "var(--fg)", margin: 0 }}>
-                    La eficiencia no depende solo del hardware, sino de cómo se administra inteligentemente la latencia y los recursos del sistema.
+                  <p
+                    style={{
+                      fontSize: "2.4rem !important",
+                      fontWeight: 700,
+                      color: "var(--fg)",
+                      margin: 0,
+                    }}
+                  >
+                    La eficiencia no depende solo del hardware, sino de cómo se
+                    administra inteligentemente la latencia y los recursos del
+                    sistema.
                   </p>
                 </div>
               </div>
@@ -2423,16 +2610,22 @@ installDriver(evilDLL);
                   opacity: 0.5,
                   display: "flex",
                   justifyContent: "space-between",
-                  alignItems: "center"
+                  alignItems: "center",
                 }}
               >
-                <p style={{ fontSize: "1.2rem !important", fontFamily: "var(--mono)", margin: 0 }}>
+                <p
+                  style={{
+                    fontSize: "1.2rem !important",
+                    fontFamily: "var(--mono)",
+                    margin: 0,
+                  }}
+                >
                   SISTEMAS OPERATIVOS // 2026
                 </p>
                 <div style={{ display: "flex", gap: "1.5rem" }}>
-                   <Layers size={20} color="var(--accent-buf)" />
-                   <RotateCcw size={20} color="var(--accent-spool)" />
-                   <Activity size={20} color="var(--accent-cache)" />
+                  <Layers size={20} color="var(--accent-buf)" />
+                  <RotateCcw size={20} color="var(--accent-spool)" />
+                  <Activity size={20} color="var(--accent-cache)" />
                 </div>
               </div>
             </motion.div>
@@ -2440,14 +2633,14 @@ installDriver(evilDLL);
         </Slide>
 
         {/* ── 🎮 BLOQUE FINAL: KERNEL CHALLENGE ── */}
-        
+
         {/* Slide 1 — Introducción */}
         <Slide data-background="var(--bg-dark)">
           <GameIntro />
         </Slide>
 
         {/* FASE 1 — PREGUNTAS DINÁMICAS */}
-        <QuestionSlides 
+        <QuestionSlides
           id={1}
           question="YouTube sigue reproduciendo aunque el internet fluctúa..."
           answer="Buffering"
@@ -2455,7 +2648,7 @@ installDriver(evilDLL);
           color="var(--accent-buf)"
         />
 
-        <QuestionSlides 
+        <QuestionSlides
           id={2}
           question="Cinco usuarios imprimen al mismo tiempo una tesis."
           answer="Spooling"
@@ -2463,7 +2656,7 @@ installDriver(evilDLL);
           color="var(--accent-spool)"
         />
 
-        <QuestionSlides 
+        <QuestionSlides
           id={3}
           question="Linux vuelve a abrir una librería ya usada hace segundos."
           answer="Caching"
@@ -2471,7 +2664,7 @@ installDriver(evilDLL);
           color="var(--accent-cache)"
         />
 
-        <QuestionSlides 
+        <QuestionSlides
           id={4}
           question="El productor genera datos más rápido que el consumidor."
           answer="Buffering"
@@ -2479,7 +2672,7 @@ installDriver(evilDLL);
           color="var(--accent-buf)"
         />
 
-        <QuestionSlides 
+        <QuestionSlides
           id={5}
           question="El sistema debe conservar trabajos aunque se apague."
           answer="Spooling"
@@ -2487,7 +2680,7 @@ installDriver(evilDLL);
           color="var(--accent-spool)"
         />
 
-        <QuestionSlides 
+        <QuestionSlides
           id={6}
           question="Se quiere evitar leer repetidamente del SSD."
           answer="Caching"
@@ -2495,7 +2688,7 @@ installDriver(evilDLL);
           color="var(--accent-cache)"
         />
 
-        <QuestionSlides 
+        <QuestionSlides
           id={7}
           question="Kafka se parece más a..."
           answer="Principalmente Spooling"
@@ -2504,7 +2697,7 @@ installDriver(evilDLL);
           isTrap={true}
         />
 
-        <QuestionSlides 
+        <QuestionSlides
           id={8}
           question="Si se corta la energía, ¿cuál resiste mejor?"
           answer="Spooling"
@@ -2512,15 +2705,9 @@ installDriver(evilDLL);
           color="var(--accent-spool)"
           isTrap={true}
         />
-
-        {/* FASE 2 — SCOREBOARD */}
-        <Slide>
-          <Scoreboard />
-        </Slide>
-
         {/* FASE 3 — DEBATE */}
         <Slide>
-          <DebateSlide 
+          <DebateSlide
             id={1}
             topic="Si desaparece uno para siempre... ¿cuál dañaría más al mundo moderno?"
             options={["Buffering", "Spooling", "Caching"]}
@@ -2529,7 +2716,7 @@ installDriver(evilDLL);
         </Slide>
 
         <Slide>
-          <DebateSlide 
+          <DebateSlide
             id={2}
             topic="¿Kafka es realmente spooling moderno?"
             options={["Grupo A: Sí", "Grupo B: No, es buffering evolucionado"]}
@@ -2538,7 +2725,7 @@ installDriver(evilDLL);
         </Slide>
 
         <Slide>
-          <DebateSlide 
+          <DebateSlide
             id={3}
             topic="¿LRU sigue siendo suficiente en 2026?"
             options={["Grupo A: Sí", "Grupo B: ARC/LFU son superiores"]}
@@ -2548,28 +2735,60 @@ installDriver(evilDLL);
 
         {/* CIERRE FINAL */}
         <Slide data-transition="zoom">
-          <div style={{ height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", padding: "0 10%" }}>
-            <motion.div 
+          <div
+            style={{
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              padding: "0 10%",
+            }}
+          >
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="glass-card" 
+              className="glass-card"
               style={{ padding: "5rem", textAlign: "center", width: "1200px" }}
             >
               <h2 style={{ fontSize: "5rem", marginBottom: "4rem" }}>
                 ¿Qué hace inteligente a un sistema operativo?
               </h2>
-              
+
               <div className="fragment">
-                <p style={{ fontSize: "3rem !important", color: "var(--fg)", marginBottom: "4rem", fontStyle: "italic" }}>
+                <p
+                  style={{
+                    fontSize: "3rem !important",
+                    color: "var(--fg)",
+                    marginBottom: "4rem",
+                    fontStyle: "italic",
+                  }}
+                >
                   "No es solo velocidad de hardware..."
                 </p>
-                
-                <h1 className="fragment" style={{ fontSize: "8rem", color: "var(--accent-gold)", lineHeight: "1", letterSpacing: "-0.05em" }}>
-                  Es cómo administra<br />la espera.
+
+                <h1
+                  className="fragment"
+                  style={{
+                    fontSize: "8rem",
+                    color: "var(--accent-gold)",
+                    lineHeight: "1",
+                    letterSpacing: "-0.05em",
+                  }}
+                >
+                  Es cómo administra
+                  <br />
+                  la espera.
                 </h1>
               </div>
 
-              <div style={{ marginTop: "5rem", opacity: 0.3, fontFamily: "var(--mono)" }}>
+              <div
+                style={{
+                  marginTop: "5rem",
+                  opacity: 0.3,
+                  fontFamily: "var(--mono)",
+                }}
+              >
                 FIN DE LA SESIÓN // GRACIAS
               </div>
             </motion.div>
