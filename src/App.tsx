@@ -843,8 +843,8 @@ export default function App() {
                 </h2>
               </div>
 
-              <div className="grid-2" style={{ gap: "4rem" }}>
-                <div className="glass-card" style={{ textAlign: "left" }}>
+              <div className="grid-2" style={{ gap: "4rem", alignItems: "stretch" }}>
+                <div className="glass-card" style={{ textAlign: "left", display: "flex", flexDirection: "column" }}>
                   <h3
                     style={{ color: "var(--accent-spool)", fontSize: "2.5rem" }}
                   >
@@ -854,6 +854,7 @@ export default function App() {
                     style={{
                       fontSize: "2.2rem !important",
                       marginTop: "1.5rem",
+                      flexGrow: 1
                     }}
                   >
                     A diferencia del buffer, el <strong>Spooling</strong>{" "}
@@ -867,6 +868,7 @@ export default function App() {
                       borderColor: "var(--accent-spool)",
                       background: "rgba(222, 186, 135, 0.05)",
                       fontSize: "1.8rem",
+                      marginTop: "auto"
                     }}
                   >
                     <strong>Persistencia:</strong> Sobrevive a fallos de energía
@@ -878,31 +880,83 @@ export default function App() {
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    gap: "2.5rem",
                   }}
                 >
-                  <div className="glass-card">
-                    <h4>Componentes (Microsoft Learn)</h4>
+                  <div className="glass-card" style={{ height: "100%", display: "flex", flexDirection: "column" }}>
+                    <h4 style={{ fontSize: "2.2rem", color: "var(--fg)", marginBottom: "1.5rem" }}>Componentes (Microsoft Learn)</h4>
                     <div
                       style={{
                         marginTop: "1rem",
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "center",
-                        gap: "0.5rem",
+                        justifyContent: "center",
+                        gap: "1.5rem",
+                        flexGrow: 1
                       }}
                     >
-                      <li style={{ fontSize: "1.8rem !important" }}>
-                        <code>spoolsv.exe</code> (Gestión de Colas)
+                      <li style={{ fontSize: "2rem !important", listStyle: "none", display: "flex", alignItems: "center", gap: "1rem" }}>
+                        <span style={{ color: "var(--accent-spool)" }}>•</span> <code>spoolsv.exe</code>
                       </li>
-                      <li style={{ fontSize: "1.8rem !important" }}>
-                        Procesador de Impresión (Conversión)
+                      <li style={{ fontSize: "2rem !important", listStyle: "none", display: "flex", alignItems: "center", gap: "1rem" }}>
+                        <span style={{ color: "var(--accent-spool)" }}>•</span> Procesador de Impresión
                       </li>
-                      <li style={{ fontSize: "1.8rem !important" }}>
-                        Interfaz de Control (Administración)
+                      <li style={{ fontSize: "2rem !important", listStyle: "none", display: "flex", alignItems: "center", gap: "1rem" }}>
+                        <span style={{ color: "var(--accent-spool)" }}>•</span> Interfaz de Control
                       </li>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          </Slide>
+
+          <Slide data-transition="slide-in fade-out">
+            <div style={{ padding: "0 8%", textAlign: "left" }}>
+              <div style={{ marginBottom: "3rem" }}>
+                <span
+                  style={{
+                    fontFamily: "var(--mono)",
+                    fontSize: "1.1rem",
+                    color: "var(--accent-spool)",
+                    letterSpacing: "0.2em",
+                  }}
+                >
+                  SPOOLING // COMPONENTES DEL SISTEMA
+                </span>
+                <h2 style={{ fontSize: "4.5rem", margin: "0.5rem 0 0 0" }}>
+                  Arquitectura del Spooler (Win32)
+                </h2>
+              </div>
+
+              <div className="grid-3" style={{ gap: "1.5rem" }}>
+                <div className="glass-card" style={{ padding: "2rem" }}>
+                  <h2 style={{ fontSize: "2.2rem", color: "var(--accent-spool)", marginBottom: "1rem" }}>1. spoolsv.exe</h2>
+                  <p style={{ textAlign: "left", fontSize: "1.4rem !important", margin: "0 0 1rem 0", color: "var(--fg)" }}><strong>Proceso anfitrión</strong> que intercepta cada solicitud de impresión.</p>
+                  <ul style={{ fontSize: "1.1rem !important", paddingLeft: "1.2rem", color: "var(--subtext)" }}>
+                    <li style={{ marginBottom: "0.5rem" }}>Crea archivos <code>.SHD</code> y <code>.SPL</code>.</li>
+                    <li style={{ marginBottom: "0.5rem" }}>Mantiene la cola tras fallos.</li>
+                    <li>Rutea al procesador adecuado.</li>
+                  </ul>
+                </div>
+
+                <div className="glass-card" style={{ padding: "2rem" }}>
+                  <h2 style={{ fontSize: "2.2rem", color: "var(--accent-spool)", marginBottom: "1rem" }}>2. Procesador</h2>
+                  <p style={{ textAlign: "left", fontSize: "1.4rem !important", margin: "0 0 1rem 0", color: "var(--fg)" }}>Motor de renderizado y <strong>traductor de formatos</strong> software/hardware.</p>
+                  <ul style={{ fontSize: "1.1rem !important", paddingLeft: "1.2rem", color: "var(--subtext)" }}>
+                    <li style={{ marginBottom: "0.5rem" }}>Transforma <strong>EMF</strong> a <strong>RAW</strong>.</li>
+                    <li style={{ marginBottom: "0.5rem" }}>Gestiona N-up y orden inverso.</li>
+                    <li>Permite el "término" virtual.</li>
+                  </ul>
+                </div>
+
+                <div className="glass-card" style={{ padding: "2rem" }}>
+                  <h2 style={{ fontSize: "2.2rem", color: "var(--accent-spool)", marginBottom: "1rem" }}>3. Interfaz</h2>
+                  <p style={{ textAlign: "left", fontSize: "1.4rem !important", margin: "0 0 1rem 0", color: "var(--fg)" }}>Capa de software (<code>Winspool.drv</code>) de administración y control.</p>
+                  <ul style={{ fontSize: "1.1rem !important", paddingLeft: "1.2rem", color: "var(--subtext)" }}>
+                    <li style={{ marginBottom: "0.5rem" }}>Supervisa ciclo de vida (Pausa/Canc).</li>
+                    <li style={{ marginBottom: "0.5rem" }}>Valida permisos ACL de cola.</li>
+                    <li>Canaliza feedback del hardware.</li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -2274,6 +2328,7 @@ installDriver(evilDLL);
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              padding: "0 10%",
             }}
           >
             <motion.div
@@ -2281,124 +2336,87 @@ installDriver(evilDLL);
               whileInView={{ scale: 1, opacity: 1 }}
               className="glass-card"
               style={{
-                maxWidth: "1200px",
-                textAlign: "center",
-                padding: "5rem",
+                maxWidth: "1400px",
+                textAlign: "left",
+                padding: "4rem",
               }}
             >
-              <h2 style={{ fontSize: "6rem", marginBottom: "3rem" }}>
-                Conclusión Técnica
+              <h2 style={{ fontSize: "4.5rem", marginBottom: "2.5rem", color: "var(--accent-gold) !important" }}>
+                Conclusión Arquitectónica
               </h2>
-              <p
-                style={{
-                  fontSize: "3rem !important",
-                  lineHeight: "1.3",
-                  color: "var(--fg)",
-                  marginBottom: "4rem",
-                }}
-              >
-                La eficiencia de los sistemas operativos modernos no reside solo
-                en la velocidad del hardware, sino en la{" "}
-                <strong>inteligencia arquitectónica</strong> de la gestión de
-                latencia.
-              </p>
+              
+              <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+                <p
+                  style={{
+                    fontSize: "2.2rem !important",
+                    lineHeight: "1.4",
+                    color: "var(--fg)",
+                    margin: 0,
+                  }}
+                >
+                  Una CPU rápida no necesita esperar a dispositivos lentos gracias a tres mecanismos clave del sistema operativo: 
+                  <span style={{ color: "var(--accent-buf)" }}> buffering</span>, 
+                  <span style={{ color: "var(--accent-spool)" }}> spooling</span> y 
+                  <span style={{ color: "var(--accent-cache)" }}> caching</span>.
+                </p>
 
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  gap: "4rem",
-                }}
-              >
-                <div style={{ textAlign: "center" }}>
-                  <div
-                    style={{
-                      color: "var(--accent-buf)",
-                      marginBottom: "0.5rem",
-                    }}
-                  >
-                    <Layers size={40} />
+                <div className="grid-3" style={{ gap: "1.5rem", marginTop: "1rem" }}>
+                  <div className="technical-note" style={{ borderColor: "var(--accent-buf)", margin: 0 }}>
+                    <p style={{ fontSize: "1.6rem !important", margin: 0 }}><strong>Buffering:</strong> RAM para equilibrar diferencias de velocidad.</p>
                   </div>
-                  <div
-                    style={{
-                      fontSize: "1rem",
-                      opacity: 0.5,
-                      fontFamily: "var(--mono)",
-                    }}
-                  >
-                    DESACOPLAMIENTO
+                  <div className="technical-note" style={{ borderColor: "var(--accent-spool)", margin: 0 }}>
+                    <p style={{ fontSize: "1.6rem !important", margin: 0 }}><strong>Spooling:</strong> Colas para compartir dispositivos exclusivos.</p>
+                  </div>
+                  <div className="technical-note" style={{ borderColor: "var(--accent-cache)", margin: 0 }}>
+                    <p style={{ fontSize: "1.6rem !important", margin: 0 }}><strong>Caching:</strong> Datos frecuentes en memoria rápida.</p>
                   </div>
                 </div>
-                <div style={{ textAlign: "center" }}>
-                  <div
-                    style={{
-                      color: "var(--accent-gold)",
-                      marginBottom: "0.5rem",
-                    }}
-                  >
-                    <RotateCcw size={40} />
-                  </div>
-                  <div
-                    style={{
-                      fontSize: "1rem",
-                      opacity: 0.5,
-                      fontFamily: "var(--mono)",
-                    }}
-                  >
-                    VIRTUALIZACIÓN
-                  </div>
-                </div>
-                <div style={{ textAlign: "center" }}>
-                  <div
-                    style={{
-                      color: "var(--accent-cache)",
-                      marginBottom: "0.5rem",
-                    }}
-                  >
-                    <Activity size={40} />
-                  </div>
-                  <div
-                    style={{
-                      fontSize: "1rem",
-                      opacity: 0.5,
-                      fontFamily: "var(--mono)",
-                    }}
-                  >
-                    OPTIMIZACIÓN
-                  </div>
-                </div>
-                <div style={{ textAlign: "center" }}>
-                  <div
-                    style={{
-                      color: "var(--accent-spool)",
-                      marginBottom: "0.5rem",
-                    }}
-                  >
-                    <Network size={40} />
-                  </div>
-                  <div
-                    style={{
-                      fontSize: "1rem",
-                      opacity: 0.5,
-                      fontFamily: "var(--mono)",
-                    }}
-                  >
-                    DISTRIBUCIÓN
-                  </div>
+
+                <p
+                  style={{
+                    fontSize: "2.2rem !important",
+                    lineHeight: "1.4",
+                    color: "var(--subtext)",
+                    margin: 0,
+                  }}
+                >
+                  Estos principios siguen vigentes en la computación moderna. Tecnologías como <strong>Kafka, Redis, RabbitMQ y los CDN</strong> aplican las mismas ideas a gran escala.
+                </p>
+
+                <div
+                  style={{
+                    background: "rgba(255,255,255,0.03)",
+                    padding: "2rem",
+                    borderRadius: "16px",
+                    borderLeft: "8px solid var(--accent-gold)",
+                    marginTop: "1rem"
+                  }}
+                >
+                  <p style={{ fontSize: "2.4rem !important", fontWeight: 700, color: "var(--fg)", margin: 0 }}>
+                    La eficiencia no depende solo del hardware, sino de cómo se administra inteligentemente la latencia y los recursos del sistema.
+                  </p>
                 </div>
               </div>
 
               <div
                 style={{
                   borderTop: "1px solid var(--line)",
-                  paddingTop: "3rem",
-                  marginTop: "5rem",
-                  opacity: 0.3,
+                  paddingTop: "2rem",
+                  marginTop: "3rem",
+                  opacity: 0.5,
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center"
                 }}
               >
-                <p style={{ fontSize: "1.2rem", fontFamily: "var(--mono)" }}>
-                  CS-402 // SISTEMAS OPERATIVOS // 2026
+                <p style={{ fontSize: "1.2rem !important", fontFamily: "var(--mono)", margin: 0 }}>
+                  SISTEMAS OPERATIVOS // 2026
                 </p>
+                <div style={{ display: "flex", gap: "1.5rem" }}>
+                   <Layers size={20} color="var(--accent-buf)" />
+                   <RotateCcw size={20} color="var(--accent-spool)" />
+                   <Activity size={20} color="var(--accent-cache)" />
+                </div>
               </div>
             </motion.div>
           </div>
