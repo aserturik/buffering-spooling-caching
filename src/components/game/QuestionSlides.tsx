@@ -2,6 +2,7 @@ import React from "react";
 import { Slide } from "@revealjs/react";
 import { GameTimer } from "./GameTimer";
 import { HelpCircle, CheckCircle2 } from "lucide-react";
+import { GroupSelector } from "./GroupSelector";
 
 interface QuestionProps {
   id: number;
@@ -32,9 +33,9 @@ export const QuestionSlides: React.FC<QuestionProps> = ({
           padding: "0 10%",
         }}
       >
-        <div style={{ position: "absolute", top: "10%", right: "10%", zIndex: 10 }}>
-          {/* El Timer ahora escucha el evento global 'slideChanged' para resetearse */}
+        <div style={{ position: "absolute", top: "10%", right: "10%", zIndex: 10, display: "flex", flexDirection: "column", gap: "2rem", alignItems: "flex-end" }}>
           <GameTimer duration={20} />
+          <GroupSelector mini />
         </div>
 
         <div className="glass-card" style={{ padding: "4rem", width: "1300px", textAlign: "left", minHeight: "600px", display: "flex", flexDirection: "column" }}>

@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Gamepad2 } from "lucide-react";
+import { GroupSelector } from "./GroupSelector";
 
 export const GameIntro: React.FC = () => {
   return (
@@ -43,7 +44,7 @@ export const GameIntro: React.FC = () => {
             <h3 style={{ fontSize: "2.2rem", color: "var(--fg)", marginBottom: "1.5rem" }}>Reglas del Juego</h3>
             <ul style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
               <li>Cada grupo tiene 3 tarjetas de color.</li>
-              <li>La ruleta decidirá quién responde.</li>
+              <li>El selector en cada slide decidirá quién responde.</li>
               <li><span style={{ color: "var(--accent-cache)" }}>Acierto: +1 punto</span></li>
               <li><span style={{ color: "var(--accent-red)" }}>Fallo: Rebote a otro grupo.</span></li>
             </ul>
