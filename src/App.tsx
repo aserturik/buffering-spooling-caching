@@ -116,6 +116,7 @@ export default function App() {
           border-radius: 24px;
           padding: 3rem;
           box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+          box-sizing: border-box !important;
         }
 
         .presenter-tag {
@@ -945,8 +946,8 @@ export default function App() {
 
         {/* ── ESCENARIOS DE APLICACIÓN ── */}
         <Slide data-transition="convex">
-          <div style={{ padding: "0 8%" }}>
-            <div style={{ textAlign: "left", marginBottom: "4rem" }}>
+          <div style={{ padding: "0 5%", textAlign: "left", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+            <div style={{ marginBottom: "2rem" }}>
               <span
                 style={{
                   color: "var(--accent-gold)",
@@ -961,37 +962,37 @@ export default function App() {
                 Escenarios de Aplicación
               </h2>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "3rem" }}>
-              <div className="glass-card" style={{ padding: "2.5rem", borderTop: "6px solid var(--accent-buf)", display: "flex", flexDirection: "column" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem" }}>
-                  <Zap size={30} color="var(--accent-buf)" />
-                  <h3 style={{ fontSize: "2rem", margin: 0, color: "var(--accent-buf)" }}>Buffering</h3>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem", alignItems: "stretch", width: "100%", boxSizing: "border-box" }}>
+              <div className="glass-card" style={{ padding: "1.5rem", borderTop: "6px solid var(--accent-buf)", display: "flex", flexDirection: "column", height: "100%", minWidth: 0, boxSizing: "border-box" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.8rem", marginBottom: "1rem" }}>
+                  <Zap size={24} color="var(--accent-buf)" />
+                  <h3 style={{ fontSize: "1.6rem", margin: 0, color: "var(--accent-buf)" }}>Buffering</h3>
                 </div>
-                <ul style={{ display: "flex", flexDirection: "column", gap: "1rem", fontSize: "1.6rem !important", textAlign: "left", margin: 0, paddingLeft: "1.5rem" }}>
-                  <li><strong>Streaming Multimedia:</strong> Precarga en RAM para compensar jitter (QoS).</li>
-                  <li><strong>Redes (DCTCP):</strong> Gestión de colas activas y notificación de congestión (ECN) en switches de Datacenters.</li>
+                <ul style={{ display: "flex", flexDirection: "column", gap: "0.6rem", fontSize: "1.2rem !important", textAlign: "left", margin: 0, paddingLeft: "1.1rem", flexGrow: 1, overflowWrap: "anywhere", wordBreak: "normal" }}>
+                  <li style={{ lineHeight: 1.3, listStyle: "none" }}><span style={{ color: "var(--accent-buf)" }}>•</span> <strong>Streaming:</strong> Precarga en RAM para compensar jitter (QoS).</li>
+                  <li style={{ lineHeight: 1.3, listStyle: "none" }}><span style={{ color: "var(--accent-buf)" }}>•</span> <strong>Redes:</strong> Gestión de colas activas y control de congestión.</li>
                 </ul>
               </div>
 
-              <div className="glass-card" style={{ padding: "2.5rem", borderTop: "6px solid var(--accent-spool)", display: "flex", flexDirection: "column" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem" }}>
-                  <RotateCcw size={30} color="var(--accent-spool)" />
-                  <h3 style={{ fontSize: "2rem", margin: 0, color: "var(--accent-spool)" }}>Spooling</h3>
+              <div className="glass-card" style={{ padding: "1.5rem", borderTop: "6px solid var(--accent-spool)", display: "flex", flexDirection: "column", height: "100%", minWidth: 0, boxSizing: "border-box" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.8rem", marginBottom: "1rem" }}>
+                  <RotateCcw size={24} color="var(--accent-spool)" />
+                  <h3 style={{ fontSize: "1.6rem", margin: 0, color: "var(--accent-spool)" }}>Spooling</h3>
                 </div>
-                <ul style={{ display: "flex", flexDirection: "column", gap: "1rem", fontSize: "1.6rem !important", textAlign: "left", margin: 0, paddingLeft: "1.5rem" }}>
-                  <li><strong>Impresión:</strong> Interceptación de salida a disco para serializar trabajos en dispositivos exclusivos.</li>
-                  <li><strong>Procesamiento por Lotes:</strong> Gestión de colas masivas asíncronas sin bloquear procesos generadores.</li>
+                <ul style={{ display: "flex", flexDirection: "column", gap: "0.6rem", fontSize: "1.2rem !important", textAlign: "left", margin: 0, paddingLeft: "1.1rem", flexGrow: 1, overflowWrap: "anywhere", wordBreak: "normal" }}>
+                  <li style={{ lineHeight: 1.3, listStyle: "none" }}><span style={{ color: "var(--accent-spool)" }}>•</span> <strong>Impresión:</strong> Interceptación a disco para serializar trabajos.</li>
+                  <li style={{ lineHeight: 1.3, listStyle: "none" }}><span style={{ color: "var(--accent-spool)" }}>•</span> <strong>Lotes:</strong> Colas masivas asíncronas sin bloqueo de procesos.</li>
                 </ul>
               </div>
 
-              <div className="glass-card" style={{ padding: "2.5rem", borderTop: "6px solid var(--accent-cache)", display: "flex", flexDirection: "column" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem" }}>
-                  <Activity size={30} color="var(--accent-cache)" />
-                  <h3 style={{ fontSize: "2rem", margin: 0, color: "var(--accent-cache)" }}>Caching</h3>
+              <div className="glass-card" style={{ padding: "1.5rem", borderTop: "6px solid var(--accent-cache)", display: "flex", flexDirection: "column", height: "100%", minWidth: 0, boxSizing: "border-box" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.8rem", marginBottom: "1rem" }}>
+                  <Activity size={24} color="var(--accent-cache)" />
+                  <h3 style={{ fontSize: "1.6rem", margin: 0, color: "var(--accent-cache)" }}>Caching</h3>
                 </div>
-                <ul style={{ display: "flex", flexDirection: "column", gap: "1rem", fontSize: "1.6rem !important", textAlign: "left", margin: 0, paddingLeft: "1.5rem" }}>
-                  <li><strong>Sistemas de Archivos:</strong> Buffer caché en ext4/Btrfs (LRU adaptativo).</li>
-                  <li><strong>Almacenamiento NVMe:</strong> Reingeniería del I/O bufferizado al migrar cuellos de botella de hardware al Kernel.</li>
+                <ul style={{ display: "flex", flexDirection: "column", gap: "0.6rem", fontSize: "1.2rem !important", textAlign: "left", margin: 0, paddingLeft: "1.1rem", flexGrow: 1, overflowWrap: "anywhere", wordBreak: "normal" }}>
+                  <li style={{ lineHeight: 1.3, listStyle: "none" }}><span style={{ color: "var(--accent-cache)" }}>•</span> <strong>FS:</strong> Buffer caché en ext4/Btrfs (LRU adaptativo).</li>
+                  <li style={{ lineHeight: 1.3, listStyle: "none" }}><span style={{ color: "var(--accent-cache)" }}>•</span> <strong>NVMe:</strong> Migración de cuellos de botella al Kernel.</li>
                 </ul>
               </div>
             </div>
@@ -1396,119 +1397,62 @@ installDriver(evilDLL);
         </Slide>
 
         {/* ── [NUEVO] SISTEMAS DISTRIBUIDOS: CACHING ── */}
-        <Stack>
-          <Slide data-transition="zoom">
-            <div style={{ padding: "0 8%", textAlign: "left" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "2rem", marginBottom: "3rem" }}>
-                <Globe size={55} color="var(--accent-cache)" />
-                <div>
-                  <span style={{ fontFamily: "var(--mono)", fontSize: "1.1rem", color: "var(--accent-cache)", letterSpacing: "0.2em" }}>
-                    SISTEMAS DISTRIBUIDOS
-                  </span>
-                  <h2 style={{ fontSize: "4.5rem", margin: 0 }}>
-                    Caching Distribuido
-                  </h2>
-                </div>
-              </div>
-
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2.5rem" }}>
-                <div className="glass-card" style={{ padding: "2.5rem", borderTop: "6px solid var(--accent-buf)" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem" }}>
-                    <Server size={28} color="var(--accent-buf)" />
-                    <h3 style={{ fontSize: "2rem", margin: 0, color: "var(--accent-buf)" }}>Redis</h3>
-                  </div>
-                  <p style={{ fontSize: "1.5rem !important", margin: 0 }}>
-                    <strong>Caché en memoria distribuida</strong> con estructuras de datos ricas (Hash, Set, Sorted Set). Soporta replicación y persistencia. Hit rate &gt;99% en sesiones web. Política de expiración configurable por clave (TTL).
-                  </p>
-                  <div style={{ marginTop: "1.5rem", fontFamily: "var(--mono)", fontSize: "1.1rem", color: "var(--accent-buf)", opacity: 0.7 }}>
-                    Latencia: ~0.1 ms
-                  </div>
-                </div>
-
-                <div className="glass-card" style={{ padding: "2.5rem", borderTop: "6px solid var(--accent-gold)" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem" }}>
-                    <Globe size={28} color="var(--accent-gold)" />
-                    <h3 style={{ fontSize: "2rem", margin: 0, color: "var(--accent-gold)" }}>CDN</h3>
-                  </div>
-                  <p style={{ fontSize: "1.5rem !important", margin: 0 }}>
-                    <strong>Content Delivery Network</strong>: cachés geográficamente distribuidos. Cloudflare, Akamai y AWS CloudFront replican contenido estático en PoPs globales. Reducen latencia del usuario de ~200 ms a ~5 ms.
-                  </p>
-                  <div style={{ marginTop: "1.5rem", fontFamily: "var(--mono)", fontSize: "1.1rem", color: "var(--accent-gold)", opacity: 0.7 }}>
-                    Cache-Control / ETag
-                  </div>
-                </div>
-
-                <div className="glass-card" style={{ padding: "2.5rem", borderTop: "6px solid var(--accent-cache)" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem" }}>
-                    <Database size={28} color="var(--accent-cache)" />
-                    <h3 style={{ fontSize: "2rem", margin: 0, color: "var(--accent-cache)" }}>Memcached</h3>
-                  </div>
-                  <p style={{ fontSize: "1.5rem !important", margin: 0 }}>
-                    <strong>Caché clave-valor de alta velocidad</strong>. Sin persistencia — pura velocidad. Usado por Facebook e Instagram para reducir carga en bases de datos relacionales. El dato canónico sigue en DB; Memcached es la copia temporal.
-                  </p>
-                  <div style={{ marginTop: "1.5rem", fontFamily: "var(--mono)", fontSize: "1.1rem", color: "var(--accent-cache)", opacity: 0.7 }}>
-                    Consistent Hashing
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Slide>
-
-          {/* Algoritmos de reemplazo */}
-          <Slide data-transition="convex-in concave-out">
-            <div style={{ padding: "0 8%", textAlign: "left" }}>
-              <div style={{ marginBottom: "3rem" }}>
+        <Slide data-transition="zoom">
+          <div style={{ padding: "0 5%", textAlign: "left", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "2rem", marginBottom: "2rem" }}>
+              <Globe size={55} color="var(--accent-cache)" />
+              <div>
                 <span style={{ fontFamily: "var(--mono)", fontSize: "1.1rem", color: "var(--accent-cache)", letterSpacing: "0.2em" }}>
-                  POLÍTICAS DE CACHÉ
+                  SISTEMAS DISTRIBUIDOS
                 </span>
-                <h2 style={{ fontSize: "4.5rem", margin: "0.5rem 0 0 0" }}>
-                  Algoritmos de Reemplazo
+                <h2 style={{ fontSize: "4.5rem", margin: 0 }}>
+                  Caching Distribuido
                 </h2>
               </div>
+            </div>
 
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2.5rem", marginBottom: "3rem" }}>
-                {[
-                  {
-                    name: "LRU",
-                    full: "Least Recently Used",
-                    color: "var(--accent-buf)",
-                    desc: "Desaloja el bloque que lleva más tiempo sin accederse. Excelente en localidad temporal. Implementación: lista doblemente enlazada + hash map. Usado en ext4, TLBs de CPU.",
-                    complexity: "O(1) con HashMap",
-                  },
-                  {
-                    name: "LFU",
-                    full: "Least Frequently Used",
-                    color: "var(--accent-gold)",
-                    desc: "Desaloja el bloque con menor contador de accesos. Resiste mejor a bursts de datos no recurrentes. Problema: acumulación histórica de contadores (envejecimiento).",
-                    complexity: "O(log n) con Heap",
-                  },
-                  {
-                    name: "CLOCK",
-                    full: "Second Chance",
-                    color: "var(--accent-cache)",
-                    desc: "Approximación eficiente de LRU. Un puntero recorre circularmente; si el bit de referencia es 1, lo resetea y avanza. Si es 0, desaloja. Usado en Linux Page Cache.",
-                    complexity: "O(1) — Muy eficiente",
-                  },
-                ].map((algo) => (
-                  <div key={algo.name} className="glass-card" style={{ padding: "2.5rem", borderTop: `6px solid ${algo.color}` }}>
-                    <div style={{ marginBottom: "1.5rem" }}>
-                      <div style={{ fontFamily: "var(--mono)", fontSize: "2.5rem", fontWeight: 900, color: algo.color }}>{algo.name}</div>
-                      <div style={{ fontSize: "1.2rem", color: "var(--subtext)", fontFamily: "var(--mono)" }}>{algo.full}</div>
-                    </div>
-                    <p style={{ fontSize: "1.5rem !important", margin: "0 0 1.5rem 0" }}>{algo.desc}</p>
-                    <div style={{ fontFamily: "var(--mono)", fontSize: "1.1rem", color: algo.color, opacity: 0.8, padding: "0.5rem 1rem", background: "rgba(255,255,255,0.04)", borderRadius: "8px" }}>
-                      {algo.complexity}
-                    </div>
-                  </div>
-                ))}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem", alignItems: "stretch", width: "100%", boxSizing: "border-box" }}>
+              <div className="glass-card" style={{ padding: "1.5rem", borderTop: "6px solid var(--accent-buf)", display: "flex", flexDirection: "column", height: "100%", minWidth: 0, boxSizing: "border-box" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.8rem", marginBottom: "1rem" }}>
+                  <Server size={24} color="var(--accent-buf)" />
+                  <h3 style={{ fontSize: "1.6rem", margin: 0, color: "var(--accent-buf)" }}>Redis</h3>
+                </div>
+                <p style={{ fontSize: "1.2rem !important", margin: "0 0 1rem 0", flexGrow: 1, overflowWrap: "anywhere" }}>
+                  <strong>Caché en memoria</strong> distribuida con estructuras de datos ricas. Soporta replicación.
+                </p>
+                <div style={{ fontFamily: "var(--mono)", fontSize: "0.9rem", color: "var(--accent-buf)", opacity: 0.7, background: "rgba(255,255,255,0.03)", padding: "0.5rem", borderRadius: "8px" }}>
+                  Latencia: ~0.1 ms
+                </div>
               </div>
 
-              <div className="technical-note" style={{ borderColor: "var(--accent-gold)" }}>
-                <strong style={{ color: "var(--accent-gold)" }}>ARC (Adaptive Replacement Cache):</strong> Combina LRU y LFU dinámicamente. Implementado en ZFS y macOS. Ajusta automáticamente el balance entre recencia y frecuencia según el patrón de carga actual.
+              <div className="glass-card" style={{ padding: "1.5rem", borderTop: "6px solid var(--accent-gold)", display: "flex", flexDirection: "column", height: "100%", minWidth: 0, boxSizing: "border-box" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.8rem", marginBottom: "1rem" }}>
+                  <Globe size={24} color="var(--accent-gold)" />
+                  <h3 style={{ fontSize: "1.6rem", margin: 0, color: "var(--accent-gold)" }}>CDN</h3>
+                </div>
+                <p style={{ fontSize: "1.2rem !important", margin: "0 0 1rem 0", flexGrow: 1, overflowWrap: "anywhere" }}>
+                  <strong>Distribución global</strong>: PoPs que reducen latencia de ~200 ms a ~5 ms.
+                </p>
+                <div style={{ fontFamily: "var(--mono)", fontSize: "0.9rem", color: "var(--accent-gold)", opacity: 0.7, background: "rgba(255,255,255,0.03)", padding: "0.5rem", borderRadius: "8px" }}>
+                  Cache-Control / ETag
+                </div>
+              </div>
+
+              <div className="glass-card" style={{ padding: "1.5rem", borderTop: "6px solid var(--accent-cache)", display: "flex", flexDirection: "column", height: "100%", minWidth: 0, boxSizing: "border-box" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.8rem", marginBottom: "1rem" }}>
+                  <Database size={24} color="var(--accent-cache)" />
+                  <h3 style={{ fontSize: "1.6rem", margin: 0, color: "var(--accent-cache)" }}>Memcached</h3>
+                </div>
+                <p style={{ fontSize: "1.2rem !important", margin: "0 0 1rem 0", flexGrow: 1, overflowWrap: "anywhere" }}>
+                  <strong>Clave-valor</strong> de alta velocidad. Sin persistencia. Reduce carga en DB relacionales.
+                </p>
+                <div style={{ fontFamily: "var(--mono)", fontSize: "0.9rem", color: "var(--accent-cache)", opacity: 0.7, background: "rgba(255,255,255,0.03)", padding: "0.5rem", borderRadius: "8px" }}>
+                  Consistent Hashing
+                </div>
               </div>
             </div>
-          </Slide>
-        </Stack>
+          </div>
+        </Slide>
 
         {/* ── CONCLUSIÓN ── */}
         <Slide>
