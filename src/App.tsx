@@ -2698,7 +2698,7 @@ installDriver(evilDLL);
           isTrap={true}
         />
 
-        <QuestionSlides
+        <QuestionSlides 
           id={8}
           question="Con discos NVMe ultra rápidos, ¿sigue siendo vital el Caching?"
           answer="Sí, incluso más"
@@ -2707,7 +2707,26 @@ installDriver(evilDLL);
           isTrap={true}
         />
 
+        <QuestionSlides 
+          id={9}
+          question="¿Podría un sistema moderno funcionar SOLO con Buffering, eliminando Caching y Spooling?"
+          answer="Técnicamente sí, pero sería inviable"
+          explanation="Sin caché el rendimiento colapsaría por redundancia, y sin spooling, el acceso a recursos exclusivos sería caótico."
+          color="var(--accent-gold)"
+          isTrap={true}
+        />
+
+        <QuestionSlides 
+          id={10}
+          question="¿Es el 'Cloud Computing' solo un Spooling gigante a escala global?"
+          answer="Arquitectónicamente, tiene mucho de eso"
+          explanation="El Cloud desacopla la ejecución del usuario del hardware físico, gestionando colas de trabajos y recursos como un spooler masivo."
+          color="var(--accent-gold)"
+          isTrap={true}
+        />
+
         {/* CIERRE FINAL */}
+
         <Slide data-transition="zoom" data-background="var(--bg-dark)">
           <div
             style={{
