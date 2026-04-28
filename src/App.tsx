@@ -18,11 +18,21 @@ import {
   Globe,
   Server,
   AlignCenter,
+  MessageSquare,
+  Gamepad2,
+  Trophy,
+  HelpCircle,
+  CheckCircle2,
 } from "lucide-react";
 
 import "reveal.js/reveal.css";
 import "reveal.js/theme/dracula.css";
 import "reveal.js/plugin/highlight/monokai.css";
+
+import { GameIntro } from "./components/game/GameIntro";
+import { QuestionSlides } from "./components/game/QuestionSlides";
+import { Scoreboard } from "./components/game/Scoreboard";
+import { DebateSlide } from "./components/game/DebateSlide";
 
 interface MechanismProps {
   label: string;
@@ -230,6 +240,13 @@ export default function App() {
           progress: true,
         }}
         plugins={[RevealHighlight]}
+        onSlideChange={(event) => {
+          // Disparamos un evento personalizado que los componentes pueden escuchar
+          const customEvent = new CustomEvent("slideChanged", {
+            detail: { indexh: event.indexh },
+          });
+          window.dispatchEvent(customEvent);
+        }}
       >
         {/* ── PORTADA ACADÉMICA ── */}
         <Slide>
@@ -2417,6 +2434,143 @@ installDriver(evilDLL);
                    <RotateCcw size={20} color="var(--accent-spool)" />
                    <Activity size={20} color="var(--accent-cache)" />
                 </div>
+              </div>
+            </motion.div>
+          </div>
+        </Slide>
+
+        {/* ── 🎮 BLOQUE FINAL: KERNEL CHALLENGE ── */}
+        
+        {/* Slide 1 — Introducción */}
+        <Slide data-background="var(--bg-dark)">
+          <GameIntro />
+        </Slide>
+
+        {/* FASE 1 — PREGUNTAS DINÁMICAS */}
+        <QuestionSlides 
+          id={1}
+          question="YouTube sigue reproduciendo aunque el internet fluctúa..."
+          answer="Buffering"
+          explanation="Se almacenan temporalmente datos en RAM para compensar variaciones de velocidad de red."
+          color="var(--accent-buf)"
+        />
+
+        <QuestionSlides 
+          id={2}
+          question="Cinco usuarios imprimen al mismo tiempo una tesis."
+          answer="Spooling"
+          explanation="Los trabajos se guardan en cola persistente y se procesan secuencialmente."
+          color="var(--accent-spool)"
+        />
+
+        <QuestionSlides 
+          id={3}
+          question="Linux vuelve a abrir una librería ya usada hace segundos."
+          answer="Caching"
+          explanation="Aprovecha localidad temporal manteniendo copias rápidas en memoria."
+          color="var(--accent-cache)"
+        />
+
+        <QuestionSlides 
+          id={4}
+          question="El productor genera datos más rápido que el consumidor."
+          answer="Buffering"
+          explanation="Absorbe la asincronía entre velocidades de producción y consumo."
+          color="var(--accent-buf)"
+        />
+
+        <QuestionSlides 
+          id={5}
+          question="El sistema debe conservar trabajos aunque se apague."
+          answer="Spooling"
+          explanation="A diferencia del buffer, el spooling reside en almacenamiento no volátil."
+          color="var(--accent-spool)"
+        />
+
+        <QuestionSlides 
+          id={6}
+          question="Se quiere evitar leer repetidamente del SSD."
+          answer="Caching"
+          explanation="Mantiene los datos calientes en la RAM para evitar la latencia del bus de E/S."
+          color="var(--accent-cache)"
+        />
+
+        <QuestionSlides 
+          id={7}
+          question="Kafka se parece más a..."
+          answer="Principalmente Spooling"
+          explanation="Usa cola persistente en disco y desacopla productores de consumidores."
+          color="var(--accent-spool)"
+          isTrap={true}
+        />
+
+        <QuestionSlides 
+          id={8}
+          question="Si se corta la energía, ¿cuál resiste mejor?"
+          answer="Spooling"
+          explanation="Porque vive en almacenamiento no volátil (disco)."
+          color="var(--accent-spool)"
+          isTrap={true}
+        />
+
+        {/* FASE 2 — SCOREBOARD */}
+        <Slide>
+          <Scoreboard />
+        </Slide>
+
+        {/* FASE 3 — DEBATE */}
+        <Slide>
+          <DebateSlide 
+            id={1}
+            topic="Si desaparece uno para siempre... ¿cuál dañaría más al mundo moderno?"
+            options={["Buffering", "Spooling", "Caching"]}
+            duration={45}
+          />
+        </Slide>
+
+        <Slide>
+          <DebateSlide 
+            id={2}
+            topic="¿Kafka es realmente spooling moderno?"
+            options={["Grupo A: Sí", "Grupo B: No, es buffering evolucionado"]}
+            duration={45}
+          />
+        </Slide>
+
+        <Slide>
+          <DebateSlide 
+            id={3}
+            topic="¿LRU sigue siendo suficiente en 2026?"
+            options={["Grupo A: Sí", "Grupo B: ARC/LFU son superiores"]}
+            duration={45}
+          />
+        </Slide>
+
+        {/* CIERRE FINAL */}
+        <Slide data-transition="zoom">
+          <div style={{ height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", padding: "0 10%" }}>
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="glass-card" 
+              style={{ padding: "5rem", textAlign: "center", width: "1200px" }}
+            >
+              <h2 style={{ fontSize: "5rem", marginBottom: "4rem" }}>
+                ¿Qué hace inteligente a un sistema operativo?
+              </h2>
+              
+              <div className="fragment">
+                <p style={{ fontSize: "3rem !important", color: "var(--fg)", marginBottom: "4rem", fontStyle: "italic" }}>
+                  "No es solo velocidad de hardware..."
+                </p>
+                
+                <h1 className="fragment" style={{ fontSize: "8rem", color: "var(--accent-gold)", lineHeight: "1", letterSpacing: "-0.05em" }}>
+                  Es cómo administra<br />la espera.
+                </h1>
+              </div>
+
+              <div style={{ marginTop: "5rem", opacity: 0.3, fontFamily: "var(--mono)" }}>
+                FIN DE LA SESIÓN // GRACIAS
               </div>
             </motion.div>
           </div>
