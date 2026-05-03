@@ -334,6 +334,20 @@ export default function Fundamentacion() {
           </div>
         </div>
       </Slide>
+
+      {/* ── VISUALIZACIÓN DEL GAP DE VELOCIDAD ── */}
+      <Slide data-transition="zoom">
+        <div style={{ padding: "0 8%", display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <h2 style={{ fontSize: "4.5rem", marginBottom: "2rem" }}>
+            Pirámide de Latencias
+          </h2>
+          <img 
+            src="/Velocidad vs Tamaño Dispositivos I-O.jpeg" 
+            alt="Velocidad vs Tamaño" 
+            style={{ maxWidth: "100%", maxHeight: "700px", borderRadius: "12px", border: "1px solid var(--line)" }} 
+          />
+        </div>
+      </Slide>
     </>
   );
 }

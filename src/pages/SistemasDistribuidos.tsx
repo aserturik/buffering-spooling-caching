@@ -5,6 +5,20 @@ import { Database, Globe, Network, Server } from "lucide-react";
 export default function SistemasDistribuidos() {
   return (
     <>
+      {/* ── [NUEVO] SISTEMAS DISTRIBUIDOS: VISUALIZACIÓN ── */}
+      <Slide data-transition="zoom">
+        <div style={{ padding: "0 8%", textAlign: "left", display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <h2 style={{ fontSize: "4.5rem", marginBottom: "2rem" }}>
+            Monoprocesador vs Distribuido
+          </h2>
+          <img 
+            src="/Visualización comparativa del Spooling Caching y Buffering Monoprocesador vs Sistema distribuido.png" 
+            alt="Monoprocesador vs Sistema Distribuido" 
+            style={{ maxWidth: "100%", maxHeight: "700px", borderRadius: "12px", border: "1px solid var(--line)" }} 
+          />
+        </div>
+      </Slide>
+
       {/* ── [NUEVO] SISTEMAS DISTRIBUIDOS: BUFFERING ── */}
       <Slide data-transition="zoom">
         <div style={{ padding: "0 8%", textAlign: "left" }}>

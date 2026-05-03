@@ -4,6 +4,7 @@ import { Layers, Database } from "lucide-react";
 
 const LinuxPageCache: React.FC = () => {
   return (
+    <>
     <Slide data-transition="zoom">
       <div style={{ padding: "0 5%" }}>
         <div style={{ textAlign: "left", marginBottom: "3rem" }}>
@@ -35,6 +36,19 @@ const LinuxPageCache: React.FC = () => {
         </div>
       </div>
     </Slide>
+    <Slide data-transition="zoom">
+      <div style={{ padding: "0 5%", display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <h2 style={{ fontSize: "3.5rem", marginBottom: "2rem" }}>
+          Flujo de Page Cache
+        </h2>
+        <img 
+          src="/Flujo de Lectura y escritura del kernel Linux utilizando la Page Caché.jpeg" 
+          alt="Flujo Page Cache Linux" 
+          style={{ maxWidth: "100%", maxHeight: "700px", borderRadius: "12px", border: "1px solid var(--line)" }} 
+        />
+      </div>
+    </Slide>
+    </>
   );
 };
 

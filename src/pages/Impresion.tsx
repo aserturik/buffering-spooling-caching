@@ -297,6 +297,20 @@ export default function Impresion() {
               </div>
             </div>
           </Slide>
+
+          {/* ── VISUALIZACIÓN DEL PIPELINE DE IMPRESIÓN ── */}
+          <Slide data-transition="zoom">
+            <div style={{ padding: "0 8%", display: "flex", flexDirection: "column", alignItems: "center" }}>
+              <h2 style={{ fontSize: "4.5rem", marginBottom: "2rem" }}>
+                Flujo de Impresión en Windows
+              </h2>
+              <img 
+                src="/Flujo de Impresión en Windows: Desde la Aplicación hastal a Impresora Física.jpeg" 
+                alt="Flujo de Impresión" 
+                style={{ maxWidth: "100%", maxHeight: "700px", borderRadius: "12px", border: "1px solid var(--line)" }} 
+              />
+            </div>
+          </Slide>
         </Stack>
 
     </>

@@ -224,6 +224,18 @@ export default function Escenarios() {
         </div>
       </Slide>
 
+      <Slide data-transition="convex">
+        <div style={{ padding: "0 5%", textAlign: "left", display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <h2 style={{ fontSize: "4.5rem", marginBottom: "2rem" }}>
+            Sistemas Integrados
+          </h2>
+          <img 
+            src="/Buffering, Spooling y Caching en Sistemas integrados.png" 
+            alt="Sistemas Integrados" 
+            style={{ maxWidth: "100%", maxHeight: "700px", borderRadius: "12px", border: "1px solid var(--line)" }} 
+          />
+        </div>
+      </Slide>
     </>
   );
 }

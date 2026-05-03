@@ -4,6 +4,7 @@ import { RotateCw, Repeat } from "lucide-react";
 
 const BufferingTypes: React.FC = () => {
   return (
+    <>
     <Slide data-transition="slide">
       <div style={{ padding: "0 5%" }}>
         <h2 style={{ fontSize: "3.5rem", marginBottom: "3rem", textAlign: "center" }}>
@@ -39,6 +40,19 @@ const BufferingTypes: React.FC = () => {
         </div>
       </div>
     </Slide>
+    <Slide data-transition="slide">
+      <div style={{ padding: "0 5%", display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <h2 style={{ fontSize: "3.5rem", marginBottom: "2rem" }}>
+          Single vs Double Buffering
+        </h2>
+        <img 
+          src="/Doble Buffering vs Único bufering.jpeg" 
+          alt="Doble Buffering vs Único bufering" 
+          style={{ maxWidth: "100%", maxHeight: "700px", borderRadius: "12px", border: "1px solid var(--line)" }} 
+        />
+      </div>
+    </Slide>
+    </>
   );
 };
 
