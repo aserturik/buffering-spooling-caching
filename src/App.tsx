@@ -1,31 +1,7 @@
 
+import React from "react";
 import { Deck, Slide } from "@revealjs/react";
 import RevealHighlight from "reveal.js/plugin/highlight";
-import React from "react";
-
-import {
-  Zap,
-  Layers,
-  RotateCcw,
-  ShieldAlert,
-  Cpu,
-  Database,
-  HardDrive,
-  Clock,
-  ArrowRight,
-  Activity,
-  Printer,
-  Network,
-  Globe,
-  Server,
-  AlignCenter,
-  MessageSquare,
-  Gamepad2,
-  Trophy,
-  HelpCircle,
-  CheckCircle2,
-} from "lucide-react";
-
 import "reveal.js/reveal.css";
 import "reveal.js/theme/dracula.css";
 import "reveal.js/plugin/highlight/monokai.css";
@@ -187,53 +163,48 @@ export default function App() {
           hash: true,
           center: true,
           transition: "fade",
-          transitionSpeed: "normal",
+          transitionSpeed: "default",
           width: 1920,
           height: 1080,
           margin: 0.05,
           minScale: 0.2,
-          maxScale: 2.0,
+          maxScale: 2,
           controls: true,
           progress: true,
         }}
         plugins={[RevealHighlight]}
-        onSlideChange={(event) => {
+        onSlideChange={(event: any) => {
           // Disparamos un evento personalizado que los componentes pueden escuchar
           const customEvent = new CustomEvent("slideChanged", {
             detail: { indexh: event.indexh },
           });
-          window.dispatchEvent(customEvent);
+          globalThis.dispatchEvent(customEvent);
         }}
       >
-<Hero />
-<Slide
-  data-background-iframe="./doc_intro.html"
-  data-background-interactive
-  data-transition="fade"
-/>
+        <Hero />
 
-<Fundamentacion />
+        <Fundamentacion />
 
-<Buffering />
+        <Buffering />
 
-<Spooling />
+        <Spooling />
 
-<Caching />
+        <Caching />
 
-<MatrizComparativa />
+        <MatrizComparativa />
 
-<Escenarios />
+        <Escenarios />
 
-<Impresion />
+        <Impresion />
 
-<SpoolingCritico />
+        <SpoolingCritico />
 
-<SistemasDistribuidos />
+        <SistemasDistribuidos />
 
-<Conclusion />
+        <Conclusion />
 
-<GameSection />
-<Outro />
+        <GameSection />
+        <Outro />
 
       </Deck>
     </>

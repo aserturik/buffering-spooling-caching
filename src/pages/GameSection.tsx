@@ -1,5 +1,7 @@
 import React from "react";
 import { Slide, Stack } from "@revealjs/react";
+import { GameIntro } from "../components/game/GameIntro";
+import { QuestionSlides } from "../components/game/QuestionSlides";
 
 export default function GameSection() {
   return (

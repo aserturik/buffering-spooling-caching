@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matriz Comparativa E/S</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Inter:wght@400;700;900&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --bg: #06080f;
@@ -18,6 +21,7 @@
             --accent-cache: #b7cc85;
             --mono: 'IBM Plex Mono', monospace;
         }
+
         body {
             background-color: var(--bg);
             color: var(--fg);
@@ -26,16 +30,28 @@
             padding: 20px;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Permite que el contenido empiece arriba si hay scroll */
+            align-items: flex-start;
+            /* Permite que el contenido empiece arriba si hay scroll */
             min-height: 100vh;
-            overflow-y: auto; /* Habilita el scroll vertical */
+            overflow-y: auto;
+            /* Habilita el scroll vertical */
             scrollbar-width: thin;
             scrollbar-color: var(--line) var(--bg);
         }
+
         /* Custom scrollbar para Webkit */
-        body::-webkit-scrollbar { width: 8px; }
-        body::-webkit-scrollbar-track { background: var(--bg); }
-        body::-webkit-scrollbar-thumb { background: var(--line); border-radius: 10px; }
+        body::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: var(--line);
+            border-radius: 10px;
+        }
 
         table {
             width: 95%;
@@ -43,9 +59,11 @@
             border-collapse: separate;
             border-spacing: 0 10px;
             table-layout: fixed;
-            margin-top: 40px; /* Reducido al mínimo para que la tabla sea la protagonista */
-            margin-bottom: 40px; 
+            margin-top: 40px;
+            /* Reducido al mínimo para que la tabla sea la protagonista */
+            margin-bottom: 40px;
         }
+
         th {
             font-family: var(--mono);
             color: var(--subtext);
@@ -55,17 +73,22 @@
             text-align: left;
             font-size: 1.1rem;
             border-bottom: 2px solid var(--line);
-            position: sticky; /* Cabecera fija al scrollear */
+            position: sticky;
+            /* Cabecera fija al scrollear */
             top: 0;
             background: var(--bg);
             z-index: 10;
         }
+
         td {
-            padding: 20px 15px; /* Reducido de 30px */
+            padding: 20px 15px;
+            /* Reducido de 30px */
             background: rgba(255, 255, 255, 0.03);
-            font-size: 1.3rem; /* Ligeramente más pequeño para que entre más */
+            font-size: 1.3rem;
+            /* Ligeramente más pequeño para que entre más */
             line-height: 1.3;
         }
+
         tr td:first-child {
             border-top-left-radius: 12px;
             border-bottom-left-radius: 12px;
@@ -73,67 +96,116 @@
             color: var(--fg);
             width: 20%;
         }
-        tr td:nth-child(2) { width: 26%; }
-        tr td:nth-child(3) { width: 26%; color: var(--accent-spool); font-weight: 600; }
-        tr td:nth-child(4) { width: 26%; color: var(--accent-cache); }
-        
+
+        tr td:nth-child(2) {
+            width: 26%;
+        }
+
+        tr td:nth-child(3) {
+            width: 26%;
+            color: var(--accent-spool);
+            font-weight: 600;
+        }
+
+        tr td:nth-child(4) {
+            width: 26%;
+            color: var(--accent-cache);
+        }
+
         tr:hover td {
             background: rgba(255, 255, 255, 0.07);
         }
+
         .tag {
             font-family: var(--mono);
             font-size: 0.7rem;
             padding: 3px 8px;
             border-radius: 4px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             margin-bottom: 5px;
             display: inline-block;
             color: var(--accent-buf);
         }
     </style>
 </head>
+
 <body>
-    <table>
-        <thead>
-            <tr>
-                <th>Dimensión</th>
-                <th>Buffering</th>
-                <th>Spooling</th>
-                <th>Caching</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><div class="tag">UBICACIÓN</div>Medio Físico</td>
-                <td>DRAM (RAM)</td>
-                <td>Disco Secundario</td>
-                <td>SRAM / RAM Rapida</td>
-            </tr>
-            <tr>
-                <td><div class="tag">UNIDAD</div>Granularidad</td>
-                <td>Flujos / Bytes</td>
-                <td>Trabajos Completos</td>
-                <td>Bloques / Páginas</td>
-            </tr>
-            <tr>
-                <td><div class="tag">TIEMPO</div>Persistencia</td>
-                <td>Volátil (Pérdida)</td>
-                <td>Persistente (Recuperación)</td>
-                <td>Inconsistente</td>
-            </tr>
-            <tr>
-                <td><div class="tag">OBJETIVO</div>Propósito</td>
-                <td>Match de Velocidad</td>
-                <td>Multi-tenencia</td>
-                <td>Reducción Latencia</td>
-            </tr>
-            <tr>
-                <td><div class="tag">FLUJO</div>Concurrencia</td>
-                <td>Productor-Consumidor</td>
-                <td>Colas FIFO</td>
-                <td>Algoritmos Reemplazo</td>
-            </tr>
-        </tbody>
-    </table>
+    <section id="comparativa" class="fade-in">
+        <div class="container">
+            <div class="chapter">
+                <div class="chapter-number">Capítulo 04</div>
+                <h2 style="color: var(--text);">Comparativa Exhaustiva</h2>
+                <div class="chapter-rule" style="--border: #252d3d;"></div>
+            </div>
+
+            <table class="comp-table">
+                <thead>
+                    <tr>
+                        <th>Dimensión</th>
+                        <th class="buf-h">Buffering</th>
+                        <th class="spool-h">Spooling</th>
+                        <th class="cache-h">Caching</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="row-label">Problema raíz que resuelve</td>
+                        <td>Diferencia de velocidad entre productor y consumidor <em>del mismo proceso</em></td>
+                        <td>Exclusividad de dispositivo + espera bloqueante entre <em>múltiples procesos</em></td>
+                        <td>Latencia de acceso repetido al almacenamiento lento</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">¿Es la única copia del dato?</td>
+                        <td><span class="tag red">Sí — puede ser única</span></td>
+                        <td><span class="tag spool">Sí — copia en disco del trabajo</span></td>
+                        <td><span class="tag cache">No — siempre hay original</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Ubicación física</td>
+                        <td>RAM (volátil, ns)</td>
+                        <td>Disco secundario (persistente, ms)</td>
+                        <td>SRAM / RAM dedicada (muy rápida)</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Visibilidad al programador</td>
+                        <td><span class="tag buf">Explícita</span> — el programa puede manejar sus buffers</td>
+                        <td><span class="tag buf">Explícita</span> — el usuario ve la cola de impresión</td>
+                        <td><span class="tag cache">Transparente</span> — invisible al proceso</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Granularidad de datos</td>
+                        <td>Bytes, bloques, paquetes (flujos)</td>
+                        <td>Trabajos completos</td>
+                        <td>Páginas / bloques de disco (4 KB típico)</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Recuperación ante fallo</td>
+                        <td><span class="tag red">Pérdida total</span></td>
+                        <td><span class="tag cache">Recuperación completa</span></td>
+                        <td><span class="tag buf">Inconsistente</span> (requiere fsync)</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Caso de uso paradigmático</td>
+                        <td>Streaming de video, lectura de archivos, sockets de red</td>
+                        <td>Cola de impresión, procesamiento por lotes (batch)</td>
+                        <td>Sistema de archivos, bases de datos, CPU cache</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Analogía cotidiana</td>
+                        <td>Un vaso bajo el grifo: amortigua el flujo</td>
+                        <td>Sala de espera con número: todos "terminan" de tramitar inmediatamente</td>
+                        <td>Notas adhesivas en el escritorio: copias de documentos de uso frecuente</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Impacto en el throughput</td>
+                        <td>Lineal — mejora dentro de un proceso</td>
+                        <td>Multiplicativo — libera la CPU para N procesos</td>
+                        <td>Logarítmico — reduce latencia proporcionalmente al hit rate</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 </body>
+
 </html>
