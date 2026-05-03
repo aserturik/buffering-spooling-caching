@@ -2,6 +2,8 @@ import React from "react";
 import { Slide } from "@revealjs/react";
 import { Cpu } from "lucide-react";
 
+import { ZoomableImage } from "../../ZoomableImage";
+
 const CPUHierarchy: React.FC = () => {
   return (
     <Slide data-transition="slide">
@@ -11,16 +13,17 @@ const CPUHierarchy: React.FC = () => {
           <h2 style={{ fontSize: "3.5rem", margin: 0 }}>Jerarquía de Memoria</h2>
         </div>
 
-        <div className="ascii" style={{ fontSize: "1.1rem", lineHeight: "1.4" }}>
-{`  NIVEL             LATENCIA     TAMAÑO TÍPICO
-  ────────────────────────────────────────────
-  Registros CPU     ~0.3 ns      < 2 KB
-  Caché L1          ~1 ns        32-64 KB
-  Caché L2          ~4 ns        256 KB - 1 MB
-  Caché L3          ~15 ns       8-64 MB
-  RAM Principal     ~100 ns      8-128 GB
-  SSD NVMe          ~100 µs      512 GB - 4 TB
-  HDD               ~10 ms       1-20 TB`}
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: "2rem" }}>
+          <ZoomableImage
+            src="/velocidad_vs_tamaño_dispositivos_io.jpeg"
+            alt="Jerarquía de Memoria"
+            style={{
+              maxWidth: "100%",
+              maxHeight: "550px",
+              borderRadius: "12px",
+              border: "1px solid var(--line)",
+            }}
+          />
         </div>
 
         <div className="technical-note" style={{ marginTop: "2rem", textAlign: "center" }}>

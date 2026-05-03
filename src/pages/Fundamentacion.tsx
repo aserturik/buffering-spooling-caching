@@ -1,10 +1,14 @@
 import React from "react";
 import { Slide } from "@revealjs/react";
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   Database,
   ShieldAlert,
   Printer,
+  Cpu,
+  HardDrive,
+  Zap,
 } from "lucide-react";
 import { ZoomableImage } from "../components/ZoomableImage";
 
@@ -179,20 +183,94 @@ export default function Fundamentacion() {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
+                gap: "1.5rem",
               }}
             >
-              <ZoomableImage
-                src="/velocidad_vs_tamaño_dispositivos_io.jpeg"
-                alt="Pirámide de Latencias"
-                style={{
-                  maxWidth: "100%",
-                  maxHeight: "550px",
-                  borderRadius: "12px",
-                  border: "1px solid var(--line)",
-                }}
-              />
+              {[
+                {
+                  label: "Acceso a registros de CPU",
+                  val: "~1 ns",
+                  color: "var(--accent-cache)",
+                  icon: <Cpu size={24} />,
+                  power: "10⁰",
+                },
+                {
+                  label: "Acceso a caché L1",
+                  val: "~4 ns",
+                  color: "var(--accent-red)",
+                  icon: <HardDrive size={24} />,
+                  power: "10¹",
+                },
+                {
+                  label: "Memoria Principal RAM",
+                  val: "~100 ns",
+                  color: "var(--accent-spool)",
+                  icon: <Database size={24} />,
+                  power: "10²",
+                },
+                {
+                  label: "Almacenamiento NVMe SSD",
+                  val: "~100 μs",
+                  color: "var(--accent-buf)",
+                  icon: <Zap size={24} />,
+                  power: "10⁵",
+                },
+                {
+                  label: "Disco duro (HDD) Legado",
+                  val: "~10 ms",
+                  color: "var(--accent-red)",
+                  icon: <HardDrive size={24} />,
+                  power: "10⁷",
+                }
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  className="metric-card"
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    borderLeft: `4px solid ${item.color}`,
+                    padding: "1.5rem 2rem",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "1.5rem",
+                    }}
+                  >
+                    <div style={{ color: item.color }}>{item.icon}</div>
+                    <div style={{ textAlign: "center" }}>
+                      <div className="metric-label">{item.label}</div>
+                      <div
+                        className="metric-val"
+                        style={{ color: item.color, textAlign: "center" }}
+                      >
+                        {item.val}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style={{ textAlign: "right", opacity: 0.4 }}>
+                    <div
+                      style={{
+                        fontSize: "0.7rem",
+                        fontFamily: "var(--mono)",
+                      }}
+                    >
+                      MAGNITUD
+                    </div>
+                    <div style={{ fontSize: "2rem", fontWeight: 800 }}>
+                      {item.power}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
             </div>
 
             <div className="glass-card" style={{ padding: "3.5rem" }}>
