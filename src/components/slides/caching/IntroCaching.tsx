@@ -29,7 +29,7 @@ const IntroCaching: React.FC = () => {
                 MECANISMO 03 // CACHING
               </span>
               <h2 style={{ fontSize: "5rem", marginTop: "0.5rem" }}>
-                Definición Formal
+                ¿Qué es el Caching?
               </h2>
             </div>
             <Zap size={80} color="var(--accent-cache)" style={{ opacity: 0.2 }} />

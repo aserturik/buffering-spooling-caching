@@ -54,6 +54,7 @@ export default function Impresion() {
                     className="era-badge"
                     style={{
                       background: "rgba(203,124,148,0.15)",
+                      fontSize: "1.8rem",
                       color: "var(--accent-red)",
                     }}
                   >
@@ -83,6 +84,7 @@ export default function Impresion() {
                     className="era-badge"
                     style={{
                       background: "rgba(224,193,90,0.15)",
+                      fontSize: "1.8rem",
                       color: "var(--accent-gold)",
                     }}
                   >
@@ -112,6 +114,7 @@ export default function Impresion() {
                     className="era-badge"
                     style={{
                       background: "rgba(127,180,202,0.15)",
+                      fontSize: "1.8rem",
                       color: "var(--accent-buf)",
                     }}
                   >

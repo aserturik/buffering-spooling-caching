@@ -33,7 +33,7 @@ const SpoolerSecurity: React.FC = () => {
             </div>
           </div>
 
-          <div className="ascii" style={{ fontSize: "0.8rem", marginTop: "2rem", opacity: 0.6 }}>
+          <div className="ascii" style={{ fontSize: "1.4rem", marginTop: "2rem", opacity: 0.6 }}>
             RPC Call → Spooler (SYSTEM) → LoadDriver(malicious.dll) = PWNED
           </div>
         </div>

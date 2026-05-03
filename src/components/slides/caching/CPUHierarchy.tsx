@@ -26,8 +26,8 @@ const CPUHierarchy: React.FC = () => {
           />
         </div>
 
-        <div className="technical-note" style={{ marginTop: "2rem", textAlign: "center" }}>
-          <strong>Regla de oro:</strong> Cada nivel actúa como caché del nivel inferior.
+        <div className="technical-note" style={{ marginTop: "2rem", textAlign: "center", fontSize: "2.4rem" }}>
+          <strong style={{ color: "var(--accent-cache)" }}>Regla de oro:</strong> Cada nivel actúa como caché del nivel inferior.
         </div>
       </div>
     </Slide>
