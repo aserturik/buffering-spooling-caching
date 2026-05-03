@@ -13,13 +13,6 @@ export default function Spooling() {
         <BufferingVsSpooling />
         <PrinterCase />
         <SpoolerSecurity />
-
-        {/* Referencia técnica detallada */}
-        <Slide
-          data-background-iframe="./doc_spooling.html"
-          data-background-interactive
-          data-transition="fade"
-        />
       </Stack>
     </>
   );
