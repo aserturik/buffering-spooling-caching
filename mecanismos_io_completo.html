@@ -1075,7 +1075,8 @@
           principal (RAM) para almacenar datos <em>transitoriamente</em> mientras se transfieren entre dos entidades que
           operan a velocidades distintas: un <strong>productor</strong> que genera datos y un
           <strong>consumidor</strong> que los procesa. El buffer actúa como zona de amortiguación, permitiendo que ambas
-          partes avancen a su propio ritmo sin bloquearse mutuamente.</p>
+          partes avancen a su propio ritmo sin bloquearse mutuamente.
+        </p>
       </div>
 
       <h3>¿Por qué existe el buffering?</h3>
@@ -1121,7 +1122,8 @@
           <h4>Buffer de E/S de Kernel</h4>
           <p>El kernel mantiene sus propios buffers entre el espacio de usuario y los dispositivos. Cuando una
             aplicación llama a <span class="mono-inline">write()</span>, los datos van primero al buffer del kernel y
-            <em>luego</em> al dispositivo de forma asíncrona.</p>
+            <em>luego</em> al dispositivo de forma asíncrona.
+          </p>
         </div>
       </div>
 
@@ -1154,7 +1156,8 @@
 
       <p>Cuando un proceso llama a <span class="mono-inline">write(buffer_usuario, 1024)</span>, el sistema operativo
         <em>no envía inmediatamente</em> ese buffer al dispositivo. En cambio, copia los datos al buffer interno del
-        kernel. ¿Por qué esto importa?</p>
+        kernel. ¿Por qué esto importa?
+      </p>
 
       <div class="callout">
         <div class="callout-icon">⚠</div>
@@ -1386,7 +1389,8 @@
 
       <p>La lección arquitectónica es profunda: cualquier servicio que combine <em>alta privilegiación</em> +
         <em>superficie de ataque amplia</em> + <em>compatibilidad con código de terceros</em> (drivers de fabricantes de
-        impresoras) es estructuralmente riesgoso.</p>
+        impresoras) es estructuralmente riesgoso.
+      </p>
 
     </div>
   </section>
@@ -1410,7 +1414,8 @@
           un nivel de almacenamiento más rápido, aprovechando los principios de <strong>localidad temporal</strong> y
           <strong>espacial</strong>. A diferencia del buffer (que puede ser la única copia del dato), el caché siempre
           duplica un dato que ya existe en otro nivel más lento. Opera de manera completamente <em>transparente</em> al
-          proceso: ninguna aplicación necesita saber si está usando el caché o el almacenamiento original.</p>
+          proceso: ninguna aplicación necesita saber si está usando el caché o el almacenamiento original.
+        </p>
       </div>
 
       <h3>Los dos principios fundamentales del caching</h3>
@@ -1597,7 +1602,7 @@
   <!-- ════════════════════════════════════
      CAPÍTULO 4: COMPARATIVA
 ════════════════════════════════════ -->
-  <section id="comparativa" class="fade-in">
+  <section style="font-size: 5.5rem; margin-bottom: 4rem; line-height: 1.1;" id="comparativa" class="fade-in">
     <div class="container">
       <div class="chapter">
         <div class="chapter-number">Capítulo 04</div>

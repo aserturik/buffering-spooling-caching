@@ -118,13 +118,39 @@
 
         .tag {
             font-family: var(--mono);
-            font-size: 0.7rem;
-            padding: 3px 8px;
+            font-size: 0.8rem;
+            padding: 4px 10px;
             border-radius: 4px;
-            background: rgba(255, 255, 255, 0.1);
             margin-bottom: 5px;
             display: inline-block;
+            font-weight: 600;
+        }
+
+        .tag.buf {
+            background: rgba(127, 180, 202, 0.15);
             color: var(--accent-buf);
+        }
+
+        .tag.spool {
+            background: rgba(222, 186, 135, 0.15);
+            color: var(--accent-spool);
+        }
+
+        .tag.cache {
+            background: rgba(183, 204, 133, 0.15);
+            color: var(--accent-cache);
+        }
+
+        .tag.red {
+            background: rgba(255, 107, 107, 0.15);
+            color: #ff6b6b;
+        }
+
+        .row-label {
+            color: var(--subtext);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
     </style>
 </head>
@@ -133,74 +159,68 @@
     <section id="comparativa" class="fade-in">
         <div class="container">
             <div class="chapter">
-                <div class="chapter-number">Capítulo 04</div>
-                <h2 style="color: var(--text);">Comparativa Exhaustiva</h2>
-                <div class="chapter-rule" style="--border: #252d3d;"></div>
+                <h2 style="color: var(--fg); font-family: var(--mono); letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 2px solid var(--line); padding-bottom: 10px; margin-bottom: 30px;">
+                    Matriz Comparativa de Mecanismos E/S
+                </h2>
             </div>
 
             <table class="comp-table">
                 <thead>
                     <tr>
                         <th>Dimensión</th>
-                        <th class="buf-h">Buffering</th>
-                        <th class="spool-h">Spooling</th>
-                        <th class="cache-h">Caching</th>
+                        <th style="color: var(--accent-buf);">Buffering</th>
+                        <th style="color: var(--accent-spool);">Spooling</th>
+                        <th style="color: var(--accent-cache);">Caching</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="row-label">Problema raíz que resuelve</td>
-                        <td>Diferencia de velocidad entre productor y consumidor <em>del mismo proceso</em></td>
-                        <td>Exclusividad de dispositivo + espera bloqueante entre <em>múltiples procesos</em></td>
-                        <td>Latencia de acceso repetido al almacenamiento lento</td>
+                        <td class="row-label">Problema raíz</td>
+                        <td>Diferencia de velocidad (mismo proceso)</td>
+                        <td>Exclusividad + espera (multi-proceso)</td>
+                        <td>Latencia de acceso (localidad)</td>
                     </tr>
                     <tr>
-                        <td class="row-label">¿Es la única copia del dato?</td>
-                        <td><span class="tag red">Sí — puede ser única</span></td>
-                        <td><span class="tag spool">Sí — copia en disco del trabajo</span></td>
-                        <td><span class="tag cache">No — siempre hay original</span></td>
+                        <td class="row-label">¿Copia única?</td>
+                        <td><span class="tag red">Sí — única copia temporal</span></td>
+                        <td><span class="tag spool">No — copia intermedia en disco</span></td>
+                        <td><span class="tag cache">No — siempre hay un original</span></td>
                     </tr>
                     <tr>
-                        <td class="row-label">Ubicación física</td>
+                        <td class="row-label">Ubicación</td>
                         <td>RAM (volátil, ns)</td>
                         <td>Disco secundario (persistente, ms)</td>
-                        <td>SRAM / RAM dedicada (muy rápida)</td>
+                        <td>Niveles rápidos (SRAM / DRAM)</td>
                     </tr>
                     <tr>
-                        <td class="row-label">Visibilidad al programador</td>
-                        <td><span class="tag buf">Explícita</span> — el programa puede manejar sus buffers</td>
-                        <td><span class="tag buf">Explícita</span> — el usuario ve la cola de impresión</td>
+                        <td class="row-label">Visibilidad</td>
+                        <td><span class="tag buf">Explícita</span> — gestión de buffers</td>
+                        <td><span class="tag spool">Híbrida</span> — usuario ve colas</td>
                         <td><span class="tag cache">Transparente</span> — invisible al proceso</td>
                     </tr>
                     <tr>
-                        <td class="row-label">Granularidad de datos</td>
-                        <td>Bytes, bloques, paquetes (flujos)</td>
-                        <td>Trabajos completos</td>
-                        <td>Páginas / bloques de disco (4 KB típico)</td>
+                        <td class="row-label">Granularidad</td>
+                        <td>Bytes / Bloques / Paquetes</td>
+                        <td>Trabajos completos (Jobs)</td>
+                        <td>Páginas / Bloques de disco</td>
                     </tr>
                     <tr>
-                        <td class="row-label">Recuperación ante fallo</td>
+                        <td class="row-label">Fallo de energía</td>
                         <td><span class="tag red">Pérdida total</span></td>
-                        <td><span class="tag cache">Recuperación completa</span></td>
-                        <td><span class="tag buf">Inconsistente</span> (requiere fsync)</td>
+                        <td><span class="tag spool">Recuperación completa</span></td>
+                        <td><span class="tag cache">Inconsistente</span> (si es write-back)</td>
                     </tr>
                     <tr>
-                        <td class="row-label">Caso de uso paradigmático</td>
-                        <td>Streaming de video, lectura de archivos, sockets de red</td>
-                        <td>Cola de impresión, procesamiento por lotes (batch)</td>
-                        <td>Sistema de archivos, bases de datos, CPU cache</td>
+                        <td class="row-label">Analogía</td>
+                        <td>Vaso bajo el grifo</td>
+                        <td>Sala de espera con ticket</td>
+                        <td>Post-it con notas frecuentes</td>
                     </tr>
                     <tr>
-                        <td class="row-label">Analogía cotidiana</td>
-                        <td>Un vaso bajo el grifo: amortigua el flujo</td>
-                        <td>Sala de espera con número: todos "terminan" de tramitar inmediatamente</td>
-                        <td>Notas adhesivas en el escritorio: copias de documentos de uso frecuente</td>
-                    </tr>
-                    <tr>
-                        <td class="row-label">Impacto en el throughput</td>
-                        <td>Lineal — mejora dentro de un proceso</td>
-                        <td>Multiplicativo — libera la CPU para N procesos</td>
-                        <td>Logarítmico — reduce latencia proporcionalmente al hit rate</td>
+                        <td class="row-label">Impacto</td>
+                        <td>Lineal (Mejora flujo)</td>
+                        <td>Multiplicativo (Libera procesos)</td>
+                        <td>Logarítmico (Reduce latencia)</td>
                     </tr>
                 </tbody>
             </table>

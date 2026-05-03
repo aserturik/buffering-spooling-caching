@@ -15,6 +15,7 @@ import MatrizComparativa from "./pages/MatrizComparativa";
 import Escenarios from "./pages/Escenarios";
 import Impresion from "./pages/Impresion";
 import SpoolingCritico from "./pages/SpoolingCritico";
+import Ejercicios from "./pages/Ejercicios";
 import SistemasDistribuidos from "./pages/SistemasDistribuidos";
 import Conclusion from "./pages/Conclusion";
 import GameSection from "./pages/GameSection";
@@ -198,6 +199,8 @@ export default function App() {
         <Impresion />
 
         <SpoolingCritico />
+
+        <Ejercicios />
 
         <SistemasDistribuidos />
 

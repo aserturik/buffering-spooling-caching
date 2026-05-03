@@ -157,7 +157,7 @@ export default function Fundamentacion() {
               El problema de la Latencia
             </h2>
             <p style={{ fontSize: "2.2rem !important", lineHeight: "1.5", marginBottom: "3rem", fontStyle: "italic" }}>
-              La arquitectura de cualquier computadora enfrenta una paradoja: los componentes que procesan datos son órdenes de <br />magnitud más rápidos que los que los almacenan o transmiten.
+              La arquitectura de cualquier computadora enfrenta una paradoja: los componentes que procesan datos son órdenes de magnitud más rápidos que los que los almacenan o transmiten.
             </p>
           </div>
 
@@ -178,9 +178,9 @@ export default function Fundamentacion() {
                   power: "10⁰",
                 },
                 {
-                  label: "Caché L1",
+                  label: "Acceso a caché L1",
                   val: "~4 ns",
-                  color: "var(--accent-buf)",
+                  color: "var(--accent-red)",
                   icon: <HardDrive size={24} />,
                   power: "10¹",
                 },
@@ -204,14 +204,7 @@ export default function Fundamentacion() {
                   color: "var(--accent-red)",
                   icon: <HardDrive size={24} />,
                   power: "10⁷",
-                },
-                {
-                  label: "Impresora láser<br>(por página)",
-                  val: "~30 s",
-                  color: "var(--accent-red)",
-                  icon: <Printer size={24} />,
-                  power: "10⁹",
-                },
+                }
               ].map((item, i) => (
                 <motion.div
                   key={i}
@@ -224,6 +217,7 @@ export default function Fundamentacion() {
                     justifyContent: "space-between",
                     alignItems: "center",
                     borderLeft: `4px solid ${item.color}`,
+                    padding: "1.5rem 2rem",
                   }}
                 >
                   <div
@@ -234,16 +228,17 @@ export default function Fundamentacion() {
                     }}
                   >
                     <div style={{ color: item.color }}>{item.icon}</div>
-                    <div>
+                    <div style={{ textAlign: "center" }}>
                       <div className="metric-label">{item.label}</div>
                       <div
                         className="metric-val"
-                        style={{ color: item.color }}
+                        style={{ color: item.color, textAlign: "center" }}
                       >
                         {item.val}
                       </div>
                     </div>
                   </div>
+
                   <div style={{ textAlign: "right", opacity: 0.4 }}>
                     <div
                       style={{

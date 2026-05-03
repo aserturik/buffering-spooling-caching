@@ -1,168 +1,20 @@
-import React from "react";
 import { Slide, Stack } from "@revealjs/react";
-import { motion } from "framer-motion";
-import { RotateCcw } from "lucide-react";
+import IntroSpooling from "../components/slides/spooling/IntroSpooling";
+import BufferingVsSpooling from "../components/slides/spooling/BufferingVsSpooling";
+import PrinterCase from "../components/slides/spooling/PrinterCase";
+import SpoolerSecurity from "../components/slides/spooling/SpoolerSecurity";
 
 export default function Spooling() {
   return (
     <>
       {/* ── SPOOLING ── */}
       <Stack>
-        <Slide data-transition="zoom">
-          <div style={{ padding: "0 8%" }}>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  marginBottom: "3rem",
-                }}
-              >
-                <div>
-                  <span
-                    className="presenter-tag"
-                    style={{
-                      background: "rgba(222, 186, 135, 0.1)",
-                      color: "var(--accent-spool)",
-                    }}
-                  >
-                    MECANISMO 02 // SPOOLING
-                  </span>
-                  <h2 style={{ fontSize: "5rem", marginTop: "0.5rem" }}>
-                    Desacoplamiento Arquitectónico
-                  </h2>
-                </div>
-                <RotateCcw
-                  size={80}
-                  color="var(--accent-spool)"
-                  style={{ opacity: 0.2 }}
-                />
-              </div>
+        <IntroSpooling />
+        <BufferingVsSpooling />
+        <PrinterCase />
+        <SpoolerSecurity />
 
-              <div
-                className="grid-2"
-                style={{ gap: "4rem", alignItems: "stretch" }}
-              >
-                <div
-                  className="glass-card"
-                  style={{
-                    textAlign: "left",
-                    display: "flex",
-                    flexDirection: "column",
-                    borderLeft: "12px solid var(--accent-spool)"
-                  }}
-                >
-                  <h3
-                    style={{
-                      color: "var(--accent-spool)",
-                      fontSize: "2.5rem"
-                    }}
-                  >
-                    Spooling vs Buffering
-                  </h3>
-                  <p
-                    style={{
-                      fontSize: "2.2rem !important",
-                      marginTop: "1.5rem",
-                      flexGrow: 1,
-                    }}
-                  >
-                    A diferencia del buffer, el <strong>Spooling</strong> utiliza el disco como un buffer masivo para gestionar <strong>trabajos completos</strong> destinados a dispositivos exclusivos.
-                  </p>
-                  <div
-                    className="technical-note"
-                    style={{
-                      borderColor: "var(--accent-spool)",
-                      background: "rgba(222, 186, 135, 0.05)",
-                      fontSize: "1.8rem",
-                      marginTop: "auto",
-                    }}
-                  >
-                    <strong>Persistencia:</strong> Sobrevive a fallos de energía (Acceso en ms).
-                  </div>
-                </div>
-
-                <div className="glass-card" style={{ display: "flex", flexDirection: "column" }}>
-                  <h4 style={{ fontSize: "2.2rem", marginBottom: "1.5rem" }}>
-                    Componentes (Microsoft Learn)
-                  </h4>
-                  <ul style={{ padding: 0, margin: 0, listStyle: "none", flexGrow: 1, display: "flex", flexDirection: "column", justifyContent: "center", gap: "1.5rem" }}>
-                    <li style={{ fontSize: "2rem !important", display: "flex", alignItems: "center", gap: "1rem" }}>
-                      <span style={{ color: "var(--accent-spool)" }}>•</span> <code>spoolsv.exe</code>
-                    </li>
-                    <li style={{ fontSize: "2rem !important", display: "flex", alignItems: "center", gap: "1rem" }}>
-                      <span style={{ color: "var(--accent-spool)" }}>•</span> Procesador de Impresión
-                    </li>
-                    <li style={{ fontSize: "2rem !important", display: "flex", alignItems: "center", gap: "1rem" }}>
-                      <span style={{ color: "var(--accent-spool)" }}>•</span> Interfaz de Control
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </Slide>
-
-        <Slide data-transition="slide-in fade-out">
-          <div style={{ padding: "0 8%", textAlign: "left" }}>
-            <div style={{ marginBottom: "3rem" }}>
-              <span
-                style={{
-                  fontFamily: "var(--mono)",
-                  fontSize: "1.1rem",
-                  color: "var(--accent-spool)",
-                  letterSpacing: "0.2em",
-                }}
-              >
-                SPOOLING // COMPONENTES DEL SISTEMA
-              </span>
-              <h2 style={{ fontSize: "4.5rem", margin: "0.5rem 0 0 0" }}>
-                Arquitectura del Spooler (Win32)
-              </h2>
-            </div>
-
-            <div className="grid-3" style={{ gap: "1.5rem" }}>
-              <div className="glass-card" style={{ padding: "2rem" }}>
-                <h2 style={{ fontSize: "2.2rem", color: "var(--accent-spool)", marginBottom: "1rem" }}>1. spoolsv.exe</h2>
-                <p style={{ textAlign: "left", fontSize: "1.4rem !important", margin: "0 0 1rem 0" }}>
-                  <strong>Proceso anfitrión</strong> que intercepta cada solicitud.
-                </p>
-                <ul style={{ fontSize: "1.1rem !important", paddingLeft: "1.2rem", color: "var(--subtext)" }}>
-                  <li style={{ marginBottom: "0.5rem" }}>Crea archivos <code>.SHD</code> y <code>.SPL</code>.</li>
-                  <li>Mantiene la cola tras fallos.</li>
-                </ul>
-              </div>
-
-              <div className="glass-card" style={{ padding: "2rem" }}>
-                <h2 style={{ fontSize: "2.2rem", color: "var(--accent-spool)", marginBottom: "1rem" }}>2. Procesador</h2>
-                <p style={{ textAlign: "left", fontSize: "1.4rem !important", margin: "0 0 1rem 0" }}>
-                  Motor de renderizado y <strong>traductor de formatos</strong>.
-                </p>
-                <ul style={{ fontSize: "1.1rem !important", paddingLeft: "1.2rem", color: "var(--subtext)" }}>
-                  <li style={{ marginBottom: "0.5rem" }}>Transforma EMF a RAW.</li>
-                  <li>Gestiona N-up y orden inverso.</li>
-                </ul>
-              </div>
-
-              <div className="glass-card" style={{ padding: "2rem" }}>
-                <h2 style={{ fontSize: "2.2rem", color: "var(--accent-spool)", marginBottom: "1rem" }}>3. Interfaz</h2>
-                <p style={{ textAlign: "left", fontSize: "1.4rem !important", margin: "0 0 1rem 0" }}>
-                  Capa de software (<code>Winspool.drv</code>) de control.
-                </p>
-                <ul style={{ fontSize: "1.1rem !important", paddingLeft: "1.2rem", color: "var(--subtext)" }}>
-                  <li style={{ marginBottom: "0.5rem" }}>Supervisa ciclo de vida (Pausa/Canc).</li>
-                  <li>Valida permisos ACL de cola.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </Slide>
-
+        {/* Referencia técnica detallada */}
         <Slide
           data-background-iframe="./doc_spooling.html"
           data-background-interactive
