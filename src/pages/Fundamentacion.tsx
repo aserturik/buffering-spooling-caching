@@ -1,7 +1,11 @@
 import React from "react";
 import { Slide } from "@revealjs/react";
-import { motion } from "framer-motion";
-import { ArrowRight, Cpu, Database, HardDrive, ShieldAlert, Zap, Printer } from "lucide-react";
+import {
+  ArrowRight,
+  Database,
+  ShieldAlert,
+  Printer,
+} from "lucide-react";
 import { ZoomableImage } from "../components/ZoomableImage";
 
 export default function Fundamentacion() {
@@ -77,11 +81,10 @@ export default function Fundamentacion() {
                   }}
                 >
                   La gestión de entrada/salida (E/S) constituye uno de los
-                  subsistemas críticos en la arquitectura de sistemas
-                  operativos contemporáneos. Según{" "}
-                  <strong>Holcombe (2023)</strong>, el subsistema de E/S
-                  representa la interfaz definitiva entre el núcleo y los
-                  dispositivos periféricos.
+                  subsistemas críticos en la arquitectura de sistemas operativos
+                  contemporáneos. Según <strong>Holcombe (2023)</strong>, el
+                  subsistema de E/S representa la interfaz definitiva entre el
+                  núcleo y los dispositivos periféricos.
                 </p>
 
                 <div
@@ -92,9 +95,9 @@ export default function Fundamentacion() {
                   }}
                 >
                   <p style={{ fontSize: "2rem !important", margin: 0 }}>
-                    La <strong>"brecha de velocidad"</strong> (speed gap) es
-                    el motor arquitectónico que justifica la existencia de
-                    estos mecanismos (Univ. de Cambridge, 2022-2023).
+                    La <strong>"brecha de velocidad"</strong> (speed gap) es el
+                    motor arquitectónico que justifica la existencia de estos
+                    mecanismos (Univ. de Cambridge, 2022-2023).
                   </p>
                 </div>
               </div>
@@ -157,8 +160,17 @@ export default function Fundamentacion() {
             <h2 style={{ fontSize: "4.5rem", marginTop: "0.5rem" }}>
               El problema de la Latencia
             </h2>
-            <p style={{ fontSize: "2.2rem !important", lineHeight: "1.5", marginBottom: "3rem", fontStyle: "italic" }}>
-              La arquitectura de cualquier computadora enfrenta una paradoja: los componentes que procesan datos son órdenes de magnitud más rápidos que los que los almacenan o transmiten.
+            <p
+              style={{
+                fontSize: "2.2rem !important",
+                lineHeight: "1.5",
+                marginBottom: "3rem",
+                fontStyle: "italic",
+              }}
+            >
+              La arquitectura de cualquier computadora enfrenta una paradoja:
+              los componentes que procesan datos son órdenes de magnitud más
+              rápidos que los que los almacenan o transmiten.
             </p>
           </div>
 
@@ -167,94 +179,20 @@ export default function Fundamentacion() {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                gap: "1.5rem",
+                alignItems: "center",
+                justifyContent: "center",
               }}
             >
-              {[
-                {
-                  label: "Acceso a registros de CPU",
-                  val: "~1 ns",
-                  color: "var(--accent-cache)",
-                  icon: <Cpu size={24} />,
-                  power: "10⁰",
-                },
-                {
-                  label: "Acceso a caché L1",
-                  val: "~4 ns",
-                  color: "var(--accent-red)",
-                  icon: <HardDrive size={24} />,
-                  power: "10¹",
-                },
-                {
-                  label: "Memoria Principal RAM",
-                  val: "~100 ns",
-                  color: "var(--accent-spool)",
-                  icon: <Database size={24} />,
-                  power: "10²",
-                },
-                {
-                  label: "Almacenamiento NVMe SSD",
-                  val: "~100 μs",
-                  color: "var(--accent-buf)",
-                  icon: <Zap size={24} />,
-                  power: "10⁵",
-                },
-                {
-                  label: "Disco duro (HDD) Legado",
-                  val: "~10 ms",
-                  color: "var(--accent-red)",
-                  icon: <HardDrive size={24} />,
-                  power: "10⁷",
-                }
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="metric-card"
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    borderLeft: `4px solid ${item.color}`,
-                    padding: "1.5rem 2rem",
-                  }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "1.5rem",
-                    }}
-                  >
-                    <div style={{ color: item.color }}>{item.icon}</div>
-                    <div style={{ textAlign: "center" }}>
-                      <div className="metric-label">{item.label}</div>
-                      <div
-                        className="metric-val"
-                        style={{ color: item.color, textAlign: "center" }}
-                      >
-                        {item.val}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div style={{ textAlign: "right", opacity: 0.4 }}>
-                    <div
-                      style={{
-                        fontSize: "0.7rem",
-                        fontFamily: "var(--mono)",
-                      }}
-                    >
-                      MAGNITUD
-                    </div>
-                    <div style={{ fontSize: "2rem", fontWeight: 800 }}>
-                      {item.power}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+              <ZoomableImage
+                src="/Velocidad vs Tamaño Dispositivos I-O.jpeg"
+                alt="Pirámide de Latencias"
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: "550px",
+                  borderRadius: "12px",
+                  border: "1px solid var(--line)",
+                }}
+              />
             </div>
 
             <div className="glass-card" style={{ padding: "3.5rem" }}>
@@ -336,19 +274,6 @@ export default function Fundamentacion() {
         </div>
       </Slide>
 
-      {/* ── VISUALIZACIÓN DEL GAP DE VELOCIDAD ── */}
-      <Slide data-transition="zoom">
-        <div style={{ padding: "0 8%", display: "flex", flexDirection: "column", alignItems: "center" }}>
-          <h2 style={{ fontSize: "4.5rem", marginBottom: "2rem" }}>
-            Pirámide de Latencias
-          </h2>
-          <ZoomableImage 
-            src="/Velocidad vs Tamaño Dispositivos I-O.jpeg" 
-            alt="Velocidad vs Tamaño" 
-            style={{ maxWidth: "100%", maxHeight: "700px", borderRadius: "12px", border: "1px solid var(--line)" }} 
-          />
-        </div>
-      </Slide>
     </>
   );
 }
