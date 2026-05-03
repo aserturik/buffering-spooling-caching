@@ -231,7 +231,7 @@ export default function Escenarios() {
             Sistemas Integrados
           </h2>
           <ZoomableImage 
-            src="/Buffering, Spooling y Caching en Sistemas integrados.png" 
+            src="/buffering_spooling_caching_sistemas_integrados.png" 
             alt="Sistemas Integrados" 
             style={{ maxWidth: "100%", maxHeight: "700px", borderRadius: "12px", border: "1px solid var(--line)" }} 
           />

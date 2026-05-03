@@ -43,7 +43,7 @@ const LinuxPageCache: React.FC = () => {
           Flujo de Page Cache
         </h2>
         <ZoomableImage 
-          src="/Flujo de Lectura y escritura del kernel Linux utilizando la Page Caché.jpeg" 
+          src="/flujo_lectura_escritura_linux_page_cache.jpeg" 
           alt="Flujo Page Cache Linux" 
           style={{ maxWidth: "100%", maxHeight: "700px", borderRadius: "12px", border: "1px solid var(--line)" }} 
         />

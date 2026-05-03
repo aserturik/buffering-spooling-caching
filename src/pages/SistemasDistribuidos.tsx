@@ -13,7 +13,7 @@ export default function SistemasDistribuidos() {
             Monoprocesador vs Distribuido
           </h2>
           <ZoomableImage 
-            src="/Visualización comparativa del Spooling Caching y Buffering Monoprocesador vs Sistema distribuido.png" 
+            src="/spooling_caching_buffering_comparativa_distribuido.png" 
             alt="Monoprocesador vs Sistema Distribuido" 
             style={{ maxWidth: "100%", maxHeight: "700px", borderRadius: "12px", border: "1px solid var(--line)" }} 
           />

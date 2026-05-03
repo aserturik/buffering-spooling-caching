@@ -47,7 +47,7 @@ const BufferingTypes: React.FC = () => {
           Single vs Double Buffering
         </h2>
         <ZoomableImage 
-          src="/Doble Buffering vs Único bufering.jpeg" 
+          src="/doble_vs_unico_buffering.jpeg" 
           alt="Doble Buffering vs Único bufering" 
           style={{ maxWidth: "100%", maxHeight: "700px", borderRadius: "12px", border: "1px solid var(--line)" }} 
         />

@@ -184,7 +184,7 @@ export default function Fundamentacion() {
               }}
             >
               <ZoomableImage
-                src="/Velocidad vs Tamaño Dispositivos I-O.jpeg"
+                src="/velocidad_vs_tamaño_dispositivos_io.jpeg"
                 alt="Pirámide de Latencias"
                 style={{
                   maxWidth: "100%",
