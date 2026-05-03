@@ -1,6 +1,7 @@
 import React from "react";
 import { Slide } from "@revealjs/react";
 import { RotateCw, Repeat } from "lucide-react";
+import { ZoomableImage } from "../../ZoomableImage";
 
 const BufferingTypes: React.FC = () => {
   return (
@@ -45,7 +46,7 @@ const BufferingTypes: React.FC = () => {
         <h2 style={{ fontSize: "3.5rem", marginBottom: "2rem" }}>
           Single vs Double Buffering
         </h2>
-        <img 
+        <ZoomableImage 
           src="/Doble Buffering vs Único bufering.jpeg" 
           alt="Doble Buffering vs Único bufering" 
           style={{ maxWidth: "100%", maxHeight: "700px", borderRadius: "12px", border: "1px solid var(--line)" }} 

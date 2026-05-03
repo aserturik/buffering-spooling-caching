@@ -1,6 +1,7 @@
 import React from "react";
 import { Slide, Stack } from "@revealjs/react";
 import { Printer } from "lucide-react";
+import { ZoomableImage } from "../components/ZoomableImage";
 
 export default function Impresion() {
   return (
@@ -304,7 +305,7 @@ export default function Impresion() {
               <h2 style={{ fontSize: "4.5rem", marginBottom: "2rem" }}>
                 Flujo de Impresión en Windows
               </h2>
-              <img 
+              <ZoomableImage 
                 src="/Flujo de Impresión en Windows: Desde la Aplicación hastal a Impresora Física.jpeg" 
                 alt="Flujo de Impresión" 
                 style={{ maxWidth: "100%", maxHeight: "700px", borderRadius: "12px", border: "1px solid var(--line)" }} 

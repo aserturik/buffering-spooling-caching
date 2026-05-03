@@ -1,6 +1,7 @@
 import React from "react";
 import { Slide } from "@revealjs/react";
 import { Database, Globe, Network, Server } from "lucide-react";
+import { ZoomableImage } from "../components/ZoomableImage";
 
 export default function SistemasDistribuidos() {
   return (
@@ -11,7 +12,7 @@ export default function SistemasDistribuidos() {
           <h2 style={{ fontSize: "4.5rem", marginBottom: "2rem" }}>
             Monoprocesador vs Distribuido
           </h2>
-          <img 
+          <ZoomableImage 
             src="/Visualización comparativa del Spooling Caching y Buffering Monoprocesador vs Sistema distribuido.png" 
             alt="Monoprocesador vs Sistema Distribuido" 
             style={{ maxWidth: "100%", maxHeight: "700px", borderRadius: "12px", border: "1px solid var(--line)" }} 

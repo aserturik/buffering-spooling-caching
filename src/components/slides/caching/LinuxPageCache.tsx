@@ -1,6 +1,7 @@
 import React from "react";
 import { Slide } from "@revealjs/react";
 import { Layers, Database } from "lucide-react";
+import { ZoomableImage } from "../../ZoomableImage";
 
 const LinuxPageCache: React.FC = () => {
   return (
@@ -41,7 +42,7 @@ const LinuxPageCache: React.FC = () => {
         <h2 style={{ fontSize: "3.5rem", marginBottom: "2rem" }}>
           Flujo de Page Cache
         </h2>
-        <img 
+        <ZoomableImage 
           src="/Flujo de Lectura y escritura del kernel Linux utilizando la Page Caché.jpeg" 
           alt="Flujo Page Cache Linux" 
           style={{ maxWidth: "100%", maxHeight: "700px", borderRadius: "12px", border: "1px solid var(--line)" }} 

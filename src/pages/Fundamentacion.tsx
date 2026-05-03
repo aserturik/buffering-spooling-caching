@@ -2,6 +2,7 @@ import React from "react";
 import { Slide } from "@revealjs/react";
 import { motion } from "framer-motion";
 import { ArrowRight, Cpu, Database, HardDrive, ShieldAlert, Zap, Printer } from "lucide-react";
+import { ZoomableImage } from "../components/ZoomableImage";
 
 export default function Fundamentacion() {
   return (
@@ -341,7 +342,7 @@ export default function Fundamentacion() {
           <h2 style={{ fontSize: "4.5rem", marginBottom: "2rem" }}>
             Pirámide de Latencias
           </h2>
-          <img 
+          <ZoomableImage 
             src="/Velocidad vs Tamaño Dispositivos I-O.jpeg" 
             alt="Velocidad vs Tamaño" 
             style={{ maxWidth: "100%", maxHeight: "700px", borderRadius: "12px", border: "1px solid var(--line)" }} 

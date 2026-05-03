@@ -7,6 +7,7 @@ import {
   AlignCenter, MessageSquare, Gamepad2, Trophy, HelpCircle, CheckCircle2
 } from "lucide-react";
 import { MechanismCard } from "../components/MechanismCard";
+import { ZoomableImage } from "../components/ZoomableImage";
 
 export default function Escenarios() {
   return (
@@ -229,7 +230,7 @@ export default function Escenarios() {
           <h2 style={{ fontSize: "4.5rem", marginBottom: "2rem" }}>
             Sistemas Integrados
           </h2>
-          <img 
+          <ZoomableImage 
             src="/Buffering, Spooling y Caching en Sistemas integrados.png" 
             alt="Sistemas Integrados" 
             style={{ maxWidth: "100%", maxHeight: "700px", borderRadius: "12px", border: "1px solid var(--line)" }} 
