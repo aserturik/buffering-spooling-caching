@@ -19,13 +19,6 @@ export default function Caching() {
         <ReplacementAlgos />
         <NVMeBottleneck />
         <IOSchedulers />
-
-        {/* Referencia técnica detallada */}
-        <Slide
-          data-background-iframe="./doc_caching.html"
-          data-background-interactive
-          data-transition="fade"
-        />
       </Stack>
     </>
   );
